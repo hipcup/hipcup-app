@@ -1,0 +1,43 @@
+.logo-box {
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 160px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+.coffeeFinderButtonWrapper{
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.coffeeFinderButton {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.results{
+  display:block;
+  margin: 0 auto;
+}
+
+.listResultsTitle{
+  font-size: 120px;
+  text-align: center;
+}
+
+.store{
+  text-align: center;
+  list-style-type: none;
+}
+
+.storeName{
+  font-size: 20px;
+  font-weight: bold;
+}
