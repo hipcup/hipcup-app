@@ -1,7 +1,16 @@
 import React from 'react'
 
-export default function Header() {
-  return <div>
-    <img src="../assets/Hipcup_logo.png" alt="Hipcup Logo"/>
-  </div>
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return ( <div>
+      <img src="../assets/Hipcup_logo.png" alt="Hipcup Logo"/>
+    </div>
+   )
+  }
 }
+
+export default Header;
