@@ -6,9 +6,10 @@ class Header extends React.Component {
   }
 
   render() {
-    return ( <div>
-      <img src="../assets/Hipcup_logo.png" alt="Hipcup Logo"/>
-    </div>
+    return ( 
+      <div>
+        <img src="../assets/Hipcup_logo.png" alt="Hipcup Logo"/>
+      </div>
    )
   }
 }

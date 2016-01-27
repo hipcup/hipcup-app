@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { increase, decrease } from '../actions/count'
 
 import GoogleMap from 'google-map-react'
 
@@ -14,7 +13,6 @@ class Map extends React.Component  {
   }
 
   render() {
-    console.log("this inside map:", this.props)
     return (
       <div style={{width:'100%', height:'600px'}}>
         <GoogleMap 
@@ -26,6 +24,5 @@ class Map extends React.Component  {
 }
 
 export default connect(
-  state => ({ number: state.count.number }),
-  { increase, decrease }
+  state => ({})
 )(Map)

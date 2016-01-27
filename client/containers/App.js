@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { routeActions } from 'react-router-redux'
 import { Header, Footer } from '../components'
 
 class App extends React.Component {
@@ -21,6 +19,5 @@ class App extends React.Component {
 }
 
 export default connect(
-  null,
-  routeActions
+  null
 )(App)

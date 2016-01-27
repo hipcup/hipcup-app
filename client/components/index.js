@@ -1,4 +1,4 @@
 export Landing from './Landing'
-export Results from './Results'
-export Header from './Header'
-export Footer from './Footer'
+export Header from './app/Header'
+export Footer from './app/Footer'
+export Map from './mapContainer/Map'
