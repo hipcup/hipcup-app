@@ -1,11 +1,15 @@
 import React from 'react'
+import Shops from '../components/shopListContainer/shop'
 
 class ShopsList extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>renders shopsList inside ShopsList</p>
+      <div className="shopListContainer">
+        <p>renders coffee shops inside shop component</p>
+        <div>
+          {Shops}
+        </div>
       </div>
     )
   }

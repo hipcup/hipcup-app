@@ -5,7 +5,7 @@ class MapBox extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mapContainer">
         <Map />
       </div>
     )
