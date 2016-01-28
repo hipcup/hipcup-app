@@ -11,6 +11,7 @@ import createHistory from 'history/lib/createHashHistory'
 import { syncHistory, routeReducer } from 'react-router-redux'
 
 import * as reducers from './client/reducers'
+import mapReducer from './client/reducers/map.js'
 import { Landing } from './client/components'
 import { App, SearchResults } from './client/containers'
 
@@ -20,7 +21,8 @@ const history = createHistory()
 const middleware = syncHistory(history)
 const reducer = combineReducers({
   ...reducers,
-  routing: routeReducer
+  routing: routeReducer,
+  mapReducer
 })
 
 const DevTools = createDevTools(

@@ -5,24 +5,19 @@ import GoogleMap from 'google-map-react'
 
 
 class Map extends React.Component  {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      center: {lat: 59.938043, lng: 30.337157}
-    }
+  constructor() {
+    super();
   }
 
   render() {
     return (
       <div style={{width:'100%', height:'600px'}}>
         <GoogleMap 
-          defaultCenter={this.state.center} 
-          defaultZoom={9} />
+          defaultCenter={this.props.center} 
+          defaultZoom={this.props.zoom} />
       </div>
     )
   }
 }
 
-export default connect(
-  state => ({})
-)(Map)
+export default Map
