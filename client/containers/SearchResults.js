@@ -10,9 +10,9 @@ class SearchResults extends React.Component {
 
   render() {
     return ( 
-      <div>
-        <ShopsList />
+      <div className="searchResults">
         <MapBox />
+        <ShopsList />
       </div>
    )
   }

@@ -6,7 +6,9 @@
   "author": "irving barajas // @irvingb232@gmail.com, Melinda Bernardo // melindabernrdo@gmail.com, Carl Bernardo // carlbernrdo@gmail.com",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "css-loader": "^0.23.1",
     "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
     "google-map-react": "^0.10.3",
     "history": "^1.14.0",
     "q": "^1.4.1",
@@ -16,7 +18,8 @@
     "react-router": "^1.0.0",
     "react-router-redux": "^2.1.0",
     "redux": "^3.0.4",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "style-loader": "^0.13.0"
   },
   "devDependencies": {
     "babel-core": "^6.1.21",
@@ -28,12 +31,14 @@
     "eslint": "^1.10.3",
     "eslint-config-rackt": "^1.1.1",
     "eslint-plugin-react": "^3.15.0",
+    "node-sass": "^3.4.2",
     "redux-devtools": "^3.0.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
+    "sass-loader": "^3.1.2",
     "webpack": "^1.12.6"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "webpack --config webpack.config.js & nodemon server.js"
   }
 }
