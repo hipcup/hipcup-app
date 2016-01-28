@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Header, Footer } from '../components'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);

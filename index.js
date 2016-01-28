@@ -11,8 +11,10 @@ import createHistory from 'history/lib/createHashHistory'
 import { syncHistory, routeReducer } from 'react-router-redux'
 
 import * as reducers from './client/reducers'
-import { Landing, Results } from './client/components'
-import { App } from './client/containers'
+import { Landing } from './client/components'
+import { App, SearchResults } from './client/containers'
+
+import './client/styles/scss/main.scss';
 
 const history = createHistory()
 const middleware = syncHistory(history)
@@ -41,7 +43,7 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Landing}/>
-          <Route path="results" component={Results}/>
+          <Route path="results" component={SearchResults}/>
           <Route path="landing" component={Landing}/>
         </Route>
       </Router>
