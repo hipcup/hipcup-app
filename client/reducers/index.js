@@ -1,4 +1,5 @@
 export count from './count'
+export stores from './stores'
 
 // const initialState = {
 //   lat: 59.938043,

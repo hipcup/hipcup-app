@@ -1,4 +1,4 @@
-import { UPDATE_USER_CORD } from '../actions/map.js'
+import { UPDATE_USER_CORD } from '../actions/mapActions.js'
 
 const initialState = {
   center: {lat: 34.0157219, lng: -118.4966245},
