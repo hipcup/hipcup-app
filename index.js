@@ -13,6 +13,7 @@ import { syncHistory, routeReducer } from 'react-router-redux'
 
 import * as reducers from './client/reducers'
 import mapReducer from './client/reducers/map.js'
+import coffeeRunReducer from './client/reducers/coffeeRun.js'
 // import { LandingBox } from './client/containers'
 import { Landing } from './client/components'
 import { App, SearchResults, CoffeeRun, LandingBox } from './client/containers'
@@ -25,7 +26,8 @@ const thunkMid = applyMiddleware(thunk)
 const reducer = combineReducers({
   ...reducers,
   routing: routeReducer,
-  mapReducer
+  mapReducer,
+  coffeeRunReducer
 })
 
 const DevTools = createDevTools(
@@ -50,11 +52,8 @@ ReactDOM.render(
         <Route path="/" component={App}>
           <IndexRoute component={LandingBox}/>
           <Route path="results" component={SearchResults}/>
-<<<<<<< c69396e3f3ffbd67b46c11868b4891f334f09463
-=======
           <Route path="landing" component={Landing}/>
           <Route path="coffeeRun" component={CoffeeRun}/>
->>>>>>> [Progress] Creates coffee run order form component and container
         </Route>
       </Router>
       <DevTools />
