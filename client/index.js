@@ -1,23 +1,25 @@
+/* Dev Tools */ 
 import { createDevTools } from 'redux-devtools'
 import LogMonitor from 'redux-devtools-log-monitor'
 import DockMonitor from 'redux-devtools-dock-monitor'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+/* Middleware and Router */
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import thunk from 'redux-thunk'
 import createHistory from 'history/lib/createHashHistory'
 import { syncHistory, routeReducer } from 'react-router-redux'
-
-import * as reducers from './client/reducers'
-import mapReducer from './client/reducers/map.js'
-import coffeeRunReducer from './client/reducers/coffeeRun.js'
-// import { LandingBox } from './client/containers'
-import { Landing } from './client/components'
-import { App, SearchResults, CoffeeRun, LandingBox } from './client/containers'
-
+/* reducers */  
+import * as reducers from './reducers'
+import mapReducer from './reducers/map.js'
+import coffeeRunReducer from './reducers/coffeeRun.js'
+/* components and containers */
+import { Landing } from './components'
+import { App, SearchResults, CoffeeRun, LandingBox } from './containers'
+/* styles */ 
 import './client/styles/scss/main.scss';
 
 const history = createHistory()
