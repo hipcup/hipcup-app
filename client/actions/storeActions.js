@@ -1,9 +1,10 @@
+
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 
 export const fetchStores = () => {
   return dispatch => {
-    return fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee&location='+'34.0157219'+','+'-118.4966245'+'&radius=5000&key='+'AIzaSyBoaQllaUHYrGCjasx8t8mHzNjKEZHep-4', {
+    return fetch('http://127.0.0.1:3468/google', {
         method: 'POST',
         mode: 'cors',
         cache: false,
@@ -11,14 +12,26 @@ export const fetchStores = () => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         } 
-    }).then((stores) => {
-      console.log('stores!',stores)
-      dispatch(fetchStoresSuccess(stores));
+    }).then(stores => {
+      return stores.json();
+    }).then(stores => {
+      try {
+        console.log('stores returned from fetchStores', stores)
+        if(stores.success){
+          dispatch(fetchStoresSuccess(stores));
+        } else {
+          dispatch(fetchStoresError(stores));
+        }
+      } catch(e){
+        dispatch(fetchStoresError(stores.error));
+      }
     })
+    .catch(err => console.error('Error in Fetch Stores:', err));
   }
 }
 
 const fetchStoresSuccess = (stores) => {
+  console.log("fetchStoresSuccess INVOKED")
   return {
     type: FETCH_STORES_SUCCESS,
     stores: stores

@@ -11,6 +11,8 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "google-map-react": "^0.10.3",
     "history": "^1.14.0",
+    "mongoose": "^4.3.7",
+    "morgan": "^1.6.1",
     "q": "^1.4.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
