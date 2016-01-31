@@ -7,18 +7,20 @@ import ReactDOM from 'react-dom'
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
+import thunk from 'redux-thunk'
 import createHistory from 'history/lib/createHashHistory'
 import { syncHistory, routeReducer } from 'react-router-redux'
 
 import * as reducers from './client/reducers'
 import mapReducer from './client/reducers/map.js'
-import { Landing } from './client/components'
+import { LandingBox } from './client/containers'
 import { App, SearchResults } from './client/containers'
 
 import './client/styles/scss/main.scss';
 
 const history = createHistory()
-const middleware = syncHistory(history)
+const histMid = applyMiddleware(syncHistory(history))
+const thunkMid = applyMiddleware(thunk)
 const reducer = combineReducers({
   ...reducers,
   routing: routeReducer,
@@ -33,20 +35,20 @@ const DevTools = createDevTools(
 )
 
 const finalCreateStore = compose(
-  applyMiddleware(middleware),
+  histMid,
+  thunkMid,
   DevTools.instrument()
 )(createStore)
 const store = finalCreateStore(reducer)
-middleware.listenForReplays(store)
+//hist.listenForReplays(store)
 
 ReactDOM.render(
   <Provider store={store}>
     <div>
       <Router history={history}>
         <Route path="/" component={App}>
-          <IndexRoute component={Landing}/>
+          <IndexRoute component={LandingBox}/>
           <Route path="results" component={SearchResults}/>
-          <Route path="landing" component={Landing}/>
         </Route>
       </Router>
       <DevTools />
