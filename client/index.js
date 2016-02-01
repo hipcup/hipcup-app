@@ -20,7 +20,7 @@ import coffeeRunReducer from './reducers/coffeeRun.js'
 import { Landing } from './components'
 import { App, SearchResults, CoffeeRun, LandingBox } from './containers'
 /* styles */ 
-import './client/styles/scss/main.scss';
+import './styles/scss/main.scss';
 
 const history = createHistory()
 const histMid = applyMiddleware(syncHistory(history))
