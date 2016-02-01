@@ -1,5 +1,5 @@
 import React from 'react'
-import Shops from '../components/shopListContainer/shop'
+import Shops from '../components/shopListView/shop'
 
 class ShopsList extends React.Component {
 
