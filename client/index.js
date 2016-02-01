@@ -2,7 +2,7 @@
 import { createDevTools } from 'redux-devtools'
 import LogMonitor from 'redux-devtools-log-monitor'
 import DockMonitor from 'redux-devtools-dock-monitor'
-
+/* React */
 import React from 'react'
 import ReactDOM from 'react-dom'
 /* Middleware and Router */
@@ -14,8 +14,6 @@ import createHistory from 'history/lib/createHashHistory'
 import { syncHistory, routeReducer } from 'react-router-redux'
 /* reducers */  
 import * as reducers from './reducers'
-import mapReducer from './reducers/map.js'
-import coffeeRunReducer from './reducers/coffeeRun.js'
 /* components and containers */
 import { Landing } from './components'
 import { App, SearchResults, CoffeeRun, LandingBox } from './containers'
@@ -28,8 +26,6 @@ const thunkMid = applyMiddleware(thunk)
 const reducer = combineReducers({
   ...reducers,
   routing: routeReducer,
-  mapReducer,
-  coffeeRunReducer
 })
 
 const DevTools = createDevTools(
