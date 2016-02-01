@@ -8,7 +8,6 @@ class Landing extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(this.props.fetchStores, 'here')
     const { fetchStores } = this.props.fetchStores;
 
     fetchStores();

@@ -16,8 +16,7 @@ export const fetchStores = () => {
       return stores.json();
     }).then(stores => {
       try {
-        console.log('stores returned from fetchStores', stores)
-        if(stores.success){
+        if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
         } else {
           dispatch(fetchStoresError(stores));
@@ -31,7 +30,6 @@ export const fetchStores = () => {
 }
 
 const fetchStoresSuccess = (stores) => {
-  console.log("fetchStoresSuccess INVOKED")
   return {
     type: FETCH_STORES_SUCCESS,
     stores: stores

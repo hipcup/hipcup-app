@@ -62,7 +62,6 @@ var google_api_key = require('../server/keys/config.js').google_api_key;
       apiGeolocationData().then(function(data){
         return apiStoreData(data)
       }).then(function(data){
-        console.log("DATA:", data)
         res.send(data);
       });
 

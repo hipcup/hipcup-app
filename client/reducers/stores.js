@@ -10,9 +10,8 @@ const initialState = {
 export default function storeReducer(state = initialState, action) {
   switch(action.type) {
     case FETCH_STORES_SUCCESS:
-    console.log("INSIDE FETCH_STORES_SUCCESS!", action.stores)
       return Object.assign({}, state, {
-        stores: action.stores
+        stores: action.stores.stores.results
       })
     default:
       return state;
