@@ -10,29 +10,12 @@ class MapBox extends React.Component {
 
   render() {
     let markers = <Mapmarker lat={this.props.center.lat} lng={this.props.center.lng}></Mapmarker>;
-    // let map = <GoogleMap
-    //  //bootstrapURLKeys={{key: this.props.googleKey}}
-    //  defaultCenter={this.props.center}
-    //  defaultZoom={13}>
-    //   {markers}
-    //  </GoogleMap>
-
-    console.log('PROPS', this.props);
+    
     if(this.props.fetched) {
       markers = this.props.stores.map((store, ind) => {
-        return (<Mapmarker lat={this.props.center.lat} lng={this.props.center.lng} key={ind} />)
+        return (<Mapmarker lat={store.geometry.location.lat} lng={store.geometry.location.lng} key={ind} />)
       }).filter(val => val !== undefined);
-
-     //  map = <GoogleMap
-     //   //bootstrapURLKeys={{key: this.props.googleKey}}
-     //   defaultCenter={this.props.center}
-     //   defaultZoom={this.props.zoom}
-     //   center={this.props.center}>
-     //    {markers}
-     // </GoogleMap>
     }
-
-
 
     return (
       <div className="mapContainer">
