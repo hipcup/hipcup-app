@@ -6,8 +6,9 @@ import {
 const initialState = {
   stores: '',
   error: 'none',
-  center: {lat: 0, lng: 0},
-  zoom: 9
+  center: {lat: 34.0157219, lng: -118.4966245},
+  zoom: 9,
+  fetched: false
 }
 
 export default function storeReducer(state = initialState, action) {
@@ -19,7 +20,8 @@ export default function storeReducer(state = initialState, action) {
         center: {
           lat: action.lat,
           lng: action.lng
-        }
+        },
+        fetched: action.fetched
       })
     case FETCH_STORES_ERROR:
       return Object.assign({}, state, {

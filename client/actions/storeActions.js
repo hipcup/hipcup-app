@@ -33,7 +33,8 @@ const fetchStoresSuccess = (data) => {
     type: FETCH_STORES_SUCCESS,
     stores: data.stores,
     lat: data.lat,
-    lng: data.lng
+    lng: data.lng,
+    fetched: true
   }
 }
 
