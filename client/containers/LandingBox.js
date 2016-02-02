@@ -9,8 +9,8 @@ class LandingBox extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
+    console.log('error', this.props.error);
     return (
       <div>
         <Landing { ...this.props } />
@@ -20,8 +20,9 @@ class LandingBox extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('state', state.storeReducer);
   return {
-    
+    error: state.storeReducer.error
   }
 }
 

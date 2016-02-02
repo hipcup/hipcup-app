@@ -17,9 +17,10 @@ class MapBox extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('STATE', state);
   return {
-    center: state.mapReducer.center,
-    zoom: state.mapReducer.zoom
+    center: state.storeReducer.center,
+    zoom: state.storeReducer.zoom
   }
 }
 

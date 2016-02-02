@@ -1,4 +1,3 @@
-
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 
@@ -22,23 +21,25 @@ export const fetchStores = () => {
           dispatch(fetchStoresError(stores));
         }
       } catch(e){
-        dispatch(fetchStoresError(stores.error));
+        dispatch(fetchStoresError(stores));
       }
     })
     .catch(err => console.error('Error in Fetch Stores:', err));
   }
 }
 
-const fetchStoresSuccess = (stores) => {
+const fetchStoresSuccess = (data) => {
   return {
     type: FETCH_STORES_SUCCESS,
-    stores: stores
+    stores: data.stores,
+    lat: data.lat,
+    lng: data.lng
   }
 }
 
 const fetchStoresError = (err) => {
   return {
     type: FETCH_STORES_ERROR,
-    err: err
+    error: error
   }
 }
