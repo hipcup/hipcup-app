@@ -3,12 +3,13 @@ var CoffeeRun = require('../models/coffeeRun.js');
 exports.createRun = function(req, res) {
   console.log("inside createRun controller");
   var coffeeRun = new CoffeeRun({
-    coffeeRunID: '585848484',
-    runnerName:  req.body.runnerName, 
+    coffeeRunID: null,
+    runnerName:  req.body.runnerName,
+    timeStamp:   req.body.timeStamp, 
     coffeeShop:  req.body.coffeeShop,
     maxOrders:   req.body.maxOrders,
     slackChannel:req.body.slackChannel,
-    timeUntilRun: req.body.timeUntilRun
+    timeUntilRun:req.body.timeUntilRun,
   });
 
   coffeeRun.save(function(err, coffeeRun) {

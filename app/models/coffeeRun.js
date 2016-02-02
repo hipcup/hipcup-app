@@ -1,6 +1,15 @@
-var mongoose = require('mongoose'); 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
-// module.exports = mongoose.Model('coffeeRun', {
-//     runnerName: String,
-//     coffeeShop: String
-// });
+var CoffeeRunSchema = new Schema({
+    coffeeRunID:   ObjectId,
+    runnerName:    String,
+    coffeeShop:    String,
+    timeStamp:     Date,
+    maxOrders:     Number, 
+    slackChannel:  String,
+    timeUntilRun:  Date
+});
+
+module.exports = mongoose.model('coffeeRun', CoffeeRunSchema);

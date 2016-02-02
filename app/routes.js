@@ -3,7 +3,7 @@ var Q = require('q');
 var request = require('request');
 
 // models ======================================================================
-var coffeeRun = require('./models/coffeeRun.js');
+var coffeeRun = require('./controllers/coffeeRun.js');
 var google_api_key = require('../server/keys/config.js').google_api_key;
 
 // routes ======================================================================
@@ -12,6 +12,7 @@ var google_api_key = require('../server/keys/config.js').google_api_key;
   console.log("INSIDE APP ROUTES");
   // api ---------------------------------------------------------------------
   // add a CoffeeRun
+    app.post('/createRun', coffeeRun.createRun);
 
 
   // Google APIs -------------------------------------------------------------
