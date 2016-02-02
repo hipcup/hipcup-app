@@ -1,1 +1,0 @@
-//export const UPDATE_USER_CORD = 'UPDATE_USER_CORD'
