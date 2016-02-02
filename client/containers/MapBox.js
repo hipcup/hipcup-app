@@ -1,6 +1,6 @@
 import React from 'react'
 import Map from '../components/mapView/Map.js'
-import { connect } from 'react-redux'
+import Mapmarker from '../components/mapView/mapMarker.js'
 
 class MapBox extends React.Component {
   constructor(){
@@ -8,19 +8,20 @@ class MapBox extends React.Component {
   }
 
   render() {
+    let markers = <Mapmarker lat={this.props.center.lat} lng={this.props.center.lng}></Mapmarker>;
+    
+    if(this.props.fetched) {
+      markers = this.props.stores.map((store, ind) => {
+        return (<Mapmarker lat={store.geometry.location.lat} lng={store.geometry.location.lng} key={ind} />)
+      }).filter(val => val !== undefined);
+    }
+
     return (
       <div className="mapContainer">
-        <Map { ...this.props }/>
+        <Map { ...this.props } markers={markers}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    center: state.mapReducer.center,
-    zoom: state.mapReducer.zoom
-  }
-}
-
-export default connect(mapStateToProps, null)(MapBox); 
+export default MapBox

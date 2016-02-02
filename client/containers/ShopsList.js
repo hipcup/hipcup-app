@@ -1,7 +1,5 @@
 import React from 'react'
 import Shop from '../components/shopListView/shop'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
 
 class ShopsList extends React.Component {
   constructor(props) {
@@ -26,11 +24,4 @@ class ShopsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('stores',state.storeReducer.stores);
-  return {
-    stores: state.storeReducer.stores
-  }
-}
-
-export default connect(mapStateToProps,null)(ShopsList);
+export default ShopsList

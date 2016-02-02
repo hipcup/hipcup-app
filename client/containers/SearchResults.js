@@ -11,16 +11,22 @@ class SearchResults extends React.Component {
   render() {
     return ( 
       <div className="searchResults">
-        <MapBox />
-        <ShopsList />
+        <MapBox { ...this.props }/>
+        <ShopsList { ...this.props }/>
       </div>
    )
   }
 }
 
-export default connect(
-  state => ({})
-)(SearchResults)
 
+const mapStateToProps = (state) => {
+  console.log('STATE', state);
+  return {
+    center: state.storeReducer.center,
+    zoom: state.storeReducer.zoom,
+    fetched: state.storeReducer.fetched,
+    stores: state.storeReducer.stores
+  }
+}
 
-
+export default connect(mapStateToProps, null)(SearchResults); 

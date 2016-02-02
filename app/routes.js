@@ -38,6 +38,7 @@ var google_api_key = require('../server/keys/config.js').google_api_key;
 
      // Fetch stores based on user's lat and long 
       var apiStoreData = function(data){
+        console.log('DATA', data);
         var lat = data.location.lat;
         var lng = data.location.lng;
 
