@@ -20,7 +20,6 @@ class LandingBox extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state.storeReducer);
   return {
     error: state.storeReducer.error
   }
