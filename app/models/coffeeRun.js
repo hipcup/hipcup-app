@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 var CoffeeRunSchema = new Schema({
-    runnerName:    String,
+    runnerName:    { type: String, required: true},
     coffeeShop:    String,
     timeStamp:     Date,
     maxOrders:     Number, 

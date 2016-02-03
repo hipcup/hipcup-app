@@ -1,4 +1,5 @@
 export const UPDATE_COFFEE_RUN_FORM = 'UPDATE_COFFEE_RUN_FORM'
+export const ERROR__CREATING_COFFEE_RUN_FORM = 'ERROR__CREATING_COFFEE_RUN_FORM'
 
 export const coffeeRunAction = (formInfo) => {
   return dispatch => {
@@ -27,11 +28,11 @@ export const coffeeRunAction = (formInfo) => {
         dispatch(updateCoffeeRun(formInfo));
         console.log(response.message);
       } else {
-        // dispatch(fetchStoresError(stores));
+        dispatch(updateCoffeeRunError());
         console.log("ERROR IN SAVE TO DATABASE", response.err);
       }
     } catch(e){
-      // dispatch(fetchStoresError(stores));
+      dispatch(updateCoffeeRunError());
       console.log("error creating coffee run", e);
     }
   })
@@ -48,5 +49,12 @@ const updateCoffeeRun = (formInfo) => {
     maxOrders:  formInfo.maxOrders,
     slackChannel: formInfo.slackChannel,
     timeUntilRun: formInfo.timeUntilRun
+  }
+}
+
+const updateCoffeeRunError = () => {
+  return {
+    type: ERROR__CREATING_COFFEE_RUN_FORM,
+    coffeeRunErrorMsg: true
   }
 }

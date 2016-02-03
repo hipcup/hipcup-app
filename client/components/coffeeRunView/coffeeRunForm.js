@@ -24,6 +24,13 @@ class CoffeeRunForm extends React.Component  {
     this.refs.timeUntilRun.value = ''
   }
 
+  shouldDisplayErrorMessage() {
+    let errorMsg = this.props.coffeeRunErrorMsg ? (
+      <span>Coffee run could not be created. Please re-submit and try again.</span>) : null;
+
+    return errorMsg;
+  }
+
   render() {
     return (
       <div className="coffeeRunForm">
@@ -59,6 +66,7 @@ class CoffeeRunForm extends React.Component  {
             </select>
           </div>
           <button type="submit" onClick={this.handleClick}>Create Run</button>
+          { this.shouldDisplayErrorMessage() }
         </form>
       </div>
     )
