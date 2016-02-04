@@ -1,7 +1,7 @@
 
 var validationHelperFunctions = {
   isAlpha: function(input) {
-    if( /[^a-zA-Z]/.test(input)) {
+    if( /[^a-zA-Z\s]/.test(input)) {
        return false;
     }
     return true;     

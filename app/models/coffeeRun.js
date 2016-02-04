@@ -4,11 +4,11 @@ var ObjectId = Schema.ObjectId;
 
 var CoffeeRunSchema = new Schema({
     runnerName:    { type: String, required: true},
-    coffeeShop:    String,
+    coffeeShop:    { type: String, required: true},
     timeStamp:     Date,
     maxOrders:     Number, 
     slackChannel:  String,
-    timeUntilRun:  Date
+    timeUntilRun:  { type: Date, required: true}
 });
 
 module.exports = mongoose.model('coffeeRun', CoffeeRunSchema);
