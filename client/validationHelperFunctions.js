@@ -20,7 +20,4 @@ var validationHelperFunctions = {
   }
 }
 
-
-
-
 export default validationHelperFunctions;

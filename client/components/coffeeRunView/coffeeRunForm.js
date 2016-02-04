@@ -48,7 +48,7 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayRangeError(){
-    return isValid.isNumeric(this.state.maxOrders) ? null : <span>duration must be less than 2 days (1440 minutes)</span>
+    return isValid.isNumeric(this.state.maxOrders) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
   }
 
   displayFormError(){
@@ -66,13 +66,12 @@ class CoffeeRunForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    if(this.displayFormError() == null){
-      this.setState({ isValidForm: true })
-    } else {
-      this.setState({ isValidForm: false })
-      return; 
-    }
+    // disable coffeeRunAction if isValidForm is false
+    if(!this.displayFormError() == null) {
+      return;
+    } 
 
+    this.setState({ isValidForm: true });  
     const { coffeeRunAction } = this.props.coffeeRunActions;
 
     coffeeRunAction({
