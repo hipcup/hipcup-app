@@ -7,12 +7,17 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var Q = require('q');
 var mongoose = require('mongoose');
-// var database = require('./config/database');
+var database = require('./config/database');
 var google_api_key = require('./server/keys/config.js').google_api_key;
 var port = process.env.PORT || 3468;
 
  // configuration ===============================================================
-// mongoose.connect(database.url);
+mongoose.connect(database.url);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("successfully connected to database");
+});
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

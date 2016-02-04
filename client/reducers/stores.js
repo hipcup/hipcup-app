@@ -12,7 +12,6 @@ const initialState = {
 }
 
 export default function storeReducer(state = initialState, action) {
-  console.log('STATE!: ', state, 'ACTION: ', action);
   switch(action.type) {
     case FETCH_STORES_SUCCESS:
       return Object.assign({}, state, {

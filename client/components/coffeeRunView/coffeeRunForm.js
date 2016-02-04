@@ -1,20 +1,84 @@
 import React from 'react'
+import isValid from '../../validationHelperFunctions'
 
-class CoffeeRunForm extends React.Component  {
-  constructor() {
+class CoffeeRunForm extends React.Component {
+  constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.displayAlphaError = this.displayAlphaError.bind(this);
+    this.displayNumericError = this.displayNumericError.bind(this);
+    this.displayRangeError = this.displayRangeError.bind(this);
+    this.displayFormError = this.displayFormError.bind(this);
+    this.setRunnerName = this.setRunnerName.bind(this);
+    this.setMaxOrders = this.setMaxOrders.bind(this);
+    this.setTimeUntilRun = this.setTimeUntilRun.bind(this);
+
+    this.state = {
+      runnerName: '',
+      maxOrders: '',
+      timeUntilRun: '',
+      isValidForm: false
+    }
+  }
+
+  setRunnerName(e){
+    this.setState({
+      runnerName: e.target.value
+    })
+  }
+
+  setMaxOrders(e){
+    this.setState({
+      maxOrders: e.target.value
+    })
+  }
+
+  setTimeUntilRun(e){
+    this.setState({
+      timeUntilRun: e.target.value
+    })
+  }
+
+  displayAlphaError(){
+    return isValid.isAlpha(this.state.runnerName) ? null : <span>input must be a-z characters</span>
+  }
+
+  displayNumericError(){
+    return isValid.isNumeric(this.state.timeUntilRun) ? null : <span>input must be 0-9 integers</span>
+  }
+
+  displayRangeError(){
+    return isValid.isNumeric(this.state.maxOrders) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
+  }
+
+  displayFormError(){
+    if(!this.displayAlphaError() && !this.displayRangeError() && !this.displayNumericError()) {
+      return null;
+    } else {
+      return <span>Please fix all form errors before submitting</span>
+    }
+  }
+
+  displayServerErrorMsg(){
+    return this.props.coffeeRunErrorMsg ? <span>Coffee Run could not be created. Please re-submit and try again.</span> : null;
   }
 
   handleClick(e) {
     e.preventDefault();
+
+    // disable coffeeRunAction if isValidForm is false
+    if(!this.displayFormError() == null) {
+      return;
+    } 
+
+    this.setState({ isValidForm: true });  
     const { coffeeRunAction } = this.props.coffeeRunActions;
 
     coffeeRunAction({
-      runnerName: this.refs.runnerName.value,
-      coffeeShop: this.refs.coffeeShop.value,
-      timeStamp:  new Date(),
-      maxOrders:  this.refs.maxOrders.value,
+      runnerName:   this.refs.runnerName.value,
+      coffeeShop:   this.refs.coffeeShop.value,
+      timeStamp:    new Date(),
+      maxOrders:    this.refs.maxOrders.value,
       slackChannel: this.refs.slackChannel.value,
       timeUntilRun: this.refs.timeUntilRun.value
     });
@@ -30,7 +94,8 @@ class CoffeeRunForm extends React.Component  {
         <form>
           <div>
             <label>Name:</label>
-            <input type="text" name="runnerName" ref="runnerName" />
+            <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
+            {this.displayAlphaError()}
           </div>
           <div>
             <label>Coffee Shop:</label>
@@ -41,15 +106,17 @@ class CoffeeRunForm extends React.Component  {
           </div>
           <div>
             <label>Making Coffee Run In:</label>
-            <input type="text" name="timeQuantity" ref="timeUntilRun" />
+            <input type="text" name="timeQuantity" ref="timeUntilRun" onChange={this.setMaxOrders} require />
             <select name="timeDuration">
               <option select value="minutes">Minutes</option>
               <option value="hours">Hours</option>
-            </select>
+            </select>         
+            {this.displayRangeError()}
           </div>
           <div>
             <label>Max Coffee Orders:</label>
-            <input type="text" name="maxOrders" ref="maxOrders"/>
+            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setTimeUntilRun} require/>
+            { this.displayNumericError()}
           </div>
           <div>
             <label>Slack Channel:</label>
@@ -59,6 +126,8 @@ class CoffeeRunForm extends React.Component  {
             </select>
           </div>
           <button type="submit" onClick={this.handleClick}>Create Run</button>
+          { this.displayServerErrorMsg() }
+          { this.displayFormError() }
         </form>
       </div>
     )
