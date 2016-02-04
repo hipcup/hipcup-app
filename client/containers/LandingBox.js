@@ -10,7 +10,6 @@ class LandingBox extends React.Component {
     super(props);
   }
   render() {
-    console.log('error', this.props.error);
     return (
       <div>
         <Landing { ...this.props } />
