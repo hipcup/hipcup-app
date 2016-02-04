@@ -1,4 +1,5 @@
 import React from 'react'
+import { routeActions } from 'react-router-redux';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -9,8 +10,10 @@ class Landing extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const { fetchStores } = this.props.fetchStores;
+    const { actionRoute } = this.props;
 
     fetchStores();
+    actionRoute.push('/results');
   }
 
   render() {

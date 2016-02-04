@@ -1,6 +1,7 @@
 import React from 'react'
 import Landing from '../components/landingView/Landing.js'
 import { bindActionCreators } from 'redux'
+import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
 
 import * as fetchStores from '../actions/storeActions'
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchStores: bindActionCreators(fetchStores, dispatch)
+    fetchStores: bindActionCreators(fetchStores, dispatch),
+    actionRoute: bindActionCreators(routeActions, dispatch)
   }
 }
 
