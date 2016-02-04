@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import MapBox from './MapBox'
+
 import ShopsList from './ShopsList'
+import * as updateSelectStore from '../actions/storeActions'
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -18,15 +21,20 @@ class SearchResults extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
-  console.log('STATE', state);
   return {
     center: state.storeReducer.center,
     zoom: state.storeReducer.zoom,
     fetched: state.storeReducer.fetched,
-    stores: state.storeReducer.stores
+    stores: state.storeReducer.stores,
+    selectStore: state.storeReducer.selectStore
   }
 }
 
-export default connect(mapStateToProps, null)(SearchResults); 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSelectStore: bindActionCreators(updateSelectStore, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults); 

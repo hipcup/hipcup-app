@@ -10,7 +10,7 @@ class ShopsList extends React.Component {
 
     if(this.props.stores) {
       shops = this.props.stores.map((store, ind) => {
-        return (<Shop name={store.name} address={store.formatted_address} isOpen={store.opening_hours.open_now} key={ind}/>)
+        return (<Shop name={store.name} address={store.formatted_address} isOpen={store.opening_hours.open_now}  updateSelectStore={this.props.updateSelectStore} key={ind}/>)
       }).filter(val => val !== undefined);
     }
       

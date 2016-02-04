@@ -1,6 +1,7 @@
 import {
   FETCH_STORES_SUCCESS,
-  FETCH_STORES_ERROR
+  FETCH_STORES_ERROR,
+  UPDATE_SELECT_STORE
 } from '../actions/storeActions'
 
 const initialState = {
@@ -8,7 +9,8 @@ const initialState = {
   error: 'none',
   center: {lat: 34.0157219, lng: -118.4966245},
   zoom: 9,
-  fetched: false
+  fetched: false,
+  selectedStore: ''
 }
 
 export default function storeReducer(state = initialState, action) {
@@ -25,6 +27,10 @@ export default function storeReducer(state = initialState, action) {
     case FETCH_STORES_ERROR:
       return Object.assign({}, state, {
         error: action.error
+      })
+    case UPDATE_SELECT_STORE:
+      return Object.assign({}, state, {
+        selectedStore: action.selectStore
       })
     default:
       return state;

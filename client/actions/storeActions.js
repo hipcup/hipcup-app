@@ -1,5 +1,6 @@
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
+export const UPDATE_SELECT_STORE = 'UPDATE_SELECT_STORE'
 
 export const fetchStores = () => {
   return dispatch => {
@@ -44,3 +45,11 @@ const fetchStoresError = (err) => {
     error: error
   }
 }
+
+export const updateSelectStore = (store) => {
+  return {
+    type: UPDATE_SELECT_STORE,
+    selectStore: store
+  }
+}
+
