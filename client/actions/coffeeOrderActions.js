@@ -13,9 +13,10 @@ export const coffeeOrderAction = (formInfo) => {
       },
       body:  JSON.stringify({
         // remove hardcoded coffeeRunID
-        coffeeRunID:  "56b5647b2f9fea9f12773e97",
+        coffeeRunID:  "56b62ca283d9085f1e2c4fff",
         drinkerName:  formInfo.drinkerName,
         drinkOrder:   formInfo.drinkOrder,
+        drinkSize:    formInfo.drinkSize,
         modifications:formInfo.modifications
       })
   }).then(response => {
@@ -43,6 +44,7 @@ const placeCoffeeOrder = (formInfo) => {
     type: UPDATE_COFFEE_ORDER_FORM,
     drinkerName:  formInfo.drinkerName,
     drinkOrder:   formInfo.drinkOrder,
+    drinkSize:    formInfo.drinkSize,
     modifications:formInfo.modifications
 
   }

@@ -16,6 +16,7 @@ export default function coffeeOrderReducer(state = initialState, action) {
       return Object.assign({}, state, {
         drinkerName: action.drinkerName,
         drinkOrder: action.drinkOrder,
+        drinkSize: action.drinkSize,
         modifications:  action.modifications
       })
     case ERROR_PLACING_COFFEE_ORDER:

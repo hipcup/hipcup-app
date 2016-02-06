@@ -9,6 +9,7 @@ var CoffeeOrderSchema = new Schema({
   coffeeRunID: { type: String, required: true, minlength: minlength, maxlength: maxlength}, 
   caffeinatorName: { type: String, required: true },
   drinkOrder:  { type: String, required: true },
+  drinkSize:   { type: String, required: true },
   modifications: { type: String, default: 'none' },
   timeStamp:  { type: Date, default: Date.now }
 });

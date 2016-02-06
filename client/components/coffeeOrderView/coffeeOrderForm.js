@@ -63,9 +63,9 @@ class CoffeeOrderForm extends React.Component {
     const { coffeeOrderAction } = this.props.coffeeOrderActions;
 
     coffeeOrderAction({
-      drinkerName:   this.refs.drinkerName.value,
-      timeStamp:    new Date(),
-      drinkOrder: this.refs.drinkOrder.value,
+      drinkerName: this.refs.drinkerName.value,
+      drinkOrder:  this.refs.drinkOrder.value,
+      drinkSize:   this.refs.drinkSize.value,
       modifications: this.refs.modifications.value
     });
 
@@ -87,6 +87,14 @@ class CoffeeOrderForm extends React.Component {
             <label>Drink Order:</label>
             <input type="text" name="drinkOrder" ref="drinkOrder" placeholder="Your drink order" onChange={this.setDrinkOrder} require/>
             {this.displayAlphaNumericError()}
+          </div>
+          <div>
+            <label>Drink Size:</label>
+            <select name="drink sizes" ref="drinkSize">
+              <option select value="Small">Small</option>
+              <option select value="Medium">Medium</option>
+              <option select value="Large">Large</option>
+            </select>         
           </div>
           <div>
             <label>Modifications:</label>
