@@ -13,11 +13,11 @@ export const coffeeOrderAction = (formInfo) => {
       },
       body:  JSON.stringify({
         // remove hardcoded coffeeRunID
-        coffeeRunID:  "56b62ca283d9085f1e2c4fff",
-        drinkerName:  formInfo.drinkerName,
-        drinkOrder:   formInfo.drinkOrder,
-        drinkSize:    formInfo.drinkSize,
-        modifications:formInfo.modifications
+        coffeeRunID:     "56b634bdad4097561fa70fee",
+        caffeinatorName: formInfo.caffeinatorName,
+        drinkOrder:      formInfo.drinkOrder,
+        drinkSize:       formInfo.drinkSize,
+        modifications:   formInfo.modifications
       })
   }).then(response => {
     return response.json();
@@ -42,10 +42,10 @@ export const coffeeOrderAction = (formInfo) => {
 const placeCoffeeOrder = (formInfo) => {
   return {
     type: UPDATE_COFFEE_ORDER_FORM,
-    drinkerName:  formInfo.drinkerName,
-    drinkOrder:   formInfo.drinkOrder,
-    drinkSize:    formInfo.drinkSize,
-    modifications:formInfo.modifications
+    caffeinatorName: formInfo.caffeinatorName,
+    drinkOrder:      formInfo.drinkOrder,
+    drinkSize:       formInfo.drinkSize,
+    modifications:   formInfo.modifications
 
   }
 }

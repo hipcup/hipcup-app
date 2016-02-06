@@ -4,7 +4,7 @@ import {
 } from '../actions/coffeeOrderActions'
 
 const initialState = {
-  drinkerName:  '',
+  caffeinatorName:  '',
   drinkOrder:   '',
   modifications:'',
   coffeeError: null
@@ -14,7 +14,7 @@ export default function coffeeOrderReducer(state = initialState, action) {
   switch(action.type) {
     case UPDATE_COFFEE_ORDER_FORM:
       return Object.assign({}, state, {
-        drinkerName: action.drinkerName,
+        caffeinatorName: action.caffeinatorName,
         drinkOrder: action.drinkOrder,
         drinkSize: action.drinkSize,
         modifications:  action.modifications

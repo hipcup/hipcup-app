@@ -8,20 +8,20 @@ class CoffeeOrderForm extends React.Component {
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayAlphaNumericError = this.displayAlphaNumericError.bind(this);
     this.displayFormError = this.displayFormError.bind(this);
-    this.setDrinkerName = this.setDrinkerName.bind(this);
+    this.setcaffeinatorName = this.setcaffeinatorName.bind(this);
     this.setDrinkOrder = this.setDrinkOrder.bind(this);
 
     this.state = {
-      drinkerName: '',
+      caffeinatorName: '',
       drinkOrder: '',
       modifications: '',
       isValidForm: false
     }
   }
 
-  setDrinkerName(e){
+  setcaffeinatorName(e){
     this.setState({
-      drinkerName: e.target.value
+      caffeinatorName: e.target.value
     })
   }
 
@@ -32,7 +32,7 @@ class CoffeeOrderForm extends React.Component {
   }
 
   displayAlphaError(){
-    return isValid.isAlpha(this.state.drinkerName) ? null : <span>input must be a-z characters</span>
+    return isValid.isAlpha(this.state.caffeinatorName) ? null : <span>input must be a-z characters</span>
   }
 
   displayAlphaNumericError(){
@@ -63,13 +63,13 @@ class CoffeeOrderForm extends React.Component {
     const { coffeeOrderAction } = this.props.coffeeOrderActions;
 
     coffeeOrderAction({
-      drinkerName: this.refs.drinkerName.value,
+      caffeinatorName: this.refs.caffeinatorName.value,
       drinkOrder:  this.refs.drinkOrder.value,
       drinkSize:   this.refs.drinkSize.value,
       modifications: this.refs.modifications.value
     });
 
-    this.refs.drinkerName.value = '',
+    this.refs.caffeinatorName.value = '',
     this.refs.drinkOrder.value = ''
     this.refs.modifications.value = ''
   }
@@ -80,7 +80,7 @@ class CoffeeOrderForm extends React.Component {
         <form>
           <div>
             <label>Name:</label>
-            <input type="text" name="Input your name here" ref="drinkerName" placeholder="Your name" onChange={this.setDrinkerName} require />
+            <input type="text" name="Input your name here" ref="caffeinatorName" placeholder="Your name" onChange={this.setcaffeinatorName} require />
             {this.displayAlphaError()}
           </div>
            <div>
