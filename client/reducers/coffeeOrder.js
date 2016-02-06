@@ -6,7 +6,8 @@ import {
 const initialState = {
   drinkerName:  '',
   drinkOrder:   '',
-  modifications:''
+  modifications:'',
+  coffeeError: null
 }
 
 export default function coffeeOrderReducer(state = initialState, action) {
@@ -19,8 +20,7 @@ export default function coffeeOrderReducer(state = initialState, action) {
       })
     case ERROR_PLACING_COFFEE_ORDER:
       return Object.assign({}, state, {
-        coffeeError: action.err,
-        coffeeOrderErrorMsg: action.coffeeOrderErrorMsg
+        coffeeError: action.err
       })
     default:
       return state;

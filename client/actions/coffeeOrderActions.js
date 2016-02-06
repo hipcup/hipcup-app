@@ -13,7 +13,7 @@ export const coffeeOrderAction = (formInfo) => {
       },
       body:  JSON.stringify({
         // remove hardcoded coffeeRunID
-        coffeeRunID:  "56b5647b2f9fea9f12773e97",
+        coffeeRunID:  "56b5647b2f9fea9f12773e96",
         drinkerName:  formInfo.drinkerName,
         drinkOrder:   formInfo.drinkOrder,
         modifications:formInfo.modifications
@@ -51,7 +51,6 @@ const placeCoffeeOrder = (formInfo) => {
 const updateCoffeeOrderError = (err) => {
   return {
     type: ERROR_PLACING_COFFEE_ORDER,
-    err: err,
-    coffeeOrderErrorMsg: true
+    err: err
   }
 }

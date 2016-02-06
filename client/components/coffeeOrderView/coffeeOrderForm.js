@@ -47,9 +47,9 @@ class CoffeeOrderForm extends React.Component {
     }
   }
 
-  // displayServerErrorMsg(){
-  //   return this.props.coffeeOrderErrorMsg ? <span>Coffee Run could not be created. Please re-submit and try again.</span> : null;
-  // }
+  displayServerErrorMsg(){
+    return this.props.coffeeError ? <span>{ this.props.coffeeError }</span> : null;
+  }
 
   handleClick(e) {
     e.preventDefault();
@@ -94,11 +94,11 @@ class CoffeeOrderForm extends React.Component {
           </div>
           <button type="submit" onClick={this.handleClick}>Place Coffee Order</button>
           { this.displayFormError() }
+          { this.displayServerErrorMsg() }
         </form>
       </div>
     )
   }
 }
-// { this.displayServerErrorMsg() }
 
 export default CoffeeOrderForm

@@ -25,7 +25,8 @@ const mapStateToProps = (state) => {
   return {
     drinkerName:   state.coffeeOrderReducer.drinkerName,
     drinkOrder:    state.coffeeOrderReducer.drinkOrder,
-    modifications: state.coffeeOrderReducer.modifications
+    modifications: state.coffeeOrderReducer.modifications,
+    coffeeError:   state.coffeeOrderReducer.coffeeError
   }
 }
 
