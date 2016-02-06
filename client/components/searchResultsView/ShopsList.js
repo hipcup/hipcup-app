@@ -1,5 +1,5 @@
 import React from 'react'
-import Shop from '../components/shopListView/shop'
+import Shop from './Shop'
 
 class ShopsList extends React.Component {
   constructor(props) {

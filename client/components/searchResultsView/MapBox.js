@@ -1,6 +1,6 @@
 import React from 'react'
-import Map from '../components/mapView/Map.js'
-import Mapmarker from '../components/mapView/mapMarker.js'
+import Map from './Map.js'
+import Mapmarker from './mapMarker.js'
 
 class MapBox extends React.Component {
   constructor(){
