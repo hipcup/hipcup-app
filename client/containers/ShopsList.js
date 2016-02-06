@@ -12,10 +12,8 @@ class ShopsList extends React.Component {
       shops = this.props.stores.map((store, ind) => {
         return (<Shop name={store.name} address={store.formatted_address} isOpen={store.opening_hours.open_now}  updateSelectStore={this.props.updateSelectStore} key={ind}/>)
       }).filter(val => val !== undefined);
-    } else {
-      shops = <span>There are no coffee shops located near you.</span>
-    }
-      
+    } 
+    console.log("props not rendering:", this.props.stores);
     return (
       <div className="shopListContainer">
         <div>
