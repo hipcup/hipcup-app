@@ -14,7 +14,11 @@ exports.placeOrder = function(req, res) {
   console.log('coffeeOrder:', coffeeOrder);
 
   CoffeeRun.findOne({ "_id": new ObjectId(coffeeOrder.coffeeRunID)}, function (err, coffeeRun) {
-    if (err) return console.error(err);
+    if (err) {
+      console.log("inside coffee err");
+      return console.error(err);
+    }
+      
     
     if(!coffeeRun) {
       console.log("no coffee run found");
