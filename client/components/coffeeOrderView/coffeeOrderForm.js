@@ -60,20 +60,23 @@ class CoffeeOrderForm extends React.Component {
     // check for and display any form errors 
     this.displayFormError()
 
-    if(this.state.isValidForm) {
-      const { coffeeOrderAction } = this.props.coffeeOrderActions;
+    // refactor to promises 
+    setTimeout(function() {
+      if(this.state.isValidForm) {
+        const { coffeeOrderAction } = this.props.coffeeOrderActions;
 
-      coffeeOrderAction({
-        caffeinatorName: this.refs.caffeinatorName.value,
-        drinkOrder:  this.refs.drinkOrder.value,
-        drinkSize:   this.refs.drinkSize.value,
-        modifications: this.refs.modifications.value
-      });
+        coffeeOrderAction({
+          caffeinatorName: this.refs.caffeinatorName.value,
+          drinkOrder:  this.refs.drinkOrder.value,
+          drinkSize:   this.refs.drinkSize.value,
+          modifications: this.refs.modifications.value
+        });
 
-      this.refs.caffeinatorName.value = '',
-      this.refs.drinkOrder.value = ''
-      this.refs.modifications.value = ''    
-    }
+        this.refs.caffeinatorName.value = '',
+        this.refs.drinkOrder.value = ''
+        this.refs.modifications.value = ''    
+      } 
+    }.bind(this), 5);
   }
 
   render() {
