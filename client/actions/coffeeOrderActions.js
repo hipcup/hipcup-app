@@ -26,11 +26,11 @@ export const coffeeOrderAction = (formInfo) => {
         dispatch(placeCoffeeOrder(formInfo));
         console.log(response.message);
       } else {
-        dispatch(updateCoffeeOrderError());
+        dispatch(updateCoffeeOrderError(response.err));
         console.log("ERROR IN SAVE TO DATABASE", response.err);
       }
     } catch(e){
-      dispatch(updateCoffeeOrderError());
+      dispatch(updateCoffeeOrderError(e));
       console.log("error creating coffee order", e);
     }
   })
@@ -48,9 +48,10 @@ const placeCoffeeOrder = (formInfo) => {
   }
 }
 
-const updateCoffeeOrderError = () => {
+const updateCoffeeOrderError = (err) => {
   return {
     type: ERROR_PLACING_COFFEE_ORDER,
+    err: err,
     coffeeOrderErrorMsg: true
   }
 }

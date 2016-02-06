@@ -19,6 +19,7 @@ export default function coffeeOrderReducer(state = initialState, action) {
       })
     case ERROR_PLACING_COFFEE_ORDER:
       return Object.assign({}, state, {
+        coffeeError: action.err,
         coffeeOrderErrorMsg: action.coffeeOrderErrorMsg
       })
     default:
