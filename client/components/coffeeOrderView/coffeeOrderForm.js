@@ -15,6 +15,7 @@ class CoffeeOrderForm extends React.Component {
       caffeinatorName: '',
       drinkOrder: '',
       modifications: '',
+      orderStatus: null,
       isValidForm: false
     }
   }
@@ -40,10 +41,12 @@ class CoffeeOrderForm extends React.Component {
   }
 
   displayFormError(){
-    if(!this.displayAlphaError() && !this.displayAlphaNumericError()) {
-      return null;
+    if(this.state.caffeinatorName.length === 0 || this.state.drinkOrder.length === 0) {
+      this.setState({ orderStatus: "Required fields cannot be left empty", isValidForm: false });
+    } else if (this.displayAlphaError() || this.displayAlphaNumericError()) {
+      this.setState({ orderStatus: "Please fix all form errors before submitting", isValidForm: false});
     } else {
-      return <span>Please fix all form errors before submitting</span>
+      this.setState({ orderStatus: "Order succcessfully submitted", isValidForm: true});
     }
   }
 
@@ -54,24 +57,23 @@ class CoffeeOrderForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    // disable coffeeOrderAction if isValidForm is false
-    if(!this.displayFormError() == null) {
-      return;
-    } 
+    // check for and display any form errors 
+    this.displayFormError()
 
-    this.setState({ isValidForm: true });  
-    const { coffeeOrderAction } = this.props.coffeeOrderActions;
+    if(this.state.isValidForm) {
+      const { coffeeOrderAction } = this.props.coffeeOrderActions;
 
-    coffeeOrderAction({
-      caffeinatorName: this.refs.caffeinatorName.value,
-      drinkOrder:  this.refs.drinkOrder.value,
-      drinkSize:   this.refs.drinkSize.value,
-      modifications: this.refs.modifications.value
-    });
+      coffeeOrderAction({
+        caffeinatorName: this.refs.caffeinatorName.value,
+        drinkOrder:  this.refs.drinkOrder.value,
+        drinkSize:   this.refs.drinkSize.value,
+        modifications: this.refs.modifications.value
+      });
 
-    this.refs.caffeinatorName.value = '',
-    this.refs.drinkOrder.value = ''
-    this.refs.modifications.value = ''
+      this.refs.caffeinatorName.value = '',
+      this.refs.drinkOrder.value = ''
+      this.refs.modifications.value = ''    
+    }
   }
 
   render() {
@@ -80,12 +82,14 @@ class CoffeeOrderForm extends React.Component {
         <form>
           <div>
             <label>Name:</label>
-            <input type="text" name="Input your name here" ref="caffeinatorName" placeholder="Your name" onChange={this.setcaffeinatorName} require />
+            <input type="text" name="Input your name here" ref="caffeinatorName" placeholder="Your name" onChange={this.setcaffeinatorName} required />
+            <span className="required">required</span>
             {this.displayAlphaError()}
           </div>
            <div>
             <label>Drink Order:</label>
-            <input type="text" name="drinkOrder" ref="drinkOrder" placeholder="Your drink order" onChange={this.setDrinkOrder} require/>
+            <input type="text" name="drinkOrder" ref="drinkOrder" placeholder="Your drink order" onChange={this.setDrinkOrder} required/>
+            <span className="required">required</span>
             {this.displayAlphaNumericError()}
           </div>
           <div>
@@ -101,7 +105,7 @@ class CoffeeOrderForm extends React.Component {
             <input type="text" name="modifications" ref="modifications" placeholder="Optional" />
           </div>
           <button type="submit" onClick={this.handleClick}>Place Coffee Order</button>
-          { this.displayFormError() }
+          <span>{ this.state.orderStatus }</span>
           { this.displayServerErrorMsg() }
         </form>
       </div>
