@@ -38,7 +38,7 @@ export const coffeeOrderAction = (formInfo) => {
   }  
 }
 
-const placeCoffeeRun = (formInfo) => {
+const placeCoffeeOrder = (formInfo) => {
   return {
     type: UPDATE_COFFEE_ORDER_FORM,
     drinkerName:  formInfo.drinkerName,
@@ -48,7 +48,7 @@ const placeCoffeeRun = (formInfo) => {
   }
 }
 
-const updateCoffeeRunError = () => {
+const updateCoffeeOrderError = () => {
   return {
     type: ERROR_PLACING_COFFEE_ORDER,
     coffeeOrderErrorMsg: true
