@@ -10,7 +10,7 @@ const initialState = {
   center: {lat: 34.0157219, lng: -118.4966245},
   zoom: 9,
   fetched: false,
-  selectedStore: ''
+  selectedStore: 'Starbucks'
 }
 
 export default function storeReducer(state = initialState, action) {

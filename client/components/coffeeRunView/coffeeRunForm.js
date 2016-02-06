@@ -105,20 +105,15 @@ class CoffeeRunForm extends React.Component {
     return (
       <div className="coffeeRunForm">
         <form>
+          <div> Make a coffee to { this.props.selectedStore }</div>
+          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
           <div>
             <label>Name:</label>
             <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
             {this.displayAlphaError()}
           </div>
           <div>
-            <label>Coffee Shop:</label>
-            <select name="coffeeShops" ref="coffeeShop">
-              <option select value="defaultStore">Default Store</option>
-              <option value="defaultStore2">Default Store2</option>
-            </select>
-          </div>
-          <div>
-            <label>Making Coffee Run In:</label>
+            <label>Leaving In:</label>
             <input type="text" name="timeQuantity" ref="timeUntilRun" onChange={this.setMaxOrders} require />
             <select name="timeDuration">
               <option select value="minutes">Minutes</option>
