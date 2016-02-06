@@ -12,6 +12,12 @@ var validationHelperFunctions = {
     }
     return true;     
   },
+  isAlphaNumeric: function(input) {
+    if( /[^a-zA-Z0-9\s]/.test(input)) {
+       return false;
+    }
+    return true;     
+  },
   isInRange: function(input) {
     if(input < 0 || input >= 1440) {
        return false;
