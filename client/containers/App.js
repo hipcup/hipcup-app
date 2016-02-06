@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Header, Footer } from '../components'
-
+import Header from '../components/appView/Header.js'
+import Footer from '../components/appView/Footer.js'
 
 class App extends React.Component {
   constructor(props) {
