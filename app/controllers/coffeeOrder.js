@@ -13,34 +13,34 @@ exports.placeOrder = function(req, res) {
     modifications:   req.body.modifications
   });
 
-  console.log('coffeeOrder:', coffeeOrder);
-
   CoffeeRun.findOne({ "_id": new ObjectId(coffeeOrder.coffeeRunID)}, function (err, coffeeRun) {
     console.log("coffee run:", coffeeRun);
     if (err) {
       return console.error(err);
     }
       
+    // send error if coffee run with coffeeRunID cannot be found
     if(!coffeeRun) {
       helper.sendErrorResponse(res,"Sorry, no coffee run exists at this URL. Try creating a coffee run or double check the url provided.");
       return;
     } 
 
-  // if coffee run has expired  
+  // send error if time before run has been exceeded
   // if(coffeeRun.timeUntilRun === 0) {
       // helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
       // return;
   // }
     
-    // if maxNumOrders exceeded 
+    // send error if max num of orders has been exceeded
     if(coffeeRun.numOrdersPlaced >= coffeeRun.maxOrders) {
       helper.sendErrorResponse(res,"Sorry, the number of orders for this coffee run has been exceed. Your order cannot be placed.");
       return;
-    } else {
-    // validate coffeeOrder prior to adding to coffee run
-      coffeeRun.orders.push(coffeeOrder);
-      coffeeRun.numOrdersPlaced = increaseCoffeeOrderCountByOne(coffeeRun.numOrdersPlaced);
-    }
+    } 
+
+    // update coffee run with new coffee order
+    coffeeRun.orders.push(coffeeOrder);
+    var newNumOfCoffeeOrder = coffeeRun.numOrdersPlaced + 1; 
+    coffeeRun.numOrdersPlaced = newNumOfCoffeeOrder;
   
     // save to database
     coffeeRun.save(function (err) {
@@ -49,9 +49,7 @@ exports.placeOrder = function(req, res) {
       }
       helper.sendSuccessResponse(res,"Coffee Order has been placed.");
     });
+    
   });
 }
 
-function increaseCoffeeOrderCountByOne(ordersPlaced) {
-  return ordersPlaced + 1;
-}
