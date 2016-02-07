@@ -17,7 +17,8 @@ export const coffeeRunAction = (formInfo) => {
         timeStamp:    formInfo.timeStamp,
         maxOrders:    formInfo.maxOrders,
         slackChannel: formInfo.slackChannel,
-        timeUntilRun: formInfo.timeUntilRun
+        timeAmount:   formInfo.timeAmount,
+        timeUnit:     formInfo.timeUnit
       })
   }).then(response => {
     return response.json();
@@ -48,8 +49,8 @@ const updateCoffeeRun = (formInfo) => {
     timeStamp:  formInfo.timeStamp,
     maxOrders:  formInfo.maxOrders,
     slackChannel: formInfo.slackChannel,
-    timeUntilRun: formInfo.timeUntilRun,
-    timeDuration: formInfo.timeDuration
+    timeAmount:  formInfo.timeAmount,
+    timeUnit: formInfo.timeUnit
   }
 }
 

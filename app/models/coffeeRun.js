@@ -9,7 +9,7 @@ var CoffeeRunSchema = new Schema({
     timeStamp:       Date,
     maxOrders:       Number, 
     slackChannel:    String,
-    timeUntilRun:    { type: Date, required: true},
+    timeOfRun:       { type: Date, required: true},
     orders:          [CoffeeOrder],
     numOrdersPlaced: { type: Number, default: 0}
 });
