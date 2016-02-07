@@ -2,7 +2,6 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var CoffeeOrder = require('../models/coffeeOrder.js');
 var CoffeeRun = require('../models/coffeeRun.js');
 var helper = require('../helperfunctions.js').serverHelperFunctions;
-console.log("helper:", helper);
 
 exports.placeOrder = function(req, res) {
 

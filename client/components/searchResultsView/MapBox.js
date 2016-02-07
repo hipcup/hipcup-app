@@ -12,7 +12,7 @@ class MapBox extends React.Component {
     
     if(this.props.fetched) {
       markers = this.props.stores.map((store, ind) => {
-        return (<Mapmarker lat={store.geometry.location.lat} lng={store.geometry.location.lng} key={ind} />)
+        return (<Mapmarker lat={store.lat} lng={store.lng} key={ind} />)
       }).filter(val => val !== undefined);
     }
 
