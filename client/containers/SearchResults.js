@@ -14,7 +14,7 @@ class SearchResults extends React.Component {
   }
 
   render() {
-    return ( 
+    return (
       <div className="searchResults">
         <MapBox { ...this.props }/>
         <ShopsList { ...this.props }/>
@@ -25,7 +25,8 @@ class SearchResults extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    center: state.storeReducer.center,
+    defaultCenter: state.storeReducer.defaultCenter,
+    userCoords: state.storeReducer.userCenter,
     zoom: state.storeReducer.zoom,
     fetched: state.storeReducer.fetched,
     stores: state.storeReducer.stores,

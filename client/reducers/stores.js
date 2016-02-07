@@ -4,10 +4,14 @@ import {
   UPDATE_SELECT_STORE
 } from '../actions/storeActions'
 
+
+// lat: 34.0157219, lng: -118.4966245
+
 const initialState = {
   stores: '',
   error: 'none',
-  center: {lat: 34.0157219, lng: -118.4966245},
+  defaultCenter: {lat: 40.7127, lng: 74.0059},
+  userCenter: {lat: 0, lng: 0},
   zoom: 9,
   fetched: false,
   selectedStore: 'Starbucks',
@@ -19,11 +23,10 @@ export default function storeReducer(state = initialState, action) {
     case FETCH_STORES_SUCCESS:
       return Object.assign({}, state, {
         stores: action.stores,
-        center: {
+        userCenter: {
           lat: action.lat,
           lng: action.lng
         },
-        
         fetched: action.fetched
       })
     case FETCH_STORES_ERROR:
