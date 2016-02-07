@@ -12,11 +12,13 @@ class CoffeeRunForm extends React.Component {
     this.setRunnerName = this.setRunnerName.bind(this);
     this.setMaxOrders = this.setMaxOrders.bind(this);
     this.setTimeUntilRun = this.setTimeUntilRun.bind(this);
+    this.setTimeDuration = this.setTimeDuration.bind(this);
 
     this.state = {
       runnerName: '',
       maxOrders: '',
       timeUntilRun: '',
+      timeDuration: 'minutes',
       runStatus: null,
       isValidForm: false
     }
@@ -37,6 +39,13 @@ class CoffeeRunForm extends React.Component {
   setTimeUntilRun(e){
     this.setState({
       timeUntilRun: e.target.value
+    })
+  }
+
+  setTimeDuration(e){
+    console.log("value of timeDuration:", e.target.value);
+    this.setState({
+      setTimeDuration: e.target.value
     })
   }
 
@@ -87,11 +96,12 @@ class CoffeeRunForm extends React.Component {
 
       coffeeRunAction({
         runnerName:   this.refs.runnerName.value,
-        coffeeShop:   this.refs.coffeeShop.value,
+        coffeeShop:   this.props.selectedStore,
         timeStamp:    new Date(),
         maxOrders:    this.refs.maxOrders.value,
         slackChannel: this.refs.slackChannel.value,
-        timeUntilRun: this.refs.timeUntilRun.value
+        timeUntilRun: this.refs.timeUntilRun.value,
+        timeDuration: this.state.timeDuration
       });
 
       this.refs.runnerName.value = '',
@@ -115,7 +125,7 @@ class CoffeeRunForm extends React.Component {
           <div>
             <label>Leaving In:</label>
             <input type="text" name="timeQuantity" ref="timeUntilRun" onChange={this.setMaxOrders} require />
-            <select name="timeDuration">
+            <select name="timeDuration" ref="timeUntilDuration" onChange={this.setTimeDuration}>
               <option select value="minutes">Minutes</option>
               <option value="hours">Hours</option>
             </select>         

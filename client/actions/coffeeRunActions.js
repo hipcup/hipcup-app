@@ -48,7 +48,8 @@ const updateCoffeeRun = (formInfo) => {
     timeStamp:  formInfo.timeStamp,
     maxOrders:  formInfo.maxOrders,
     slackChannel: formInfo.slackChannel,
-    timeUntilRun: formInfo.timeUntilRun
+    timeUntilRun: formInfo.timeUntilRun,
+    timeDuration: formInfo.timeDuration
   }
 }
 

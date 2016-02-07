@@ -19,6 +19,14 @@ var validationHelperFunctions = {
     return true;     
   },
   isInRange: function(input) {
+    if(typeof input !== "number") {
+      return false;
+    }
+
+    if (!isNumeric(input)) {
+      return false; 
+    }
+    
     if(input < 0 || input >= 1440) {
        return false;
     }
