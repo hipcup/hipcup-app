@@ -17,6 +17,7 @@ class CoffeeRunForm extends React.Component {
       runnerName: '',
       maxOrders: '',
       timeUntilRun: '',
+      runStatus: null,
       isValidForm: false
     }
   }
@@ -59,6 +60,16 @@ class CoffeeRunForm extends React.Component {
     }
   }
 
+  displayFormError(){
+    if(this.state.runnerName.length === 0 || this.state.maxOrders.length === 0 || this.state.timeUntilRun.length === 0) {
+      this.setState({ runStatus: "Required fields cannot be left empty", isValidForm: false });
+    } else if (this.displayAlphaError() || this.displayRangeError() || this.displayNumericError()) {
+      this.setState({ runStatus: "Please fix all form errors before submitting", isValidForm: false});
+    } else {
+      this.setState({ runStatus: "Coffee run succcessfully submitted", isValidForm: true});
+    }
+  }
+
   displayServerErrorMsg(){
     return this.props.coffeeRunErrorMsg ? <span>Coffee Run could not be created. Please re-submit and try again.</span> : null;
   }
@@ -66,46 +77,43 @@ class CoffeeRunForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    // disable coffeeRunAction if isValidForm is false
-    if(!this.displayFormError() == null) {
-      return;
-    } 
+    // check for and display any form errors 
+    this.displayFormError();
+    
+    //refactor to use promises
+    setTimeout(function() {
+      if(this.state.isValidForm) {
+      const { coffeeRunAction } = this.props.coffeeRunActions;
 
-    this.setState({ isValidForm: true });  
-    const { coffeeRunAction } = this.props.coffeeRunActions;
+      coffeeRunAction({
+        runnerName:   this.refs.runnerName.value,
+        coffeeShop:   this.refs.coffeeShop.value,
+        timeStamp:    new Date(),
+        maxOrders:    this.refs.maxOrders.value,
+        slackChannel: this.refs.slackChannel.value,
+        timeUntilRun: this.refs.timeUntilRun.value
+      });
 
-    coffeeRunAction({
-      runnerName:   this.refs.runnerName.value,
-      coffeeShop:   this.refs.coffeeShop.value,
-      timeStamp:    new Date(),
-      maxOrders:    this.refs.maxOrders.value,
-      slackChannel: this.refs.slackChannel.value,
-      timeUntilRun: this.refs.timeUntilRun.value
-    });
-
-    this.refs.runnerName.value = '',
-    this.refs.maxOrders.value = '',
-    this.refs.timeUntilRun.value = ''
+      this.refs.runnerName.value = '',
+      this.refs.maxOrders.value = '',
+      this.refs.timeUntilRun.value = ''
+      } 
+    }.bind(this), 5);
   }
 
   render() {
     return (
       <div className="coffeeRunForm">
         <form>
+          <div> Make a coffee to { this.props.selectedStore }</div>
+          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
           <div>
             <label>Name:</label>
             <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
             {this.displayAlphaError()}
           </div>
           <div>
-            <label>Coffee Shop:</label>
-            <select name="coffeeShops" ref="coffeeShop">
-              <option select value="defaultStore">Default Store</option>
-              <option value="defaultStore2">Default Store2</option>
-            </select>
-          </div>
-          <div>
-            <label>Making Coffee Run In:</label>
+            <label>Leaving In:</label>
             <input type="text" name="timeQuantity" ref="timeUntilRun" onChange={this.setMaxOrders} require />
             <select name="timeDuration">
               <option select value="minutes">Minutes</option>
@@ -126,8 +134,8 @@ class CoffeeRunForm extends React.Component {
             </select>
           </div>
           <button type="submit" onClick={this.handleClick}>Create Run</button>
+          { this.state.runStatus }
           { this.displayServerErrorMsg() }
-          { this.displayFormError() }
         </form>
       </div>
     )

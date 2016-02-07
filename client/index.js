@@ -15,8 +15,7 @@ import { syncHistory, routeReducer } from 'react-router-redux'
 /* reducers */  
 import * as reducers from './reducers'
 /* components and containers */
-import { Landing } from './components'
-import { App, SearchResults, CoffeeRun, LandingBox } from './containers'
+import { App, SearchResults, CoffeeRun, CoffeeOrder, LandingBox } from './containers'
 /* styles */ 
 import './styles/scss/main.scss';
 
@@ -50,8 +49,8 @@ ReactDOM.render(
         <Route path="/" component={App}>
           <IndexRoute component={LandingBox}/>
           <Route path="results" component={SearchResults}/>
-          <Route path="landing" component={Landing}/>
           <Route path="coffeeRun" component={CoffeeRun}/>
+          <Route path="coffeeOrder" component={CoffeeOrder}/>
         </Route>
       </Router>
       <DevTools />

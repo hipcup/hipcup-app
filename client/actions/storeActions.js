@@ -1,3 +1,5 @@
+// import { routeActions } from 'react-router-redux';
+
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 export const UPDATE_SELECT_STORE = 'UPDATE_SELECT_STORE'
@@ -19,9 +21,11 @@ export const fetchStores = () => {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
         } else {
+          console.log("else error");
           dispatch(fetchStoresError(stores));
         }
       } catch(e){
+        console.log("catch error", e)
         dispatch(fetchStoresError(stores));
       }
     })
@@ -36,20 +40,21 @@ const fetchStoresSuccess = (data) => {
     lat: data.lat,
     lng: data.lng,
     fetched: true
-  }
+  };
 }
 
-const fetchStoresError = (err) => {
+const fetchStoresError = (error) => {
   return {
     type: FETCH_STORES_ERROR,
     error: error
   }
 }
 
-export const updateSelectStore = (store) => {
+export const updateSelectStore = (storeName, key) => {
   return {
     type: UPDATE_SELECT_STORE,
-    selectStore: store
+    selectStore: storeName,
+    key: key
   }
 }
 

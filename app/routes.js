@@ -4,6 +4,8 @@ var request = require('request');
 
 // models ======================================================================
 var coffeeRun = require('./controllers/coffeeRun.js');
+var coffeeOrder = require('./controllers/coffeeOrder.js');
+
 var google_api_key = require('../server/keys/config.js').google_api_key;
 
 // routes ======================================================================
@@ -13,6 +15,9 @@ var google_api_key = require('../server/keys/config.js').google_api_key;
   // api ---------------------------------------------------------------------
   // add a CoffeeRun
     app.post('/createRun', coffeeRun.createRun);
+
+  // add a placeOrder
+    app.post('/placeOrder', coffeeOrder.placeOrder);
 
 
   // Google APIs -------------------------------------------------------------

@@ -1,11 +1,11 @@
 import React from 'react'
 import CoffeeRunForm from '../components/coffeeRunView/CoffeeRunForm'
 
+import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as coffeeRunActions from '../actions/coffeeRunActions'
-
 
 class CoffeeRun extends React.Component {
   constructor(){
@@ -29,13 +29,15 @@ const mapStateToProps = (state) => {
     maxOrders:  state.coffeeRunReducer.maxOrders,
     slackChannel: state.coffeeRunReducer.slackChannel,
     timeUntilRun: state.coffeeRunReducer.timeUntilRun,
-    coffeeRunErrorMsg: state.coffeeRunReducer.coffeeRunErrorMsg
+    coffeeRunErrorMsg: state.coffeeRunReducer.coffeeRunErrorMsg,
+    selectedStore: state.storeReducer.selectedStore
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    coffeeRunActions: bindActionCreators(coffeeRunActions, dispatch)
+    coffeeRunActions: bindActionCreators(coffeeRunActions, dispatch),
+    routeActions: bindActionCreators(routeActions, dispatch)
   }
 }
 
