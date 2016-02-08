@@ -17,9 +17,9 @@ module.exports = {
     });
   },
   deleteExpiredRuns: function() {
-    console.log("delete runs that expired 24 hours ago");
+    CoffeeRun.remove({ coffeeRunExpired: true}, function(err) {
+      if (err) return handleError(err);
+      console.log("expired coffee runs have been deleted");
+    });
   }
 }
-
-
-

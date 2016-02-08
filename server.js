@@ -46,6 +46,8 @@ var routes = require('./app/routes')(app);
 // database cron jobs  =========================================================
 var expiredRunMethods = require('./app/expiredRunMethods');
 
+expiredRunMethods.markExpiredRuns();
+expiredRunMethods.deleteExpiredRuns();
 // checks for expired coffee runs once every minute 
 // setInterval(expiredRunMethods.markExpiredRuns, 60000);
 // delete coffee runs 24 hours after they expire 
