@@ -8,13 +8,26 @@ class Map extends React.Component  {
   }
 
   render() {
+    // render GoogleMap with default center initially 
+    let map = <GoogleMap 
+                defaultCenter={this.props.defaultCenter} 
+                defaultZoom={13}>
+                {this.props.markers}
+              </GoogleMap>
+
+    // if user's lat and lng have been fetched, center map on those coords 
+    if(this.props.userCoords) {
+      map = <GoogleMap 
+                defaultCenter={this.props.center} 
+                center={{lat:this.props.userCoords.lat, lng: this.props.userCoords.lng}}
+                defaultZoom={13}>
+                {this.props.markers}
+              </GoogleMap>
+    }
+
     return (
       <div style={{width:'100%', height:'600px'}}>
-        <GoogleMap 
-          defaultCenter={this.props.center} 
-          defaultZoom={13}>
-          {this.props.markers}
-        </GoogleMap>
+        {map}
       </div>
     )
   }

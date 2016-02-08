@@ -5,73 +5,29 @@ var request = require('request');
 // models ======================================================================
 var coffeeRun = require('./controllers/coffeeRun.js');
 var coffeeOrder = require('./controllers/coffeeOrder.js');
-
-var google_api_key = require('../server/keys/config.js').google_api_key;
+var googleApi = require('./googleApiStoreData.js');
 
 // routes ======================================================================
 
   module.exports = function(app) {
-  console.log("INSIDE APP ROUTES");
-  // api ---------------------------------------------------------------------
-  // add a CoffeeRun
+  // Database Queries ---------------------------------------------------------
+  // add a coffee run
     app.post('/createRun', coffeeRun.createRun);
 
-  // add a placeOrder
+  // add a coffee order to a coffee run
     app.post('/placeOrder', coffeeOrder.placeOrder);
 
 
   // Google APIs -------------------------------------------------------------
   // Get user's geolocation 
     app.post('/google', function(req, res, next){
-      var apiGeolocationData = function(){
-        var deferred = Q.defer();
-
-        request.post({url:'https://www.googleapis.com/geolocation/v1/geolocate?key='+google_api_key}, function(err, res, body){
-          if(err){
-            console.log("error:", err);
-            deferred.reject("error within google geolocation POST request");
-          }
-          if(!err && res.statusCode === 200){
-            deferred.resolve(JSON.parse(body))
-          }
-          else {
-            deferred.reject("alt error");
-          }
-        });
-
-        return deferred.promise;
-      };
-
-     // Fetch stores based on user's lat and long 
-      var apiStoreData = function(data){
-        console.log('DATA', data);
-        var lat = data.location.lat;
-        var lng = data.location.lng;
-
-        var deferred = Q.defer();
-
-        request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee&location='+lat+','+lng+'&radius=5000&key='+google_api_key, function(err, res, body){
-           if(err){
-             console.log("error:", err);
-             deferred.reject("error within googleplaces GET request");
-           }
-           if(!err && res.statusCode === 200){
-             deferred.resolve({stores: JSON.parse(body), lat: lat, lng: lng})
-           }
-           else {
-             deferred.reject("alt error");
-           }
-         });
-
-         return deferred.promise;
-      };
-
-      apiGeolocationData().then(function(data){
-        return apiStoreData(data)
+      googleApi.apiGeolocationData().then(function(data){
+        return googleApi.apiPlacesData(data)
       }).then(function(data){
+        return googleApi.formatCoffeeShopsData(data);
+      }).then(function(data) {
         res.send(data);
-      });
-
+      })
     });
 
  // application -------------------------------------------------------------

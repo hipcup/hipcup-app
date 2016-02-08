@@ -9,7 +9,6 @@ class ShopsList extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log(this.props);
     const { routeActions } = this.props;
 
     routeActions.push('/coffeeRun');
@@ -22,7 +21,7 @@ class ShopsList extends React.Component {
       shops = this.props.stores.map((store, ind) => {
         return (<Shop name={store.name}
                       address={store.formatted_address} 
-                      isOpen={store.opening_hours.open_now}  
+                      isOpen={store.open_now}  
                       updateSelectStore={this.props.updateSelectStore} 
                       selectStore={this.props.selectStore} 
                       selectStoreKey={this.props.selectStoreKey} 
