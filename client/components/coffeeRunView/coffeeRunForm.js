@@ -62,14 +62,6 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayFormError(){
-    if(!this.displayAlphaError() && !this.displayRangeError() && !this.displayNumericError()) {
-      return null;
-    } else {
-      return <span>Please fix all form errors before submitting</span>
-    }
-  }
-
-  displayFormError(){
     if(this.state.runnerName.length === 0 || this.state.maxOrders.length === 0 || this.state.timeAmount === 0) {
       this.setState({ runStatus: "Required fields cannot be left empty", isValidForm: false });
     } else if (this.displayAlphaError() || this.displayRangeError() || this.displayNumericError()) {
