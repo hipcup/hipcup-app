@@ -43,6 +43,14 @@ app.use(express.static(path.join(__dirname, '/client')));
 // routes ======================================================================
 var routes = require('./app/routes')(app);
 
+// database cron jobs  =========================================================
+var expiredRunMethods = require('./app/expiredRunMethods');
+
+// checks for expired coffee runs once every minute 
+// setInterval(expiredRunMethods.markExpiredRuns, 60000);
+// delete coffee runs 24 hours after they expire 
+// setInterval(expiredRunMethods.deleteExpiredRuns, 86400000);
+
 // listen ======================================================================
 app.listen(port);
 console.log('Listening on port ' + port + '...');

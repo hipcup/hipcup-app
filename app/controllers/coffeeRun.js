@@ -3,9 +3,8 @@ var moment = require('moment');
 
 exports.createRun = function(req, res) {
   
-  // calculate time until run
-  var timeOfRun = formatTimeUntilRun(req.body.amount, req.body.unit);
-  console.log("timeOfRun:", timeOfRun);
+  // calculate coffee run time
+  var timeOfRun = formatTimeUntilRun(req.body.timeAmount, req.body.timeUnit);
 
   var coffeeRun = new CoffeeRun({
     runnerName:  req.body.runnerName,
@@ -18,7 +17,6 @@ exports.createRun = function(req, res) {
 
   console.log('coffeeRun:', coffeeRun);
   coffeeRun.save(function(err, coffeeRun) {
-    console.log('coffeeRun was saved:', coffeeRun);
     if (err) {
       res.send({
         err: err,
@@ -32,6 +30,7 @@ exports.createRun = function(req, res) {
     }
   });
 }
+
 
 function formatTimeUntilRun(amount, unit) {
   return moment().add(amount, unit); 
