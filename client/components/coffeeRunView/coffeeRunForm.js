@@ -11,12 +11,14 @@ class CoffeeRunForm extends React.Component {
     this.displayFormError = this.displayFormError.bind(this);
     this.setRunnerName = this.setRunnerName.bind(this);
     this.setMaxOrders = this.setMaxOrders.bind(this);
-    this.setTimeUntilRun = this.setTimeUntilRun.bind(this);
+    this.settimeAmount = this.settimeAmount.bind(this);
+    this.setTimeUnit = this.setTimeUnit.bind(this);
 
     this.state = {
       runnerName: '',
       maxOrders: '',
-      timeUntilRun: '',
+      timeAmount: '',
+      timeUnit: 'minutes',
       runStatus: null,
       isValidForm: false
     }
@@ -34,9 +36,16 @@ class CoffeeRunForm extends React.Component {
     })
   }
 
-  setTimeUntilRun(e){
+  settimeAmount(e){
     this.setState({
-      timeUntilRun: e.target.value
+      timeAmount: e.target.value
+    })
+  }
+
+  setTimeUnit(e){
+    console.log("value of TimeUnit:", e.target.value);
+    this.setState({
+      timeUnit: e.target.value
     })
   }
 
@@ -45,7 +54,7 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayNumericError(){
-    return isValid.isNumeric(this.state.timeUntilRun) ? null : <span>input must be 0-9 integers</span>
+    return isValid.isNumeric(this.state.timeAmount) ? null : <span>input must be 0-9 integers</span>
   }
 
   displayRangeError(){
@@ -53,15 +62,7 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayFormError(){
-    if(!this.displayAlphaError() && !this.displayRangeError() && !this.displayNumericError()) {
-      return null;
-    } else {
-      return <span>Please fix all form errors before submitting</span>
-    }
-  }
-
-  displayFormError(){
-    if(this.state.runnerName.length === 0 || this.state.maxOrders.length === 0 || this.state.timeUntilRun.length === 0) {
+    if(this.state.runnerName.length === 0 || this.state.maxOrders.length === 0 || this.state.timeAmount === 0) {
       this.setState({ runStatus: "Required fields cannot be left empty", isValidForm: false });
     } else if (this.displayAlphaError() || this.displayRangeError() || this.displayNumericError()) {
       this.setState({ runStatus: "Please fix all form errors before submitting", isValidForm: false});
@@ -87,16 +88,17 @@ class CoffeeRunForm extends React.Component {
 
       coffeeRunAction({
         runnerName:   this.refs.runnerName.value,
-        coffeeShop:   this.refs.coffeeShop.value,
+        coffeeShop:   this.props.selectedStore,
         timeStamp:    new Date(),
         maxOrders:    this.refs.maxOrders.value,
         slackChannel: this.refs.slackChannel.value,
-        timeUntilRun: this.refs.timeUntilRun.value
+        timeAmount:   this.refs.timeAmount.value,
+        timeUnit:     this.state.timeUnit
       });
 
       this.refs.runnerName.value = '',
       this.refs.maxOrders.value = '',
-      this.refs.timeUntilRun.value = ''
+      this.refs.timeAmount.value = ''
       } 
     }.bind(this), 5);
   }
@@ -114,16 +116,16 @@ class CoffeeRunForm extends React.Component {
           </div>
           <div>
             <label>Leaving In:</label>
-            <input type="text" name="timeQuantity" ref="timeUntilRun" onChange={this.setMaxOrders} require />
-            <select name="timeDuration">
-              <option select value="minutes">Minutes</option>
-              <option value="hours">Hours</option>
+            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
+            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
+              <option select value="minutes">minutes</option>
+              <option value="hours">hours</option>
             </select>         
             {this.displayRangeError()}
           </div>
           <div>
             <label>Max Coffee Orders:</label>
-            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setTimeUntilRun} require/>
+            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
             { this.displayNumericError()}
           </div>
           <div>

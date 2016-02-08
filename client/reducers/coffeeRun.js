@@ -9,7 +9,8 @@ const initialState = {
   timeStamp:  '',
   maxOrders:  '6',
   slackChannel: 'home',
-  timeUntilRun: '15',
+  timeAmount: '15',
+  timeUnit: 'minutes',
   coffeeRunErrorMsg: false
 }
 
@@ -22,7 +23,8 @@ export default function coffeeRunReducer(state = initialState, action) {
         timeStamp:  action.timeStamp,
         maxOrders:  action.maxOrders,
         slackChannel: action.slackChannel,
-        timeUntilRun: action.timeUntilRun
+        timeAmount: action.timeAmount,
+        timeUnit: action.timeUnit
       })
     case ERROR__CREATING_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
