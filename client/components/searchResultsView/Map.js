@@ -22,7 +22,7 @@ class Map extends React.Component  {
                 center={{lat:this.props.userCoords.lat, lng: this.props.userCoords.lng}}
                 defaultZoom={13}>
                 {this.props.markers}
-              </GoogleMap>
+            </GoogleMap>
     }
 
     return (
