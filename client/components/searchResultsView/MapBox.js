@@ -13,9 +13,8 @@ class MapBox extends React.Component {
     let markers = <Mapmarker lat={this.props.defaultCenter.lat} lng={this.props.defaultCenter.lng}></Mapmarker>;
 
     if(this.props.fetched) {
-      console.log('KEY!: ', this.props.selectStoreKey);
       markers = this.props.stores.map((store, ind) => {
-        return (<Mapmarker lat={store.lat} lng={store.lng} key={ind} selectStoreKey={THIS.props.selectStoreKey} />)
+        return (<Mapmarker lat={store.lat} lng={store.lng} key={ind} selectStoreKey={THIS.props.selectStoreKey} time={store.time} distance={store.distance} />)
       })
       markers.push((<Usermarker lat={this.props.userCoords.lat} lng={this.props.userCoords.lng} key={markers.length} />));
     }
