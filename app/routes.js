@@ -21,10 +21,14 @@ var googleApi = require('./googleApiStoreData.js');
   // Google APIs -------------------------------------------------------------
   // Get user's geolocation 
     app.post('/google', function(req, res, next){
-      googleApi.apiGeolocationData().then(function(data){
+      googleApi.apiGeolocationData().then(function(data) {
         return googleApi.apiPlacesData(data)
-      }).then(function(data){
+      }).then(function(data) {
         return googleApi.formatCoffeeShopsData(data);
+      }).then(function(data) {
+        return googleApi.apiDistanceData(data);
+      }).then(function(data) {
+        return googleApi.formatDistanceData(data);
       }).then(function(data) {
         res.send(data);
       })

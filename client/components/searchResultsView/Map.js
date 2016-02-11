@@ -1,7 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 
-
 class Map extends React.Component  {
   constructor() {
     super();
@@ -22,7 +21,7 @@ class Map extends React.Component  {
                 center={{lat:this.props.userCoords.lat, lng: this.props.userCoords.lng}}
                 defaultZoom={13}>
                 {this.props.markers}
-              </GoogleMap>
+            </GoogleMap>
     }
 
     return (

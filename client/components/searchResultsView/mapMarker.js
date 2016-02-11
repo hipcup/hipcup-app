@@ -1,13 +1,18 @@
 import React from 'react'
 
-let imgSrc = './../assets/Chemex.png'
+let imgSelected = './../assets/Chemex-green.png'
+let imgNotSelected = './../assets/Chemex.png'
 
 class Mapmarker extends React.Component {
+  constructor() {
+    super();
+  }
   render() {
-
+    console.log('time', this.props);
     return (
-      <div>
-        <img src={imgSrc} />
+      <div className={ this.props.selectStoreKey == this.props.$dimensionKey? 'selectedStore' : ''}>
+        {this.props.selectStoreKey == this.props.$dimensionKey ? <span>{this.props.time}</span> : null}
+        {this.props.selectStoreKey == this.props.$dimensionKey ? <img src={imgSelected} /> : <img src={imgNotSelected} />}
       </div>
     )
   }
