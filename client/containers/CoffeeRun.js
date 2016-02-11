@@ -23,6 +23,7 @@ class CoffeeRun extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    coffeeRunID:state.coffeeRunReducer.coffeeRunID, 
     runnerName: state.coffeeRunReducer.runnerName,
     coffeeShop: state.coffeeRunReducer.coffeeShop,
     timeStamp:  state.coffeeRunReducer.timeStamp,

@@ -7,6 +7,7 @@ exports.createRun = function(req, res) {
   var timeOfRun = formatTimeUntilRun(req.body.timeAmount, req.body.timeUnit);
 
   var coffeeRun = new CoffeeRun({
+    coffeeRunID: req.body.coffeeRunID,
     runnerName:  req.body.runnerName,
     timeStamp:   req.body.timeStamp, 
     coffeeShop:  req.body.coffeeShop,

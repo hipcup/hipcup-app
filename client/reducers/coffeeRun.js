@@ -4,6 +4,7 @@ import {
 } from '../actions/coffeeRunActions'
 
 const initialState = {
+  coffeeRunID: '',
   runnerName: 'Someone you know',
   coffeeShop: '',
   timeStamp:  '',
@@ -18,6 +19,7 @@ export default function coffeeRunReducer(state = initialState, action) {
   switch(action.type) {
     case UPDATE_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
+        coffeeRunID: action.coffeeRunID,
         runnerName: action.runnerName,
         coffeeShop: action.coffeeShop,
         timeStamp:  action.timeStamp,

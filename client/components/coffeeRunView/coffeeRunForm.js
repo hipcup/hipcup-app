@@ -1,5 +1,6 @@
 import React from 'react'
 import isValid from '../../validationHelperFunctions'
+import helperFunc from '../../HelperFunctions'
 
 class CoffeeRunForm extends React.Component {
   constructor(){
@@ -87,6 +88,7 @@ class CoffeeRunForm extends React.Component {
       const { coffeeRunAction } = this.props.coffeeRunActions;
 
       coffeeRunAction({
+        coffeeRunID:  helperFunc.generateUniqueID(),
         runnerName:   this.refs.runnerName.value,
         coffeeShop:   this.props.selectedStore,
         timeStamp:    new Date(),
@@ -95,7 +97,7 @@ class CoffeeRunForm extends React.Component {
         timeAmount:   this.refs.timeAmount.value,
         timeUnit:     this.state.timeUnit
       });
-
+          
       this.refs.runnerName.value = '',
       this.refs.maxOrders.value = '',
       this.refs.timeAmount.value = ''

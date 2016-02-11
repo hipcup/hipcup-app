@@ -12,6 +12,7 @@ export const coffeeRunAction = (formInfo) => {
         'Content-Type': 'application/json'
       },
       body:  JSON.stringify({
+        coffeeRunID:  formInfo.coffeeRunID,
         runnerName:   formInfo.runnerName,
         coffeeShop:   formInfo.coffeeShop,
         timeStamp:    formInfo.timeStamp,
@@ -44,6 +45,7 @@ export const coffeeRunAction = (formInfo) => {
 const updateCoffeeRun = (formInfo) => {
   return {
     type: UPDATE_COFFEE_RUN_FORM,
+    coffeeRunID:  formInfo.coffeeRunID,
     runnerName: formInfo.runnerName,
     coffeeShop: formInfo.coffeeShop,
     timeStamp:  formInfo.timeStamp,
