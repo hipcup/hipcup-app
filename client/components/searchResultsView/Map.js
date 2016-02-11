@@ -1,7 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
 
-
 class Map extends React.Component  {
   constructor() {
     super();

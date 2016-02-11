@@ -50,7 +50,6 @@ exports.apiPlacesData = function(data){
 exports.formatCoffeeShopsData = function(data) {
   var deferred = Q.defer();
   var storeData = data.stores.results.map(function(store) {
-
     var storeInfo = {};
     storeInfo.name = store.name;
     storeInfo.place_id = store.place_id; 
@@ -73,11 +72,68 @@ exports.formatCoffeeShopsData = function(data) {
 
 
   if(storeData){
-     deferred.resolve({stores: storeData, lat: data.lat, lng: data.lng})
-   } else {
-     deferred.reject("alt error");
-   }
+    deferred.resolve({stores: storeData, lat: data.lat, lng: data.lng})
+  } else {
+    deferred.reject("alt error");
+  }
 
   return deferred.promise;
 }  
 
+exports.apiDistanceData = function(data) {
+  var lat = data.lat;
+  var lng = data.lng;
+  var stores = data.stores;
+
+  console.log('!!!!!  !!!! !!!!! !!!!!',data);
+  var deferred = Q.defer();
+
+  var cordStr = stores.reduce(function(newStr, store) {
+    var lat = store.lat;
+    var lng = store.lng;
+    var currStr = lat+','+lng+'|';
+    return newStr+currStr; 
+  }, '');
+
+  var cordStr = cordStr.slice(0, -1);
+  console.log('URL STRING', cordStr);
+  request('https://maps.googleapis.com/maps/api/distancematrix/json?origins='+lat+','+lng+'&destinations='+cordStr+'&key='+google_api_key, function(err, res, body){
+    if(err){
+      console.log("error:", err);
+      deferred.reject("error within googleDistance GET request");
+    }
+    if(!err && res.statusCode === 200){
+      deferred.resolve({stores: stores, lat: lat, lng: lng, distance: JSON.parse(body)})
+    }
+    else {
+      deferred.reject("alt error");
+    }
+   });
+
+
+  return deferred.promise;
+};
+
+exports.formatDistanceData = function(data) {
+  var lat = data.lat;
+  var lng = data.lng;
+  var stores = data.stores;
+  var distances = data.distance.rows[0].elements;
+
+  var deferred = Q.defer();
+
+  var distances = distances.map(function(store) {
+    var obj = {};
+    obj.distance = store.distance.text;
+    obj.time = store.duration.text;
+    return obj;
+  });
+
+  if(distances){
+    deferred.resolve({stores: stores, lat: lat, lng: lng, distances: distances})
+  } else {
+    deferred.reject("alt error");
+  }
+
+  return deferred.promise;
+};

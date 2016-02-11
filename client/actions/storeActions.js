@@ -19,6 +19,7 @@ export const fetchStores = () => {
     }).then(stores => {
       try {
         if(stores.stores){
+          console.log('STORES!', stores);
           dispatch(fetchStoresSuccess(stores));
         } else {
           console.log("else error");
