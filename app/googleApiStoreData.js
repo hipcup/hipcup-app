@@ -85,7 +85,6 @@ exports.apiDistanceData = function(data) {
   var lng = data.lng;
   var stores = data.stores;
 
-  console.log('!!!!!  !!!! !!!!! !!!!!',data);
   var deferred = Q.defer();
 
   var cordStr = stores.reduce(function(newStr, store) {
@@ -96,7 +95,7 @@ exports.apiDistanceData = function(data) {
   }, '');
 
   var cordStr = cordStr.slice(0, -1);
-  console.log('URL STRING', cordStr);
+
   request('https://maps.googleapis.com/maps/api/distancematrix/json?origins='+lat+','+lng+'&destinations='+cordStr+'&key='+google_api_key, function(err, res, body){
     if(err){
       console.log("error:", err);
@@ -129,8 +128,23 @@ exports.formatDistanceData = function(data) {
     return obj;
   });
 
+  var storesWithDistances = stores.map(function(store, index) {
+    var newStore = {};
+    newStore.name = store.name;
+    newStore.place_id = store.place_id;
+    newStore.formatted_address = store.formatted_address;
+    newStore.lat = store.lat;
+    newStore.lng = store.lng;
+    newStore.open_now = store.open_now;
+
+    newStore.distance = distances[index].distance;
+    newStore.time = distances[index].time;
+
+    return newStore;
+  });
+
   if(distances){
-    deferred.resolve({stores: stores, lat: lat, lng: lng, distances: distances})
+    deferred.resolve({stores: storesWithDistances, lat: lat, lng: lng})
   } else {
     deferred.reject("alt error");
   }
