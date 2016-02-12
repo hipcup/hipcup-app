@@ -1,6 +1,9 @@
 import {
   UPDATE_COFFEE_RUN_FORM,
-  ERROR__CREATING_COFFEE_RUN_FORM
+  UPDATE_COFFEE_RUN_FROM_FETCHED,
+  UPDATE_FETCH_COFFEE_RUN_STATUS,
+  ERROR__CREATING_COFFEE_RUN_FORM,
+
 } from '../actions/coffeeRunActions'
 
 const initialState = {
@@ -12,7 +15,8 @@ const initialState = {
   slackChannel: 'home',
   timeAmount: '15',
   timeUnit: 'minutes',
-  coffeeRunErrorMsg: false
+  coffeeRunErrorMsg: false,
+  isFetchingCoffeeRun: false
 }
 
 export default function coffeeRunReducer(state = initialState, action) {
@@ -31,6 +35,21 @@ export default function coffeeRunReducer(state = initialState, action) {
     case ERROR__CREATING_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
         coffeeRunErrorMsg: action.coffeeRunErrorMsg
+      })
+    case UPDATE_COFFEE_RUN_FROM_FETCHED: 
+      return Object.assign({}, state, {
+        isFetchingCoffeeRun: false,
+        coffeeRunID: action.coffeeRunID,
+        runnerName:  action.runnerName,
+        timeStamp:   action.timeStamp, 
+        coffeeShop:  action.coffeeShop,
+        maxOrders:   action.maxOrders,
+        slackChannel:action.slackChannel,
+        timeOfRun:   action.timeOfRun
+      })
+      case UPDATE_FETCH_COFFEE_RUN_STATUS:
+        return Object.assign({}, state, {
+          isFetchingCoffeeRun: action.isFetchingCoffeeRun
       })
     default:
       return state;

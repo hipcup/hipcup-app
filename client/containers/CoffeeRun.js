@@ -47,6 +47,7 @@ const mapStateToProps = (state) => {
     timeUntilRun: state.coffeeRunReducer.timeUntilRun,
     coffeeRunErrorMsg: state.coffeeRunReducer.coffeeRunErrorMsg,
     selectedStore: state.storeReducer.selectedStore,
+    isFetchingCoffeeRun: state.coffeeRunReducer.isFetchingCoffeeRun,
     pathname: state.routing.location.pathname
   }
 }
