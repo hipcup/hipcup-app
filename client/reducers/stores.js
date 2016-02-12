@@ -4,7 +4,6 @@ import {
   UPDATE_SELECT_STORE
 } from '../actions/storeActions'
 
-
 // lat: 34.0157219, lng: -118.4966245
 
 const initialState = {
@@ -14,7 +13,7 @@ const initialState = {
   userCenter: {lat: 0, lng: 0},
   zoom: 9,
   fetched: false,
-  selectedStore: 'Starbucks',
+  selectedStore: '',
   key: 0
 }
 
