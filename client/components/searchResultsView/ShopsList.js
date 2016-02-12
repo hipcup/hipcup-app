@@ -11,7 +11,7 @@ class ShopsList extends React.Component {
     e.preventDefault();
     const { routeActions } = this.props;
 
-    routeActions.push('/coffeeRun');
+    routeActions.push('/makerun');
   }
 
   render() {
