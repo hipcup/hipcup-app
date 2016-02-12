@@ -1,4 +1,5 @@
 export const UPDATE_COFFEE_RUN_FORM = 'UPDATE_COFFEE_RUN_FORM'
+export const UPDATE_COFFEE_RUN_FROM_FETCHED = 'UPDATE_COFFEE_RUN_FROM_FETCHED'
 export const ERROR__CREATING_COFFEE_RUN_FORM = 'ERROR__CREATING_COFFEE_RUN_FORM'
 
 export const coffeeRunAction = (formInfo) => {
@@ -42,6 +43,38 @@ export const coffeeRunAction = (formInfo) => {
   }  
 }
 
+export const fetchCoffeeRun = (coffeeRunID) => {
+  return dispatch => {
+    return fetch('http://127.0.0.1:3468/fetchRun', {
+      method: 'POST',
+      mode: 'cors',
+      cache: false,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        coffeeRunID: coffeeRunID
+      })
+  }).then(response => {
+    return response.json();
+  }).then(response => {
+    console.log(response);
+    try {
+      if(response.success){
+        dispatch(updateFetchedCoffeeRun(response.coffeerun));
+      } else {
+        dispatch(updateCoffeeRunError());
+      }
+    } catch(e){
+      dispatch(updateCoffeeRunError());
+      console.log("error creating coffee run", e);
+    }
+  })
+    .catch(err => console.error('Error fetching coffee run:', err));
+  }  
+}
+
 const updateCoffeeRun = (formInfo) => {
   return {
     type: UPDATE_COFFEE_RUN_FORM,
@@ -60,5 +93,18 @@ const updateCoffeeRunError = () => {
   return {
     type: ERROR__CREATING_COFFEE_RUN_FORM,
     coffeeRunErrorMsg: true
+  }
+}
+
+const updateFetchedCoffeeRun = (coffeeRun) => {
+  return {
+    type: UPDATE_COFFEE_RUN_FROM_FETCHED,
+    coffeeRunID: coffeeRun.coffeeRunID,
+    runnerName:  coffeeRun.runnerName,
+    timeStamp:   coffeeRun.timeStamp, 
+    coffeeShop:  coffeeRun.coffeeShop,
+    maxOrders:   coffeeRun.maxOrders,
+    slackChannel:coffeeRun.slackChannel,
+    timeOfRun:   coffeeRun.timeOfRun
   }
 }

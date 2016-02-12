@@ -32,7 +32,39 @@ exports.createRun = function(req, res) {
   });
 }
 
+exports.fetchRun = function(req,res) {
+  CoffeeRun.findOne({ "coffeeRunID": req.body.coffeeRunID}, function (err, coffeeRun) {
+    console.log("coffeeRun inside fetchRun:", coffeeRun)
+    if (err) {
+      res.send({
+        err: err,
+        success: false
+      });
+    } else if (!coffeeRun) {
+      res.send({
+        err: 'coffee run does not exist',
+        success: false
+      });
+    } else {
+        res.json({
+          coffeerun: {
+            coffeeRunID: req.body.coffeeRunID,
+            runnerName:  coffeeRun.runnerName,
+            timeStamp:   coffeeRun.timeStamp, 
+            coffeeShop:  coffeeRun.coffeeShop,
+            maxOrders:   coffeeRun.maxOrders,
+            slackChannel:coffeeRun.slackChannel,
+            timeOfRun:   coffeeRun.timeOfRun
+          },
+          success: true,
+          message: 'Coffee Run was fetched successfully'
+      });
+    }
+  });
+}
+
 
 function formatTimeUntilRun(amount, unit) {
   return moment().add(amount, unit); 
 }
+

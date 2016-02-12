@@ -6,6 +6,7 @@ class CoffeeRunForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.displayCoffeeForm = this.displayCoffeeForm.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayNumericError = this.displayNumericError.bind(this);
     this.displayRangeError = this.displayRangeError.bind(this);
@@ -72,6 +73,53 @@ class CoffeeRunForm extends React.Component {
     }
   }
 
+  displayCoffeeForm() {
+    if(this.props.selectedStore) {
+      return (
+        <form>
+          <div> Make a coffee to { this.props.selectedStore }</div>
+          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
+          <div>
+            <label>Name:</label>
+            <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
+            {this.displayAlphaError()}
+          </div>
+          <div>
+            <label>Leaving In:</label>
+            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
+            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
+              <option select value="minutes">minutes</option>
+              <option value="hours">hours</option>
+            </select>         
+            {this.displayRangeError()}
+          </div>
+          <div>
+            <label>Max Coffee Orders:</label>
+            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
+            { this.displayNumericError()}
+          </div>
+          <div>
+            <label>Slack Channel:</label>
+            <select name="slackChannels" ref="slackChannel">
+              <option select value="defaultChannel">Default Channel</option>
+              <option value="defaultChannel2">Default Channel2</option>
+            </select>
+          </div>
+          <button type="submit" onClick={this.handleClick}>Create Run</button>
+          { this.state.runStatus }
+          { this.displayServerErrorMsg() }
+        </form>
+      )
+    } else {
+      return (
+        <div>
+          <span>To make a run, you will need to select a coffee store first.</span>
+          <button type="submit" onClick={() => this.props.routeActions.push('/')}>Click to start a run</button>
+        </div>
+      )
+    }
+  }
+
   displayServerErrorMsg(){
     return this.props.coffeeRunErrorMsg ? <span>Coffee Run could not be created. Please re-submit and try again.</span> : null;
   }
@@ -108,39 +156,7 @@ class CoffeeRunForm extends React.Component {
   render() {
     return (
       <div className="coffeeRunForm">
-        <form>
-          <div> Make a coffee to { this.props.selectedStore }</div>
-          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
-          <div>
-            <label>Name:</label>
-            <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
-            {this.displayAlphaError()}
-          </div>
-          <div>
-            <label>Leaving In:</label>
-            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
-            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
-              <option select value="minutes">minutes</option>
-              <option value="hours">hours</option>
-            </select>         
-            {this.displayRangeError()}
-          </div>
-          <div>
-            <label>Max Coffee Orders:</label>
-            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
-            { this.displayNumericError()}
-          </div>
-          <div>
-            <label>Slack Channel:</label>
-            <select name="slackChannels" ref="slackChannel">
-              <option select value="defaultChannel">Default Channel</option>
-              <option value="defaultChannel2">Default Channel2</option>
-            </select>
-          </div>
-          <button type="submit" onClick={this.handleClick}>Create Run</button>
-          { this.state.runStatus }
-          { this.displayServerErrorMsg() }
-        </form>
+       {this.displayCoffeeForm()}
       </div>
     )
   }

@@ -50,7 +50,7 @@ ReactDOM.render(
           <IndexRoute component={LandingBox}/>
           <Route path="results" component={SearchResults}/>
           <Route path="makerun" component={CoffeeRun}/>
-          <Route path="/coffeeorder/:coffeeRunId"component={CoffeeOrder}/>
+          <Route path="/coffeeorder/:coffeeRunId"component={CoffeeRun}/>
         </Route>
       </Router>
       <DevTools />
