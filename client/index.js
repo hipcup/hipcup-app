@@ -49,9 +49,8 @@ ReactDOM.render(
         <Route path="/" component={App}>
           <IndexRoute component={LandingBox}/>
           <Route path="results" component={SearchResults}/>
-          <Route path="coffeeRun" component={CoffeeRun}/>
-          <Route path="/coffeeOrder/:coffeeRunId"component={CoffeeOrder}/>
-          <Route path="coffeeOrder" component={CoffeeOrder}/>
+          <Route path="makerun" component={CoffeeRun}/>
+          <Route path="/coffeeorder/:coffeeRunId"component={CoffeeOrder}/>
         </Route>
       </Router>
       <DevTools />
