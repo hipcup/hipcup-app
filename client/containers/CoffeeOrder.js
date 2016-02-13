@@ -27,6 +27,7 @@ const mapStateToProps = (state) => {
     drinkOrder:      state.coffeeOrderReducer.drinkOrder,
     drinkSize:       state.coffeeOrderReducer.drinkSize,
     modifications:   state.coffeeOrderReducer.modifications,
+    coffeeRunID:     state.coffeeRunReducer.coffeeRunID,
     coffeeError:     state.coffeeOrderReducer.coffeeError
   }
 }

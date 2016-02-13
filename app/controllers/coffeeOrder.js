@@ -7,14 +7,13 @@ exports.placeOrder = function(req, res) {
 
   var coffeeOrder = new CoffeeOrder ({
     coffeeRunID:     req.body.coffeeRunID,
-    caffeinatorName: req.body.drinkerName,
+    caffeinatorName: req.body.caffeinatorName,
     drinkOrder:      req.body.drinkOrder,
     drinkSize:       req.body.drinkSize,
     modifications:   req.body.modifications
   });
 
-  CoffeeRun.findOne({ "_id": new ObjectId(coffeeOrder.coffeeRunID)}, function (err, coffeeRun) {
-    console.log("coffee run:", coffeeRun);
+  CoffeeRun.findOne({ "coffeeRunID": coffeeOrder.coffeeRunID}, function (err, coffeeRun) {
     if (err) {
       return console.error(err);
     }
@@ -41,11 +40,10 @@ exports.placeOrder = function(req, res) {
     coffeeRun.orders.push(coffeeOrder);
     var newNumOfCoffeeOrder = coffeeRun.numOrdersPlaced + 1; 
     coffeeRun.numOrdersPlaced = newNumOfCoffeeOrder;
-  
     // save to database
     coffeeRun.save(function (err) {
       if (err) {
-        console.log("error saving coffee order in coffee run");
+        console.log("error saving coffee order in coffee run", err);
       }
       helper.sendSuccessResponse(res,"Coffee Order has been placed.");
     });

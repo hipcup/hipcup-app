@@ -1,4 +1,5 @@
 import React from 'react'
+import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
 
 class CoffeeRunInfo extends React.Component {
   constructor(){
@@ -28,14 +29,16 @@ class CoffeeRunInfo extends React.Component {
   }
 
   displayCoffeeInfo() {
-    console.log("address:", this.props.address);
     var coffeeRunID = this.props.coffeeRunID;
     if(coffeeRunID) {
       return (
         <div>
-          <h1>{this.props.runnerName} is making a run to {this.props.coffeeShop}</h1>
-          <h2>{this.props.address}</h2>
-          <h2>Coffee run expires at: COUNTDOWN or expired message</h2>
+          <div>
+            <h1>{this.props.runnerName} is making a run to {this.props.coffeeShop}</h1>
+            <h2>{this.props.address}</h2>
+            <h2>Coffee run expires at: COUNTDOWN or expired message</h2>
+          </div>
+          <CoffeeOrderForm />
         </div>
       )
     } else {

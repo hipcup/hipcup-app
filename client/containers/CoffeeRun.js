@@ -16,7 +16,6 @@ class CoffeeRun extends React.Component {
   }
 
   renderCoffeeView() {
-    console.log("selected store address", this.props.selectedStoreAddress); 
     if(this.props.pathname === '/makerun') {
       return ( 
         <CoffeeRunForm { ...this.props }/>
