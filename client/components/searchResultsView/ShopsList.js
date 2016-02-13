@@ -4,13 +4,14 @@ import Shop from './Shop'
 class ShopsList extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick.bind(this);
-    this.displayLoadingSpinner.bind(this);
-    this.displayStores.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.displayLoadingSpinner = this.displayLoadingSpinner.bind(this);
+    this.displayStores = this.displayStores.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
+    console.log("INSIDE HANDLE CLICK");
     const { routeActions } = this.props;
 
     routeActions.push('/makerun');
