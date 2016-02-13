@@ -21,7 +21,6 @@ export const fetchStores = () => {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
         } else {
-          console.log("else error");
           dispatch(fetchStoresError(stores));
         }
       } catch(e){
@@ -50,10 +49,11 @@ const fetchStoresError = (error) => {
   }
 }
 
-export const updateSelectStore = (storeName, key) => {
+export const updateSelectStore = (storeName, address, key) => {
   return {
     type: UPDATE_SELECT_STORE,
     selectStore: storeName,
+    selectedStoreAddress: address,
     key: key
   }
 }

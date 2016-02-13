@@ -12,9 +12,11 @@ class CoffeeRun extends React.Component {
   constructor(){
     super();
     this.renderCoffeeView.bind(this);
+
   }
 
   renderCoffeeView() {
+    console.log("selected store address", this.props.selectedStoreAddress); 
     if(this.props.pathname === '/makerun') {
       return ( 
         <CoffeeRunForm { ...this.props }/>
@@ -37,18 +39,20 @@ class CoffeeRun extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    coffeeRunID:state.coffeeRunReducer.coffeeRunID, 
-    runnerName: state.coffeeRunReducer.runnerName,
-    coffeeShop: state.coffeeRunReducer.coffeeShop,
-    timeStamp:  state.coffeeRunReducer.timeStamp,
-    maxOrders:  state.coffeeRunReducer.maxOrders,
+    coffeeRunID:  state.coffeeRunReducer.coffeeRunID, 
+    runnerName:   state.coffeeRunReducer.runnerName,
+    coffeeShop:   state.coffeeRunReducer.coffeeShop,
+    address:      state.coffeeRunReducer.address,
+    timeStamp:    state.coffeeRunReducer.timeStamp,
+    maxOrders:    state.coffeeRunReducer.maxOrders,
     timeDuration: state.coffeeRunReducer.timeDuration,
     slackChannel: state.coffeeRunReducer.slackChannel,
     timeUntilRun: state.coffeeRunReducer.timeUntilRun,
-    coffeeRunErrorMsg: state.coffeeRunReducer.coffeeRunErrorMsg,
-    selectedStore: state.storeReducer.selectedStore,
-    isFetchingCoffeeRun: state.coffeeRunReducer.isFetchingCoffeeRun,
-    pathname: state.routing.location.pathname
+    coffeeRunErrorMsg:    state.coffeeRunReducer.coffeeRunErrorMsg,
+    selectedStore:        state.storeReducer.selectedStore,
+    selectedStoreAddress: state.storeReducer.selectedStoreAddress,
+    isFetchingCoffeeRun:  state.coffeeRunReducer.isFetchingCoffeeRun,
+    pathname:             state.routing.location.pathname
   }
 }
 

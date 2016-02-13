@@ -7,13 +7,35 @@ import {
 // lat: 34.0157219, lng: -118.4966245
 
 const initialState = {
-  stores: '',
+  stores: [
+    {
+      name: 'starbucks',
+      formatted_address: '1122 Wilshire Ave',
+      opening_hours: {
+        open_now: true
+      }
+    },
+    {
+      name: 'peets coffee',
+      formatted_address: '1123 Sunset Ave',
+      opening_hours: {
+        open_now: true
+      }
+    },
+    {
+      name: 'hipcup coffee',
+      formatted_address: '1123 Sunset Ave',
+      opening_hours: {
+        open_now: true
+      }
+    }],
   error: 'none',
   defaultCenter: {lat: 40.7127, lng: 74.0059},
   userCenter: {lat: 0, lng: 0},
   zoom: 9,
   fetched: false,
   selectedStore: '',
+  selectedStoreAddress: '',
   key: 0
 }
 
@@ -35,6 +57,7 @@ export default function storeReducer(state = initialState, action) {
     case UPDATE_SELECT_STORE:
       return Object.assign({}, state, {
         selectedStore: action.selectStore,
+        selectedStoreAddress: action.selectedStoreAddress,
         key: action.key
       })
     default:

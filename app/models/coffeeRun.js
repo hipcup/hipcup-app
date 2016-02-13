@@ -7,6 +7,7 @@ var CoffeeRunSchema = new Schema({
     coffeeRunID:      { type: String, required: true},
     runnerName:       { type: String, required: true},
     coffeeShop:       { type: String, required: true},
+    address:          { type: String, required: true},
     timeStamp:        Date,
     maxOrders:        Number, 
     slackChannel:     String,

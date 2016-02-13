@@ -17,6 +17,7 @@ export const coffeeRunAction = (formInfo) => {
         coffeeRunID:  formInfo.coffeeRunID,
         runnerName:   formInfo.runnerName,
         coffeeShop:   formInfo.coffeeShop,
+        address:      formInfo.address,
         timeStamp:    formInfo.timeStamp,
         maxOrders:    formInfo.maxOrders,
         slackChannel: formInfo.slackChannel,
@@ -80,14 +81,15 @@ export const fetchCoffeeRun = (coffeeRunID) => {
 const updateCoffeeRun = (formInfo) => {
   return {
     type: UPDATE_COFFEE_RUN_FORM,
-    coffeeRunID:  formInfo.coffeeRunID,
-    runnerName: formInfo.runnerName,
-    coffeeShop: formInfo.coffeeShop,
-    timeStamp:  formInfo.timeStamp,
-    maxOrders:  formInfo.maxOrders,
+    coffeeRunID:formInfo.coffeeRunID,
+    runnerName:   formInfo.runnerName,
+    coffeeShop:   formInfo.coffeeShop,
+    address:      formInfo.address,
+    timeStamp:    formInfo.timeStamp,
+    maxOrders:    formInfo.maxOrders,
     slackChannel: formInfo.slackChannel,
-    timeAmount:  formInfo.timeAmount,
-    timeUnit: formInfo.timeUnit
+    timeAmount:   formInfo.timeAmount,
+    timeUnit:     formInfo.timeUnit
   }
 }
 
@@ -113,6 +115,7 @@ const updateFetchedCoffeeRun = (coffeeRun) => {
     runnerName:  coffeeRun.runnerName,
     timeStamp:   coffeeRun.timeStamp, 
     coffeeShop:  coffeeRun.coffeeShop,
+    address:     coffeeRun.address,
     maxOrders:   coffeeRun.maxOrders,
     slackChannel:coffeeRun.slackChannel,
     timeOfRun:   coffeeRun.timeOfRun

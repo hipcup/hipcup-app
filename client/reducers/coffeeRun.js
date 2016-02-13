@@ -10,6 +10,7 @@ const initialState = {
   coffeeRunID: '',
   runnerName: 'Someone you know',
   coffeeShop: '',
+  address: '',
   timeStamp:  '',
   maxOrders:  '6',
   slackChannel: 'home',
@@ -23,14 +24,15 @@ export default function coffeeRunReducer(state = initialState, action) {
   switch(action.type) {
     case UPDATE_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
-        coffeeRunID: action.coffeeRunID,
-        runnerName: action.runnerName,
-        coffeeShop: action.coffeeShop,
-        timeStamp:  action.timeStamp,
-        maxOrders:  action.maxOrders,
+        coffeeRunID:  action.coffeeRunID,
+        runnerName:   action.runnerName,
+        coffeeShop:   action.coffeeShop,
+        address:      action.address,
+        timeStamp:    action.timeStamp,
+        maxOrders:    action.maxOrders,
         slackChannel: action.slackChannel,
-        timeAmount: action.timeAmount,
-        timeUnit: action.timeUnit
+        timeAmount:   action.timeAmount,
+        timeUnit:     action.timeUnit
       })
     case ERROR__CREATING_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
@@ -41,8 +43,9 @@ export default function coffeeRunReducer(state = initialState, action) {
         isFetchingCoffeeRun: false,
         coffeeRunID: action.coffeeRunID,
         runnerName:  action.runnerName,
-        timeStamp:   action.timeStamp, 
         coffeeShop:  action.coffeeShop,
+        address:     action.address,
+        timeStamp:   action.timeStamp, 
         maxOrders:   action.maxOrders,
         slackChannel:action.slackChannel,
         timeOfRun:   action.timeOfRun

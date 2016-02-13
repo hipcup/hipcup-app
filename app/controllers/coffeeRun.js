@@ -9,6 +9,7 @@ exports.createRun = function(req, res) {
   var coffeeRun = new CoffeeRun({
     coffeeRunID: req.body.coffeeRunID,
     runnerName:  req.body.runnerName,
+    address:     req.body.address,
     timeStamp:   req.body.timeStamp, 
     coffeeShop:  req.body.coffeeShop,
     maxOrders:   req.body.maxOrders,
@@ -41,8 +42,9 @@ exports.fetchRun = function(req,res) {
           coffeerun: {
             coffeeRunID: req.body.coffeeRunID,
             runnerName:  coffeeRun.runnerName,
-            timeStamp:   coffeeRun.timeStamp, 
             coffeeShop:  coffeeRun.coffeeShop,
+            address:     coffeeRun.address,
+            timeStamp:   coffeeRun.timeStamp, 
             maxOrders:   coffeeRun.maxOrders,
             slackChannel:coffeeRun.slackChannel,
             timeOfRun:   coffeeRun.timeOfRun

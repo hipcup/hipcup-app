@@ -77,7 +77,7 @@ class CoffeeRunForm extends React.Component {
     if(this.props.selectedStore) {
       return (
         <form>
-          <div> Make a coffee to { this.props.selectedStore }</div>
+          <div> Make a coffee run to { this.props.selectedStore }</div>
           <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
           <div>
             <label>Name:</label>
@@ -134,11 +134,11 @@ class CoffeeRunForm extends React.Component {
     setTimeout(function() {
       if(this.state.isValidForm) {
       const { coffeeRunAction } = this.props.coffeeRunActions;
-
       coffeeRunAction({
         coffeeRunID:  helperFunc.generateUniqueID(),
         runnerName:   this.refs.runnerName.value,
         coffeeShop:   this.props.selectedStore,
+        address:      this.props.selectedStoreAddress,
         timeStamp:    new Date(),
         maxOrders:    this.refs.maxOrders.value,
         slackChannel: this.refs.slackChannel.value,
