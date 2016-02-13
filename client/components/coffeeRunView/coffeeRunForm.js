@@ -88,7 +88,8 @@ class CoffeeRunForm extends React.Component {
           <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
           <div>
             <label>Name:</label>
-            <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
+            <input type="text" name="runnerName" ref="runnerName" onChange={this.setRunnerName} require />
+            <span className="required">required</span>
             {this.displayAlphaError()}
           </div>
           <div>
@@ -98,11 +99,13 @@ class CoffeeRunForm extends React.Component {
               <option select value="minutes">minutes</option>
               <option value="hours">hours</option>
             </select>         
+            <span className="required">required</span>
             {this.displayRangeError()}
           </div>
           <div>
             <label>Max Coffee Orders:</label>
             <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
+            <span className="required">required</span>
             { this.displayNumericError()}
           </div>
           <div>
