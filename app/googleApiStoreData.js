@@ -1,5 +1,6 @@
 var Q = require('q');
 var request = require('request');
+var helper = require('./helperfunctions').serverHelperFunctions;
 
 var google_api_key = require('../server/keys/config.js').google_api_key;
 
@@ -51,7 +52,7 @@ exports.formatCoffeeShopsData = function(data) {
   var deferred = Q.defer();
   var storeData = data.stores.results.map(function(store) {
     var storeInfo = {};
-    storeInfo.name = store.name;
+    storeInfo.name = helper.formatStoreNames(store.name);
     storeInfo.place_id = store.place_id; 
 
 

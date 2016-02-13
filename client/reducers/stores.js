@@ -7,28 +7,7 @@ import {
 // lat: 34.0157219, lng: -118.4966245
 
 const initialState = {
-  stores: [
-    {
-      name: 'starbucks',
-      formatted_address: '1122 Wilshire Ave',
-      opening_hours: {
-        open_now: true
-      }
-    },
-    {
-      name: 'peets coffee',
-      formatted_address: '1123 Sunset Ave',
-      opening_hours: {
-        open_now: true
-      }
-    },
-    {
-      name: 'hipcup coffee',
-      formatted_address: '1123 Sunset Ave',
-      opening_hours: {
-        open_now: true
-      }
-    }],
+  stores: [],
   error: 'none',
   defaultCenter: {lat: 40.7127, lng: 74.0059},
   userCenter: {lat: 0, lng: 0},
