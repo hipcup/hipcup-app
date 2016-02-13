@@ -11,7 +11,6 @@ class ShopsList extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log("INSIDE HANDLE CLICK");
     const { routeActions } = this.props;
 
     routeActions.push('/makerun');

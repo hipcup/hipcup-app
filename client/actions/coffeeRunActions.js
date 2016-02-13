@@ -95,7 +95,8 @@ const updateCoffeeRun = (formInfo) => {
 const updateCoffeeRunError = () => {
   return {
     type: ERROR__CREATING_COFFEE_RUN_FORM,
-    coffeeRunErrorMsg: true
+    coffeeRunErrorMsg: true,
+    isFetchingCoffeeRun: false
   }
 }
 

@@ -36,7 +36,8 @@ export default function coffeeRunReducer(state = initialState, action) {
       })
     case ERROR__CREATING_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
-        coffeeRunErrorMsg: action.coffeeRunErrorMsg
+        coffeeRunErrorMsg: action.coffeeRunErrorMsg,
+        isFetchingCoffeeRun: action.isFetchingCoffeeRun
       })
     case UPDATE_COFFEE_RUN_FROM_FETCHED: 
       return Object.assign({}, state, {
