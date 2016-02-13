@@ -15,7 +15,7 @@ class CoffeeRunForm extends React.Component {
     this.displayFormError = this.displayFormError.bind(this);
     this.setRunnerName = this.setRunnerName.bind(this);
     this.setMaxOrders = this.setMaxOrders.bind(this);
-    this.settimeAmount = this.settimeAmount.bind(this);
+    this.setTimeAmount = this.setTimeAmount.bind(this);
     this.setTimeUnit = this.setTimeUnit.bind(this);
 
     this.state = {
@@ -41,7 +41,7 @@ class CoffeeRunForm extends React.Component {
     })
   }
 
-  settimeAmount(e){
+  setTimeAmount(e){
     this.setState({
       timeAmount: e.target.value
     })
@@ -59,11 +59,11 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayNumericError(){
-    return isValid.isNumeric(this.state.timeAmount) ? null : <span>input must be 0-9 integers</span>
+    return isValid.isNumeric(this.state.maxOrders) ? null : <span>input must be 0-9 integers</span>
   }
 
   displayRangeError(){
-    return isValid.isNumeric(this.state.maxOrders) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
+    return isValid.isNumeric(this.state.timeAmount) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
   }
 
   displayFormError(){
