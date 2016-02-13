@@ -7,28 +7,29 @@ import {
 // lat: 34.0157219, lng: -118.4966245
 
 const initialState = {
-  stores: [
-    {
-      name: 'starbucks',
-      formatted_address: '1122 Wilshire Ave',
-      opening_hours: {
-        open_now: true
-      }
-    },
-    {
-      name: 'peets coffee',
-      formatted_address: '1123 Sunset Ave',
-      opening_hours: {
-        open_now: true
-      }
-    },
-    {
-      name: 'hipcup coffee',
-      formatted_address: '1123 Sunset Ave',
-      opening_hours: {
-        open_now: true
-      }
-    }],
+  stores: [],
+    // {
+    //   name: 'starbucks',
+    //   formatted_address: '1122 Wilshire Ave',
+    //   opening_hours: {
+    //     open_now: true
+    //   }
+    // },
+    // {
+    //   name: 'peets coffee',
+    //   formatted_address: '1123 Sunset Ave',
+    //   opening_hours: {
+    //     open_now: true
+    //   }
+    // },
+    // {
+    //   name: 'hipcup coffee',
+    //   formatted_address: '1123 Sunset Ave',
+    //   opening_hours: {
+    //     open_now: true
+    //   }
+    // }
+    // ],
   error: 'none',
   defaultCenter: {lat: 25.7753, lng: 80.2089},
   userCenter: {lat: 0, lng: 0},
