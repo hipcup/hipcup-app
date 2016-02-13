@@ -1,11 +1,13 @@
 import React from 'react'
 import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
+import moment from 'moment';
 
 class CoffeeRunInfo extends React.Component {
   constructor(){
     super();
     this.displayCoffeeInfo.bind(this);
     this.displayLoadingSpinner.bind(this);
+    this.displayCoffeeOrderForm.bind(this);
   }
   
   componentWillMount() {
@@ -28,6 +30,17 @@ class CoffeeRunInfo extends React.Component {
     }
   }
 
+  displayCoffeeOrderForm() {
+    // if the time of coffee run has not expired
+    if(moment(this.props.timeOfRun) > moment()) {
+      return (
+        <CoffeeOrderForm />
+      )
+    } else {
+      return null
+    }
+  }
+
   displayCoffeeInfo() {
     var coffeeRunID = this.props.coffeeRunID;
     if(coffeeRunID) {
@@ -38,7 +51,7 @@ class CoffeeRunInfo extends React.Component {
             <h2>{this.props.address}</h2>
             <h2>Coffee run expires at: COUNTDOWN or expired message</h2>
           </div>
-          <CoffeeOrderForm />
+          { this.displayCoffeeOrderForm() }
         </div>
       )
     } else {

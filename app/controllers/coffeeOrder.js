@@ -25,11 +25,11 @@ exports.placeOrder = function(req, res) {
     } 
 
   // send error if time before run has been exceeded
-  // if(coffeeRun.timeUntilRun === 0) {
-      // helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
-      // return;
-  // }
-    
+    if(coffeeRun.coffeeRunExpired) {
+        helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
+        return;
+    }
+      
     // send error if max num of orders has been exceeded
     if(coffeeRun.numOrdersPlaced >= coffeeRun.maxOrders) {
       helper.sendErrorResponse(res,"Sorry, the number of orders for this coffee run has been exceed. Your order cannot be placed.");

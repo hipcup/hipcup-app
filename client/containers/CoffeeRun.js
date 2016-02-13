@@ -47,6 +47,7 @@ const mapStateToProps = (state) => {
     timeDuration: state.coffeeRunReducer.timeDuration,
     slackChannel: state.coffeeRunReducer.slackChannel,
     timeUntilRun: state.coffeeRunReducer.timeUntilRun,
+    timeOfRun: state.coffeeRunReducer.timeOfRun,
     coffeeRunErrorMsg:    state.coffeeRunReducer.coffeeRunErrorMsg,
     selectedStore:        state.storeReducer.selectedStore,
     selectedStoreAddress: state.storeReducer.selectedStoreAddress,
