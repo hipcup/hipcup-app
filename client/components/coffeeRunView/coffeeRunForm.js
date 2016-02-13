@@ -1,6 +1,8 @@
 import React from 'react'
 import isValid from '../../validationHelperFunctions'
 import helperFunc from '../../HelperFunctions'
+import CoffeeRunUrlBox from './coffeeRunUrlBox.js'
+
 
 class CoffeeRunForm extends React.Component {
   constructor(){
@@ -22,6 +24,7 @@ class CoffeeRunForm extends React.Component {
       timeAmount: '',
       timeUnit: 'minutes',
       runStatus: null,
+      coffeeRunID: helperFunc.generateUniqueID(),
       isValidForm: false
     }
   }
@@ -74,7 +77,11 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayCoffeeForm() {
-    if(this.props.selectedStore) {
+    if(this.state.isValidForm && !this.props.coffeeRunErrorMsg) {
+      return (
+        <CoffeeRunUrlBox coffeeRunID={this.state.coffeeRunID} />
+      )
+    } else if(this.props.selectedStore) {
       return (
         <form>
           <div> Make a coffee run to { this.props.selectedStore }</div>
@@ -135,7 +142,7 @@ class CoffeeRunForm extends React.Component {
       if(this.state.isValidForm) {
       const { coffeeRunAction } = this.props.coffeeRunActions;
       coffeeRunAction({
-        coffeeRunID:  helperFunc.generateUniqueID(),
+        coffeeRunID:  this.state.coffeeRunID,
         runnerName:   this.refs.runnerName.value,
         coffeeShop:   this.props.selectedStore,
         address:      this.props.selectedStoreAddress,
