@@ -1,8 +1,8 @@
 var CoffeeRun = require('../models/coffeeRun.js');
+var helper = require('../helperfunctions.js').serverHelperFunctions;
 var moment = require('moment');
 
 exports.createRun = function(req, res) {
-  
   // calculate coffee run time
   var timeOfRun = formatTimeUntilRun(req.body.timeAmount, req.body.timeUnit);
 
@@ -19,10 +19,7 @@ exports.createRun = function(req, res) {
   console.log('coffeeRun:', coffeeRun);
   coffeeRun.save(function(err, coffeeRun) {
     if (err) {
-      res.send({
-        err: err,
-        success: false
-      });
+      helper.sendErrorResponse(res, err);
     } else {
         res.json({
         success: true,
@@ -36,15 +33,9 @@ exports.fetchRun = function(req,res) {
   CoffeeRun.findOne({ "coffeeRunID": req.body.coffeeRunID}, function (err, coffeeRun) {
     console.log("coffeeRun inside fetchRun:", coffeeRun)
     if (err) {
-      res.send({
-        err: err,
-        success: false
-      });
+      helper.sendErrorResponse(res, err);
     } else if (!coffeeRun) {
-      res.send({
-        err: 'coffee run does not exist',
-        success: false
-      });
+      helper.sendErrorResponse(res, 'coffee run does not exist');
     } else {
         res.json({
           coffeerun: {
