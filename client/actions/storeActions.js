@@ -20,6 +20,8 @@ export const fetchStores = () => {
       try {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
+          console.log("stores", stores);
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"],0));
         } else {
           dispatch(fetchStoresError(stores));
         }

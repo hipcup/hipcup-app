@@ -9,7 +9,7 @@ import {
 const initialState = {
   stores: [],
   error: 'none',
-  defaultCenter: {lat: 40.7127, lng: 74.0059},
+  defaultCenter: {lat: 25.7753, lng: 80.2089},
   userCenter: {lat: 0, lng: 0},
   zoom: 9,
   fetched: false,
