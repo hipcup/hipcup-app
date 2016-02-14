@@ -2,6 +2,7 @@ import React from 'react'
 import isValid from '../../validationHelperFunctions'
 import helperFunc from '../../HelperFunctions'
 import CoffeeRunUrlBox from './coffeeRunUrlBox.js'
+import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
 
 
 class CoffeeRunForm extends React.Component {
@@ -48,7 +49,6 @@ class CoffeeRunForm extends React.Component {
   }
 
   setTimeUnit(e){
-    console.log("value of TimeUnit:", e.target.value);
     this.setState({
       timeUnit: e.target.value
     })
@@ -81,7 +81,8 @@ class CoffeeRunForm extends React.Component {
       return (
         <CoffeeRunUrlBox coffeeRunID={this.state.coffeeRunID} />
       )
-    } else if(this.props.selectedStore) {
+    } else 
+    if(this.props.selectedStore) {
       return (
         <form>
           <div> Make a coffee run to { this.props.selectedStore }</div>
@@ -122,10 +123,7 @@ class CoffeeRunForm extends React.Component {
       )
     } else {
       return (
-        <div>
-          <span>To make a run, you will need to select a coffee store first.</span>
-          <button type="submit" onClick={() => this.props.routeActions.push('/')}>Click to start a run</button>
-        </div>
+        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} />
       )
     }
   }
