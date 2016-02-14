@@ -1,5 +1,5 @@
 import React from 'react'
-import CoffeeRunForm from '../components/coffeeRunView/CoffeeRunForm'
+import MakeCoffeeRun from '../components/coffeeRunView/makeCoffeeRun'
 import CoffeeRunInfo from '../components/coffeeRunView/CoffeeRunInfo'
 
 import { routeActions } from 'react-router-redux';
@@ -18,7 +18,7 @@ class CoffeeRun extends React.Component {
   renderCoffeeView() {
     if(this.props.pathname === '/makerun') {
       return ( 
-        <CoffeeRunForm { ...this.props }/>
+        <MakeCoffeeRun { ...this.props }/>
       )
     } else {
       return (

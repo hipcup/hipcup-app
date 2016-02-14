@@ -1,8 +1,6 @@
 import React from 'react'
 import isValid from '../../validationHelperFunctions'
 import helperFunc from '../../HelperFunctions'
-import CoffeeRunUrlBox from './coffeeRunUrlBox.js'
-import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
 
 
 class CoffeeRunForm extends React.Component {
@@ -77,12 +75,6 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayCoffeeForm() {
-    if(this.state.isValidForm && !this.props.coffeeRunErrorMsg) {
-      return (
-        <CoffeeRunUrlBox coffeeRunID={this.state.coffeeRunID} />
-      )
-    } else 
-    if(this.props.selectedStore) {
       return (
         <form>
           <div> Make a coffee run to { this.props.selectedStore }</div>
@@ -121,11 +113,6 @@ class CoffeeRunForm extends React.Component {
           { this.displayServerErrorMsg() }
         </form>
       )
-    } else {
-      return (
-        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} />
-      )
-    }
   }
 
   displayServerErrorMsg(){
