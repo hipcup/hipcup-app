@@ -144,8 +144,16 @@ exports.formatDistanceData = function(data) {
     return newStore;
   });
 
+  var storesSortedByDistance = storesWithDistances.sort(function(a,b){
+    var aTimeStr = a.time;
+    var bTimestr = b.time;
+    var aTimeNum = aTimeStr.match(/\d+/)[0];
+    var bTimeNum = bTimestr.match(/\d+/)[0];
+    return aTimeNum - bTimeNum;
+  });
+
   if(distances){
-    deferred.resolve({stores: storesWithDistances, lat: lat, lng: lng})
+    deferred.resolve({stores: storesSortedByDistance, lat: lat, lng: lng})
   } else {
     deferred.reject("alt error");
   }
