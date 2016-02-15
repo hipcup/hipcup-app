@@ -11,7 +11,7 @@ class Shop extends React.Component {
     e.preventDefault();
     const {  updateSelectStore } = this.props.updateSelectStore;
 
-    updateSelectStore(this.props.name, this.props.storeId);
+    updateSelectStore(this.props.name, this.props.address, this.props.storeId);
   }
 
   render() {

@@ -8,7 +8,6 @@ class Mapmarker extends React.Component {
     super();
   }
   render() {
-    console.log('time', this.props);
     return (
       <div className={ this.props.selectStoreKey == this.props.$dimensionKey? 'selectedStore' : ''}>
         {this.props.selectStoreKey == this.props.$dimensionKey ? <span>{this.props.time}</span> : null}
