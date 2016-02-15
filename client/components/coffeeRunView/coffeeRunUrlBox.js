@@ -5,9 +5,6 @@ class CoffeeRunUrlBox extends React.Component {
     super();
     this.displayCoffeeRunUrlBox.bind(this);
     this.generateCoffeeUrl.bind(this);
-    this.state = {
-      url: 'http://localhost:3468/'
-    }
   }
   
   generateCoffeeUrl() {
