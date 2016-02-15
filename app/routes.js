@@ -37,10 +37,13 @@ var googleApi = require('./googleApiStoreData.js');
     });
 
  // application -------------------------------------------------------------
-  // res.sendFile(path.join(__dirname, 'index.html')
-  // app.get('/', function(req, res, next) {
-  //     console.log("inside GET for INDEX request")
-  //     res.sendFile(path.join(__dirname, 'client/index.html')); 
-  // });
-
+    app.get('/', function(req, res, next) {
+      res.sendFile(path.join(__dirname, 'index.html')); 
+    });
+    
+    // send back the index.html page for all route requests
+    // react-router will handle routing client-side 
+    app.get('*', function (req, res){
+      res.sendFile(path.resolve(__dirname, '../client', 'index.html'))
+    })
 }; 
