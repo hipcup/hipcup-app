@@ -1,4 +1,5 @@
 import React from 'react'
+import q from 'q'
 import isValid from '../../validationHelperFunctions'
 import helperFunc from '../../HelperFunctions'
 
@@ -7,6 +8,7 @@ class CoffeeRunForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.createCoffeeRun = this.createCoffeeRun.bind(this);
     this.displayCoffeeForm = this.displayCoffeeForm.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayNumericError = this.displayNumericError.bind(this);
@@ -70,7 +72,7 @@ class CoffeeRunForm extends React.Component {
     } else if (this.displayAlphaError() || this.displayRangeError() || this.displayNumericError()) {
       this.setState({ runStatus: "Please fix all form errors before submitting", isValidForm: false});
     } else {
-      this.setState({ runStatus: "Coffee run succcessfully submitted", isValidForm: true});
+      this.setState({ runStatus: "Coffee run succcessfully submitted", isValidForm: true}, this.createCoffeeRun);
     }
   }
 
@@ -124,10 +126,10 @@ class CoffeeRunForm extends React.Component {
 
     // check for and display any form errors 
     this.displayFormError();
-    
-    //refactor to use promises
-    setTimeout(function() {
-      if(this.state.isValidForm) {
+  }
+
+  createCoffeeRun() {
+    if(this.state.isValidForm) {
       const { coffeeRunAction } = this.props.coffeeRunActions;
       coffeeRunAction({
         coffeeRunID:  this.state.coffeeRunID,
@@ -140,12 +142,11 @@ class CoffeeRunForm extends React.Component {
         timeAmount:   this.refs.timeAmount.value,
         timeUnit:     this.state.timeUnit
       });
-          
+            
       this.refs.runnerName.value = '',
       this.refs.maxOrders.value = '',
       this.refs.timeAmount.value = ''
-      } 
-    }.bind(this), 5);
+    } 
   }
 
   render() {
