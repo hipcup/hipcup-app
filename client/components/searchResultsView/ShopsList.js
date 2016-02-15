@@ -18,7 +18,7 @@ class ShopsList extends React.Component {
   }
 
   displayLoadingSpinner(){
-    if(!this.props.stores.length){
+    if(!this.props.fetched){
       return(
         <div className='spinner'>
           <h1>Loading</h1>
@@ -31,7 +31,7 @@ class ShopsList extends React.Component {
   }
 
   displayStores() {
-    if(this.props.stores) {
+    if(this.props.fetched) {
       return ( this.props.stores.map((store, ind) => {
         return (<Shop name={store.name}
                       address={store.formatted_address} 
