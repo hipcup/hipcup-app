@@ -52,7 +52,8 @@ const mapStateToProps = (state) => {
     selectedStore:        state.storeReducer.selectedStore,
     selectedStoreAddress: state.storeReducer.selectedStoreAddress,
     isFetchingCoffeeRun:  state.coffeeRunReducer.isFetchingCoffeeRun,
-    pathname:             state.routing.location.pathname
+    pathname:             state.routing.location.pathname,
+    coffeeRunSuccessfullyCreated: state.coffeeRunReducer.coffeeRunSuccessfullyCreated
   }
 }
 

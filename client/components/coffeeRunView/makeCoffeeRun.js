@@ -11,18 +11,20 @@ class makeCoffeeRun extends React.Component {
   }
 
   displayCoffeeRunState() {
-    // if(this.state.isValidForm && !this.props.coffeeRunErrorMsg) {
-    //   return (
-    //     <CoffeeRunUrlBox coffeeRunID={this.state.coffeeRunID} />
-    //   )
-    // } else 
-    if(this.props.selectedStore) {
+    // if there is no selectedStore
+    if(this.props.selectedStore === "") {
+      return (
+        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} />
+      )
+      // if a store has been selected, but the coffee run could not be saved  
+    } else if (this.props.selectedStore && !this.props.coffeeRunSuccessfullyCreated) {
       return (
         <CoffeeRunForm { ...this.props }/>
       )
-    } else {
+    // if the coffee run is successfully saved on the db, generate a coffee run url 
+    } else if(this.props.coffeeRunSuccessfullyCreated) {
       return (
-        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} />
+        <CoffeeRunUrlBox coffeeRunID={this.props.coffeeRunID} />
       )
     }
   }

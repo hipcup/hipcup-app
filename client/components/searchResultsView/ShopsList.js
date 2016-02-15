@@ -12,7 +12,8 @@ class ShopsList extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const { routeActions } = this.props;
-
+    const { clearCoffeeRunSuccessfullyCreated } = this.props.coffeeRunActions;
+    clearCoffeeRunSuccessfullyCreated();
     routeActions.push('/makerun');
   }
 

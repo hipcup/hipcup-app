@@ -2,22 +2,25 @@ import {
   UPDATE_COFFEE_RUN_FORM,
   UPDATE_COFFEE_RUN_FROM_FETCHED,
   UPDATE_FETCH_COFFEE_RUN_STATUS,
-  ERROR__CREATING_COFFEE_RUN_FORM,
+  ERROR_CREATING_COFFEE_RUN_FORM,
+  COFFEE_RUN_SUCCESSFULLY_CREATED,
+  CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED
 
 } from '../actions/coffeeRunActions'
 
 const initialState = {
   coffeeRunID: '',
-  runnerName: 'Someone you know',
+  runnerName: '',
   coffeeShop: '',
   address: '',
   timeStamp:  '',
-  maxOrders:  '6',
-  slackChannel: 'home',
-  timeAmount: '15',
-  timeUnit: 'minutes',
+  maxOrders:  '',
+  slackChannel: '',
+  timeAmount: '',
+  timeUnit: '',
   coffeeRunErrorMsg: false,
-  isFetchingCoffeeRun: false
+  isFetchingCoffeeRun: false,
+  coffeeRunSuccessfullyCreated: false
 }
 
 export default function coffeeRunReducer(state = initialState, action) {
@@ -34,7 +37,7 @@ export default function coffeeRunReducer(state = initialState, action) {
         timeAmount:   action.timeAmount,
         timeUnit:     action.timeUnit
       })
-    case ERROR__CREATING_COFFEE_RUN_FORM:
+    case ERROR_CREATING_COFFEE_RUN_FORM:
       return Object.assign({}, state, {
         coffeeRunErrorMsg: action.coffeeRunErrorMsg,
         isFetchingCoffeeRun: action.isFetchingCoffeeRun
@@ -55,6 +58,15 @@ export default function coffeeRunReducer(state = initialState, action) {
         return Object.assign({}, state, {
           isFetchingCoffeeRun: action.isFetchingCoffeeRun
       })
+      case COFFEE_RUN_SUCCESSFULLY_CREATED:
+        return Object.assign({}, state, {
+          coffeeRunSuccessfullyCreated: action.coffeeRunSuccessfullyCreated
+      })
+      case CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED:
+        return Object.assign({}, state, {
+          coffeeRunSuccessfullyCreated: action.coffeeRunSuccessfullyCreated
+      })
+
     default:
       return state;
   }

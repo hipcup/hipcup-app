@@ -1,7 +1,9 @@
 export const UPDATE_COFFEE_RUN_FORM = 'UPDATE_COFFEE_RUN_FORM'
 export const UPDATE_COFFEE_RUN_FROM_FETCHED = 'UPDATE_COFFEE_RUN_FROM_FETCHED'
 export const UPDATE_FETCH_COFFEE_RUN_STATUS = 'UPDATE_FETCH_COFFEE_RUN_STATUS'
-export const ERROR__CREATING_COFFEE_RUN_FORM = 'ERROR__CREATING_COFFEE_RUN_FORM'
+export const ERROR_CREATING_COFFEE_RUN_FORM = 'ERROR_CREATING_COFFEE_RUN_FORM'
+export const COFFEE_RUN_SUCCESSFULLY_CREATED = 'COFFEE_RUN_SUCCESSFULLY_CREATED'
+export const CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED = 'CLEAR_COFFEE_RUN_SUCCESSFULY_UPDATED'
 
 export const coffeeRunAction = (formInfo) => {
   return dispatch => {
@@ -31,7 +33,7 @@ export const coffeeRunAction = (formInfo) => {
     try {
       if(response.success){
         dispatch(updateCoffeeRun(formInfo));
-        console.log(response.message);
+        dispatch(updateCoffeeRunSuccessfullyCreated());
       } else {
         dispatch(updateCoffeeRunError());
         console.log("ERROR IN SAVE TO DATABASE", response.err);
@@ -92,9 +94,23 @@ const updateCoffeeRun = (formInfo) => {
   }
 }
 
+const updateCoffeeRunSuccessfullyCreated = () => {
+  return {
+    type: COFFEE_RUN_SUCCESSFULLY_CREATED,
+    coffeeRunSuccessfullyCreated: true
+  }
+}
+
+export const clearCoffeeRunSuccessfullyCreated = () => {
+  return {
+    type: CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED,
+    coffeeRunSuccessfullyCreated: false
+  }
+}
+
 const updateCoffeeRunError = () => {
   return {
-    type: ERROR__CREATING_COFFEE_RUN_FORM,
+    type: ERROR_CREATING_COFFEE_RUN_FORM,
     coffeeRunErrorMsg: true,
     isFetchingCoffeeRun: false
   }
