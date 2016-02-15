@@ -66,6 +66,7 @@ export const fetchCoffeeRun = (coffeeRunID) => {
   }).then(response => {
     try {
       if(response.success){
+        console.log('response.success');
         dispatch(updateFetchedCoffeeRun(response.coffeerun));
       } else {
         dispatch(updateCoffeeRunError());
