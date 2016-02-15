@@ -14,9 +14,11 @@ var googleApi = require('./googleApiStoreData.js');
   // add a coffee run
     app.post('/createRun', coffeeRun.createRun);
 
+  // fetch a coffee run 
+    app.post('/fetchRun', coffeeRun.fetchRun);
+
   // add a coffee order to a coffee run
     app.post('/placeOrder', coffeeOrder.placeOrder);
-
 
   // Google APIs -------------------------------------------------------------
   // Get user's geolocation 

@@ -7,6 +7,7 @@ import ShopsList from '../components/searchResultsView/ShopsList'
 
 import { routeActions } from 'react-router-redux';
 import * as updateSelectStore from '../actions/storeActions'
+import * as coffeeRunActions from '../actions/coffeeRunActions'
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -38,7 +39,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateSelectStore: bindActionCreators(updateSelectStore, dispatch),
-    routeActions: bindActionCreators(routeActions, dispatch)
+    routeActions: bindActionCreators(routeActions, dispatch),
+    coffeeRunActions: bindActionCreators(coffeeRunActions, dispatch)
   }
 }
 

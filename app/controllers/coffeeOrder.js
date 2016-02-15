@@ -7,14 +7,13 @@ exports.placeOrder = function(req, res) {
 
   var coffeeOrder = new CoffeeOrder ({
     coffeeRunID:     req.body.coffeeRunID,
-    caffeinatorName: req.body.drinkerName,
+    caffeinatorName: req.body.caffeinatorName,
     drinkOrder:      req.body.drinkOrder,
     drinkSize:       req.body.drinkSize,
     modifications:   req.body.modifications
   });
 
-  CoffeeRun.findOne({ "_id": new ObjectId(coffeeOrder.coffeeRunID)}, function (err, coffeeRun) {
-    console.log("coffee run:", coffeeRun);
+  CoffeeRun.findOne({ "coffeeRunID": coffeeOrder.coffeeRunID}, function (err, coffeeRun) {
     if (err) {
       return console.error(err);
     }
@@ -26,11 +25,11 @@ exports.placeOrder = function(req, res) {
     } 
 
   // send error if time before run has been exceeded
-  // if(coffeeRun.timeUntilRun === 0) {
-      // helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
-      // return;
-  // }
-    
+    if(coffeeRun.coffeeRunExpired) {
+        helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
+        return;
+    }
+      
     // send error if max num of orders has been exceeded
     if(coffeeRun.numOrdersPlaced >= coffeeRun.maxOrders) {
       helper.sendErrorResponse(res,"Sorry, the number of orders for this coffee run has been exceed. Your order cannot be placed.");
@@ -41,11 +40,10 @@ exports.placeOrder = function(req, res) {
     coffeeRun.orders.push(coffeeOrder);
     var newNumOfCoffeeOrder = coffeeRun.numOrdersPlaced + 1; 
     coffeeRun.numOrdersPlaced = newNumOfCoffeeOrder;
-  
     // save to database
     coffeeRun.save(function (err) {
       if (err) {
-        console.log("error saving coffee order in coffee run");
+        console.log("error saving coffee order in coffee run", err);
       }
       helper.sendSuccessResponse(res,"Coffee Order has been placed.");
     });

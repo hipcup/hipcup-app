@@ -1,17 +1,20 @@
 import React from 'react'
 import isValid from '../../validationHelperFunctions'
+import helperFunc from '../../HelperFunctions'
+
 
 class CoffeeRunForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.displayCoffeeForm = this.displayCoffeeForm.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayNumericError = this.displayNumericError.bind(this);
     this.displayRangeError = this.displayRangeError.bind(this);
     this.displayFormError = this.displayFormError.bind(this);
     this.setRunnerName = this.setRunnerName.bind(this);
     this.setMaxOrders = this.setMaxOrders.bind(this);
-    this.settimeAmount = this.settimeAmount.bind(this);
+    this.setTimeAmount = this.setTimeAmount.bind(this);
     this.setTimeUnit = this.setTimeUnit.bind(this);
 
     this.state = {
@@ -20,6 +23,7 @@ class CoffeeRunForm extends React.Component {
       timeAmount: '',
       timeUnit: 'minutes',
       runStatus: null,
+      coffeeRunID: helperFunc.generateUniqueID(),
       isValidForm: false
     }
   }
@@ -36,14 +40,13 @@ class CoffeeRunForm extends React.Component {
     })
   }
 
-  settimeAmount(e){
+  setTimeAmount(e){
     this.setState({
       timeAmount: e.target.value
     })
   }
 
   setTimeUnit(e){
-    console.log("value of TimeUnit:", e.target.value);
     this.setState({
       timeUnit: e.target.value
     })
@@ -54,11 +57,11 @@ class CoffeeRunForm extends React.Component {
   }
 
   displayNumericError(){
-    return isValid.isNumeric(this.state.timeAmount) ? null : <span>input must be 0-9 integers</span>
+    return isValid.isNumeric(this.state.maxOrders) ? null : <span>input must be 0-9 integers</span>
   }
 
   displayRangeError(){
-    return isValid.isNumeric(this.state.maxOrders) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
+    return isValid.isNumeric(this.state.timeAmount) ? null : <span>duration must be in numeric characters and less than 2 days (1440 minutes)</span>
   }
 
   displayFormError(){
@@ -69,6 +72,47 @@ class CoffeeRunForm extends React.Component {
     } else {
       this.setState({ runStatus: "Coffee run succcessfully submitted", isValidForm: true});
     }
+  }
+
+  displayCoffeeForm() {
+      return (
+        <form>
+          <div> Make a coffee run to { this.props.selectedStore }</div>
+          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
+          <div>
+            <label>Name:</label>
+            <input type="text" name="runnerName" ref="runnerName" onChange={this.setRunnerName} require />
+            <span className="required">required</span>
+            {this.displayAlphaError()}
+          </div>
+          <div>
+            <label>Leaving In:</label>
+            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
+            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
+              <option select value="minutes">minutes</option>
+              <option value="hours">hours</option>
+            </select>         
+            <span className="required">required</span>
+            {this.displayRangeError()}
+          </div>
+          <div>
+            <label>Max Coffee Orders:</label>
+            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
+            <span className="required">required</span>
+            { this.displayNumericError()}
+          </div>
+          <div>
+            <label>Slack Channel:</label>
+            <select name="slackChannels" ref="slackChannel">
+              <option select value="defaultChannel">Default Channel</option>
+              <option value="defaultChannel2">Default Channel2</option>
+            </select>
+          </div>
+          <button type="submit" onClick={this.handleClick}>Create Run</button>
+          { this.state.runStatus }
+          { this.displayServerErrorMsg() }
+        </form>
+      )
   }
 
   displayServerErrorMsg(){
@@ -85,17 +129,18 @@ class CoffeeRunForm extends React.Component {
     setTimeout(function() {
       if(this.state.isValidForm) {
       const { coffeeRunAction } = this.props.coffeeRunActions;
-
       coffeeRunAction({
+        coffeeRunID:  this.state.coffeeRunID,
         runnerName:   this.refs.runnerName.value,
         coffeeShop:   this.props.selectedStore,
+        address:      this.props.selectedStoreAddress,
         timeStamp:    new Date(),
         maxOrders:    this.refs.maxOrders.value,
         slackChannel: this.refs.slackChannel.value,
         timeAmount:   this.refs.timeAmount.value,
         timeUnit:     this.state.timeUnit
       });
-
+          
       this.refs.runnerName.value = '',
       this.refs.maxOrders.value = '',
       this.refs.timeAmount.value = ''
@@ -106,39 +151,7 @@ class CoffeeRunForm extends React.Component {
   render() {
     return (
       <div className="coffeeRunForm">
-        <form>
-          <div> Make a coffee to { this.props.selectedStore }</div>
-          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
-          <div>
-            <label>Name:</label>
-            <input type="text" name="runnerName" ref="runnerName" placeholder="Name" onChange={this.setRunnerName} require />
-            {this.displayAlphaError()}
-          </div>
-          <div>
-            <label>Leaving In:</label>
-            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
-            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
-              <option select value="minutes">minutes</option>
-              <option value="hours">hours</option>
-            </select>         
-            {this.displayRangeError()}
-          </div>
-          <div>
-            <label>Max Coffee Orders:</label>
-            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
-            { this.displayNumericError()}
-          </div>
-          <div>
-            <label>Slack Channel:</label>
-            <select name="slackChannels" ref="slackChannel">
-              <option select value="defaultChannel">Default Channel</option>
-              <option value="defaultChannel2">Default Channel2</option>
-            </select>
-          </div>
-          <button type="submit" onClick={this.handleClick}>Create Run</button>
-          { this.state.runStatus }
-          { this.displayServerErrorMsg() }
-        </form>
+       {this.displayCoffeeForm()}
       </div>
     )
   }

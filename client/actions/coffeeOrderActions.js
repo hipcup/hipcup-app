@@ -12,8 +12,7 @@ export const coffeeOrderAction = (formInfo) => {
         'Content-Type': 'application/json'
       },
       body:  JSON.stringify({
-        // remove hardcoded coffeeRunID
-        coffeeRunID:     "56b634bdad4097561fa70fee",
+        coffeeRunID:     formInfo.coffeeRunID,
         caffeinatorName: formInfo.caffeinatorName,
         drinkOrder:      formInfo.drinkOrder,
         drinkSize:       formInfo.drinkSize,
@@ -25,7 +24,6 @@ export const coffeeOrderAction = (formInfo) => {
     try {
       if(response.success){
         dispatch(placeCoffeeOrder(formInfo));
-        console.log(response.message);
       } else {
         dispatch(updateCoffeeOrderError(response.err));
         console.log("ERROR IN SAVE TO DATABASE", response.err);

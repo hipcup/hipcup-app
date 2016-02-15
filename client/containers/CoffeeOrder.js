@@ -24,6 +24,7 @@ class CoffeeOrder extends React.Component {
 const mapStateToProps = (state) => {
   return {
     caffeinatorName: state.coffeeOrderReducer.caffeinatorName,
+    coffeeRunID:     state.coffeeRunReducer.coffeeRunID,
     drinkOrder:      state.coffeeOrderReducer.drinkOrder,
     drinkSize:       state.coffeeOrderReducer.drinkSize,
     modifications:   state.coffeeOrderReducer.modifications,

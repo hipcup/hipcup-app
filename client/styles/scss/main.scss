@@ -1,2 +1,5 @@
-@import 'styles.scss';
-@import 'coffeeRunForm.scss'
+@import 'base/module.scss';
+@import 'components/module.scss';
+@import 'helpers/module.scss';
+@import 'layout/module.scss';
+@import 'pages/module.scss';
