@@ -12,7 +12,7 @@ class CoffeeRunInfo extends React.Component {
     this.getTimeRem.bind(this);
     this.setTimeRemaining.bind(this);
     this.state = {
-      timeRemaining: '',
+      timeRemaining: ' ',
       timerRunning: false
     };
   }
@@ -26,7 +26,7 @@ class CoffeeRunInfo extends React.Component {
 
   getTimerCountDown(timeOfRun) {
     // checks if timer has already started
-    if(!this.state.timerRunning){
+    if(!this.state.timerRunning && this.state.timerRunning !== 0){
       setInterval(() => {
         var eventTime = moment(timeOfRun);
         var currentTime = new Date();
@@ -36,14 +36,21 @@ class CoffeeRunInfo extends React.Component {
         var minutes = Math.floor( (duration/1000/60) % 60 );
         var hours = Math.floor( (duration/(1000*60*60)) % 24 );
         var time = 'Hours:'+hours+' Minutes: '+minutes+' Seconds: '+seconds;
-        this.setTimeRemaining(time);
+      
+        this.setTimeRemaining(time, duration);
       }, 1000);
     }
   }
 
-  setTimeRemaining(newTime) {
-    this.setState({timerRunning: true});
-    this.setState({timeRemaining: newTime});
+  setTimeRemaining(newTime, duration) {
+    if(duration <= 0){
+      console.log('inside!');
+      this.setState({timeRemaining: 'Now'});
+    } else {
+      console.log('ELSE!');
+      this.setState({timerRunning: true});
+      this.setState({timeRemaining: newTime});
+    }
   }
 
   getTimeRem() {
