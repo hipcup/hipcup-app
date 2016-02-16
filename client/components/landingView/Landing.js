@@ -9,10 +9,11 @@ class Landing extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const { fetchStores } = this.props.fetchStores;
-    const { actionRoute } = this.props;
+    const { fetchStores, updateFetchStoresHasBeenCalled } = this.props.fetchStores;
+    const { actionRoute, } = this.props;
 
     fetchStores();
+    updateFetchStoresHasBeenCalled();
     actionRoute.push('/results');
   }
 

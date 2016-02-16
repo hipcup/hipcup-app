@@ -10,7 +10,7 @@ class Shop extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const {  updateSelectStore } = this.props.updateSelectStore;
-
+    
     updateSelectStore(this.props.name, this.props.address, this.props.storeId);
   }
 

@@ -13,6 +13,7 @@ class ShopsList extends React.Component {
     e.preventDefault();
     const { routeActions } = this.props;
     const { clearCoffeeRunSuccessfullyCreated } = this.props.coffeeRunActions;
+    // reset coffee run status if user attempts to make an additional coffee run
     clearCoffeeRunSuccessfullyCreated();
     routeActions.push('/makerun');
   }
