@@ -84,7 +84,9 @@ class CoffeeRunInfo extends React.Component {
 
   displayCoffeeInfo() {
     var coffeeRunID = this.props.coffeeRunID;
-    if(coffeeRunID) {
+    if(this.props.isFetchingCoffeeRun) {
+      return null
+    } else if (coffeeRunID) {
       return (
         <div>
           <div>

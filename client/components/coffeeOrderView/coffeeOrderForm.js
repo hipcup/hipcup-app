@@ -5,6 +5,7 @@ class CoffeeOrderForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.createCoffeeOrder = this.createCoffeeOrder.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayAlphaNumericError = this.displayAlphaNumericError.bind(this);
     this.displayFormError = this.displayFormError.bind(this);
@@ -46,7 +47,7 @@ class CoffeeOrderForm extends React.Component {
     } else if (this.displayAlphaError() || this.displayAlphaNumericError()) {
       this.setState({ orderStatus: "Please fix all form errors before submitting", isValidForm: false});
     } else {
-      this.setState({ orderStatus: "Order succcessfully submitted", isValidForm: true});
+      this.setState({ orderStatus: "Order succcessfully submitted", isValidForm: true}, this.createCoffeeOrder);
     }
   }
 
@@ -59,25 +60,24 @@ class CoffeeOrderForm extends React.Component {
 
     // check for and display any form errors 
     this.displayFormError()
+  }
 
-    // refactor to promises 
-    setTimeout(function() {
-      if(this.state.isValidForm) {
-        const { coffeeOrderAction } = this.props.coffeeOrderActions;
-         console.log("coffeeRunID:", this.props.coffeeRunID)
-        coffeeOrderAction({
-          coffeeRunID: this.props.coffeeRunID,
-          caffeinatorName: this.refs.caffeinatorName.value,
-          drinkOrder:  this.refs.drinkOrder.value,
-          drinkSize:   this.refs.drinkSize.value,
-          modifications: this.refs.modifications.value
-        });
+  createCoffeeOrder() {
+    if(this.state.isValidForm) {
+      const { coffeeOrderAction } = this.props.coffeeOrderActions;
 
-        this.refs.caffeinatorName.value = '',
-        this.refs.drinkOrder.value = ''
-        this.refs.modifications.value = ''    
-      } 
-    }.bind(this), 5);
+      coffeeOrderAction({
+        coffeeRunID: this.props.coffeeRunID,
+        caffeinatorName: this.refs.caffeinatorName.value,
+        drinkOrder:  this.refs.drinkOrder.value,
+        drinkSize:   this.refs.drinkSize.value,
+        modifications: this.refs.modifications.value
+      });
+
+      this.refs.caffeinatorName.value = '',
+      this.refs.drinkOrder.value = ''
+      this.refs.modifications.value = ''    
+    }  
   }
 
   render() {

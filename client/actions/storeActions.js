@@ -1,8 +1,8 @@
-// import { routeActions } from 'react-router-redux';
 
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 export const UPDATE_SELECT_STORE = 'UPDATE_SELECT_STORE'
+export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN_CALLED' 
 
 export const fetchStores = () => {
   return dispatch => {
@@ -33,6 +33,12 @@ export const fetchStores = () => {
   }
 }
 
+export const updateFetchStoresHasBeenCalled = () => {
+  return dispatch => {
+    dispatch(FetchStoresHasBeenCalled({status:true}));
+  }
+}
+
 const fetchStoresSuccess = (data) => {
   return {
     type: FETCH_STORES_SUCCESS,
@@ -47,6 +53,13 @@ const fetchStoresError = (error) => {
   return {
     type: FETCH_STORES_ERROR,
     error: error
+  }
+}
+
+export const FetchStoresHasBeenCalled = (obj) => {
+  return {
+    type: UPDATE_FETCH_STORES_HAS_BEEN_CALLED,
+    status: obj.status
   }
 }
 

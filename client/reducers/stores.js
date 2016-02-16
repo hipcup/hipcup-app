@@ -1,7 +1,8 @@
 import {
   FETCH_STORES_SUCCESS,
   FETCH_STORES_ERROR,
-  UPDATE_SELECT_STORE
+  UPDATE_SELECT_STORE,
+  UPDATE_FETCH_STORES_HAS_BEEN_CALLED
 } from '../actions/storeActions'
 
 // lat: 34.0157219, lng: -118.4966245
@@ -35,6 +36,7 @@ const initialState = {
   userCenter: {lat: 0, lng: 0},
   zoom: 9,
   fetched: false,
+  fetchStoresHasBeenCalled: false,
   selectedStore: '',
   selectedStoreAddress: '',
   key: 0
@@ -60,6 +62,10 @@ export default function storeReducer(state = initialState, action) {
         selectedStore: action.selectStore,
         selectedStoreAddress: action.selectedStoreAddress,
         key: action.key
+      })
+      case UPDATE_FETCH_STORES_HAS_BEEN_CALLED: 
+      return Object.assign({}, state, {
+        fetchStoresHasBeenCalled: action.status
       })
     default:
       return state;

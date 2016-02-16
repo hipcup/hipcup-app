@@ -7,18 +7,18 @@ class CoffeeRunUrlBox extends React.Component {
     this.generateCoffeeUrl.bind(this);
   }
   
-  generateCoffeeUrl(coffeeRunID) {
-    return (
-      <a src="">generate urls for coffeerun: coffeeRunID</a>
-    )
+  generateCoffeeUrl() {
+    var uniqueID = this.props.coffeeRunID
+    return 'http://localhost:3468/' + uniqueID
   }
 
   displayCoffeeRunUrlBox() {
     if(this.props.coffeeRunID) {
+      var uniqueID = this.generateCoffeeUrl()
       return (
         <div>
           <h3>Share the link below to allow people to add coffee orders to your run </h3>
-          { this.generateCoffeeUrl(this.props.coffeeRunID) }
+          <a href={ uniqueID }>{ uniqueID }</a>
         </div>
       )
     } else {
