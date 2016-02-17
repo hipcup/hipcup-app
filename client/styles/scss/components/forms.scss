@@ -1,0 +1,56 @@
+.order-form {
+  display: block;
+  margin:0 auto;
+  float:none;
+  
+  .form-control {
+    margin:5px 0 20px 0;
+  }
+
+  .form-title {
+    margin:20px auto;
+  }
+
+  .form-title h4 {
+    display: inline-block;
+  }
+
+  .form-title span {
+    float:right;
+    padding:3px;
+  }
+
+  label {
+    display: block;
+  } 
+  input {
+    color:$form-input-color;
+    display: block;
+    height:$form-el-height;
+    border:1px solid $form-input-color;
+  }
+  button {
+    background-color: $primary-color;
+    margin-top:20px;
+    color: $base-white;
+    width:100%;
+    height:$form-el-height;
+  }
+  .required-msg {
+    display: block;
+    text-align: center;
+    margin-top:10px;
+  }
+}
+
+.required label::before {
+    content: "*";
+    padding-right: 4px;
+    font-size: 16px;
+    color: #1fbad6;
+}
+
+.require-asterisk {
+  font-size: 16px;
+  color: #1fbad6;
+}

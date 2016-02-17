@@ -82,36 +82,43 @@ class CoffeeOrderForm extends React.Component {
 
   render() {
     return (
-      <div className="coffeeOrderForm">
-        <form>
-          <div>
-            <label>Name:</label>
-            <input type="text" name="Input your name here" ref="caffeinatorName" placeholder="Your name" onChange={this.setcaffeinatorName} required />
-            <span className="required">required</span>
-            {this.displayAlphaError()}
-          </div>
-           <div>
-            <label>Drink Order:</label>
-            <input type="text" name="drinkOrder" ref="drinkOrder" placeholder="Your drink order" onChange={this.setDrinkOrder} required/>
-            <span className="required">required</span>
-            {this.displayAlphaNumericError()}
-          </div>
-          <div>
-            <label>Drink Size:</label>
-            <select name="drink sizes" ref="drinkSize">
-              <option select value="Small">Small</option>
-              <option select value="Medium">Medium</option>
-              <option select value="Large">Large</option>
-            </select>         
-          </div>
-          <div>
-            <label>Modifications:</label>
-            <input type="text" name="modifications" ref="modifications" placeholder="Optional" />
-          </div>
-          <button type="submit" onClick={this.handleClick}>Place Coffee Order</button>
-          <span>{ this.state.orderStatus }</span>
-          { this.displayServerErrorMsg() }
-        </form>
+      <div className="coffeeOrderForm order-form center-block col-xs-12 col-sm-8 col-md-6 col-lg-5">
+        <article>
+          <form className="form-vertical">
+            <div className="form-title">
+              <h4>Coffee Order</h4>
+              <span>Required<span className="require-asterisk">*</span></span>
+            </div>
+            <div className="input-group required col-xs-12 col-sm-11">
+              <label>NAME</label>
+              <input type="text" className="form-control" ref="caffeinatorName" placeholder="First Name" onChange={this.setcaffeinatorName} aria-describedby="basic-addon1" />
+              {this.displayAlphaError()}
+            </div>
+             <div className="input-group required col-xs-12 col-sm-11">
+              <label>DRINK ORDER</label>
+              <input type="text" className="form-control"  name="drinkOrder" ref="drinkOrder" placeholder="Drink Name" onChange={this.setDrinkOrder} aria-describedby="basic-addon1" />
+              {this.displayAlphaNumericError()}
+            </div>
+            <div className="input-group required col-xs-12 col-sm-11">
+              <label>DRINK SIZE</label>
+              <select className="form-control" name="drink sizes" ref="drinkSize">
+                <option select value="Small">Small</option>
+                <option select value="Medium">Medium</option>
+                <option select value="Large">Large</option>
+              </select>         
+            </div>
+            <div className="input-group col-xs-12 col-sm-11">
+              <label>MODIFICATIONS</label>
+              <input type="text" className="form-control" name="modifications" ref="modifications" placeholder="Customize It" aria-describedby="basic-addon1"  />
+            </div>
+            <div className="input-group col-xs-12 col-sm-11">
+              <button type="submit" className="btn btn-default" onClick={this.handleClick}>Place Order</button>
+              <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
+            </div>
+            <span>{ this.state.orderStatus }</span>
+            { this.displayServerErrorMsg() }
+          </form>
+        </article>
       </div>
     )
   }
