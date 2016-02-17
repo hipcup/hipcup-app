@@ -2,4 +2,19 @@
 footer {
   margin-top:20px;
   text-align:center;
+
+  li {
+    display: inline-block;
+    margin:5px;
+
+    .icon {
+      color:$primary-color;
+      cursor:pointer;
+    }
+  }
+
+  span {
+    display: inline-block;
+    margin-right:5px;
+  }
 }
