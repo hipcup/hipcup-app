@@ -1,4 +1,4 @@
 node_modules 
 server/keys/config.js
-client/dist/bundle.js
+client/dist
 config/database.js 
