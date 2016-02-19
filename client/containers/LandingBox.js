@@ -1,5 +1,4 @@
 import React from 'react'
-import Landing from '../components/landingView/Landing.js'
 import JumbotronSearch from '../components/landingView/jumbotronSearch.js'
 import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';

@@ -6,7 +6,7 @@ import { routeActions } from 'react-router-redux';
 import * as fetchStores from '../actions/storeActions'
 
 import Header from '../components/appView/Header.js'
-import Landing from '../components/landingView/Landing.js'
+import MakeRunButton from '../components/appView/makeRunButton.js'
 import Footer from '../components/appView/Footer.js'
 
 class App extends React.Component {
@@ -17,8 +17,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        <Landing { ...this.props } />
+        <Header { ...this.props } />
+        <MakeRunButton { ...this.props } />
         <div>{this.props.children}</div>
         <Footer />
      </div>
@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchStores: bindActionCreators(fetchStores, dispatch),
-    actionRoute: bindActionCreators(routeActions, dispatch)
+    routeActions: bindActionCreators(routeActions, dispatch)
   }
 }
 

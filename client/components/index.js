@@ -1,4 +1,4 @@
-export Landing from './landingView/Landing'
+export makeRunButton from './appView/makeRunButton'
 export jumbotronSearch from './landingView/jumbotronSearch'
 export Header from './appView/Header'
 export Footer from './appView/Footer'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { routeActions } from 'react-router-redux';
 
-class Landing extends React.Component {
+class MakeRunButton extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -10,11 +10,11 @@ class Landing extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const { fetchStores, updateFetchStoresHasBeenCalled } = this.props.fetchStores;
-    const { actionRoute, } = this.props;
+    const { routeActions } = this.props;
 
     fetchStores();
     updateFetchStoresHasBeenCalled();
-    actionRoute.push('/results');
+    routeActions.push('/results');
   }
 
   render() {
@@ -26,4 +26,4 @@ class Landing extends React.Component {
   }
 }
 
-export default Landing
+export default MakeRunButton

@@ -1,5 +1,7 @@
 import React from 'react'
 import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
+import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
+
 import moment from 'moment';
 
 class CoffeeRunInfo extends React.Component {
@@ -99,7 +101,7 @@ class CoffeeRunInfo extends React.Component {
       )
     } else {
       return (
-        <span>Sorry, no coffee run by that ID can be found. Please re-check your code or start a new coffee run here.</span>
+        <SelectCoffeeStoreBeforeRunError {...this.props} />
       )
     }
   }

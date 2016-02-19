@@ -5,20 +5,20 @@
     width:200px;
   }
 
-  .form-title {
-    display: inline-block;
+  .order-form .form-title {
+    margin:2px auto;
   }
 
-  .form-title span {
-    float:none;
+  .form-title {
+    display: inline-block;
+  
+    span {
+      float:none;
+    }
   }
 
   .form-require {
     float:right;
-  }
-
-  .order-form .form-title {
-    margin:2px auto;
   }
 
   label {
