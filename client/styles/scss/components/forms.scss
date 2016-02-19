@@ -1,7 +1,7 @@
 .order-form {
-  display: block;
-  margin:0 auto;
-  float:none;
+  margin-top:10px;
+  margin-bottom:60px;
+
   
   .form-control {
     margin:5px 0 20px 0;
@@ -11,12 +11,16 @@
     margin:20px auto;
   }
 
+  .form-title .form-require {
+    float:right;
+  }
+
   .form-title h4 {
     display: inline-block;
   }
 
   .form-title span {
-    float:right;
+    float:left;
     padding:3px;
   }
 
@@ -28,9 +32,8 @@
     height:$form-el-height;
   }
   button {
-    background-color: $primary-color;
     margin-top:20px;
-    color: $base-white;
+    color: $primary-color;
     width:100%;
     height:$form-el-height;
   }
@@ -39,21 +42,28 @@
     text-align: center;
     margin-top:10px;
   }
+
+  .form-error {
+    display: inline-block;
+    margin-bottom:10px;
+    color:$primary-color;
+  }
 }
 
 form input {
   color:$form-input-color;
   border:1px solid $form-input-color;
+  height:40px;
 }
 
 .required label::before {
     content: "*";
     padding-right: 4px;
     font-size: 16px;
-    color: #1fbad6;
+    color: $primary-color;
 }
 
 .require-asterisk {
   font-size: 16px;
-  color: #1fbad6;
+  color: $primary-color;
 }

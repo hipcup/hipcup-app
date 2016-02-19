@@ -1,17 +1,17 @@
 
-.coffeeRunForm input {
-  height:15px;
-  width:200px;
-}
+.coffee-run-info {
+  margin-top:170px;
+  margin-bottom:50px;
+  max-width:600px;
+  padding:20px 40px;
+  text-align: center;
+  border:1px solid $primary-color;
 
-.coffeeRunForm div {
-  margin:10px;
-}
-
-.coffeeRunForm label {
-  margin-right:10px;
+  h1 {
+    @include font-size(3);
+  }
 }
 
 .selectedStore {
-  color:orange;
+  color:$primary-color;
 }

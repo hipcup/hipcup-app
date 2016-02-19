@@ -82,7 +82,7 @@ class CoffeeOrderForm extends React.Component {
 
   render() {
     return (
-      <div className="coffeeOrderForm order-form center-block col-xs-12 col-sm-8 col-md-6 col-lg-5">
+      <div className="coffeeOrderForm order-form col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
         <article>
           <form className="form-vertical">
             <div className="form-title">
@@ -92,12 +92,12 @@ class CoffeeOrderForm extends React.Component {
             <div className="input-group required col-xs-12 col-sm-11">
               <label>NAME</label>
               <input type="text" className="form-control" ref="caffeinatorName" placeholder="First Name" onChange={this.setcaffeinatorName} aria-describedby="basic-addon1" />
-              {this.displayAlphaError()}
+              <span className="form-error">{this.displayAlphaError()}</span>
             </div>
              <div className="input-group required col-xs-12 col-sm-11">
               <label>DRINK ORDER</label>
               <input type="text" className="form-control"  name="drinkOrder" ref="drinkOrder" placeholder="Drink Name" onChange={this.setDrinkOrder} aria-describedby="basic-addon1" />
-              {this.displayAlphaNumericError()}
+              <span className="form-error">{this.displayAlphaNumericError()}</span>
             </div>
             <div className="input-group required col-xs-12 col-sm-11">
               <label>DRINK SIZE</label>
@@ -112,11 +112,11 @@ class CoffeeOrderForm extends React.Component {
               <input type="text" className="form-control" name="modifications" ref="modifications" placeholder="Customize It" aria-describedby="basic-addon1"  />
             </div>
             <div className="input-group col-xs-12 col-sm-11">
-              <button type="submit" className="btn btn-default" onClick={this.handleClick}>Place Order</button>
+              <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Place Order</button>
               <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
             </div>
             <span>{ this.state.orderStatus }</span>
-            { this.displayServerErrorMsg() }
+            <span className="form-error">{ this.displayServerErrorMsg() }</span>
           </form>
         </article>
       </div>
