@@ -16,7 +16,6 @@ class LandingBox extends React.Component {
       <div className="jumbotron">
         <div className="container landing">
           <CustomCoffeeShopSearch />
-          <Landing { ...this.props } />
         </div>
       </div>
    )

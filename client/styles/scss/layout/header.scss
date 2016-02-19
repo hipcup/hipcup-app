@@ -1,7 +1,21 @@
 
 .logo {
-  display: block;
+  display: inline-block;
   width:160px;
   height:auto;
   padding:10px;
+}
+
+.header-btn {
+  position:absolute;
+  top:30px;
+  right:20px;
+  z-index:1;
+  
+  a {
+    @include font-size(1.2);
+    color:$primary-color;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 }

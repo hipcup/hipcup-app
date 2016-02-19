@@ -19,19 +19,6 @@
   height: 100%;
   background-color: rgba(248, 247, 216, 0.3);
   text-align: center;
-
-  .button.button {
-    position:absolute;
-    top:30px;
-    right:20px;
-    z-index:1;
-    
-    a {
-      @include font-size(1.2);
-      color:$primary-color;
-      text-transform: uppercase;
-    }
-  }
 }
 
 .jumbotron-content {

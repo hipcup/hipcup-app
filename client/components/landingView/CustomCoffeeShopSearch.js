@@ -14,7 +14,7 @@ class Landing extends React.Component {
             <h1>Find Your Cup</h1>
               <div className="input-group">
                 <span className="input-group-addon" id="basic-addon1"><i className="glyphicon glyphicon-search"></i></span>
-                <input type="text" className="form-control" placeholder="Search Coffee Store" />
+                <input type="text" className="form-control" placeholder="Search Coffee Shop" />
               </div>
           </form>
         </div>
