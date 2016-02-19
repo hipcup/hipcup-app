@@ -11,8 +11,8 @@ class SelectCoffeeStoreBeforeRunError extends React.Component {
       <div className="coffeerun-redirect">
         <img src="../../assets/coffeerun.png" />
         <h2>Sorry to spill the beans</h2>
-        <span>To make a run, you need to select a coffee store first.</span>
-        <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Store</button>
+        <span>To make a run, you need to select a coffee shop first.</span>
+        <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Shop</button>
       </div>
     )
   }
