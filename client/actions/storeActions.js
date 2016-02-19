@@ -20,7 +20,7 @@ export const fetchStores = () => {
       try {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
-          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"],0));
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["formatted_address"],0));
         } else {
           dispatch(fetchStoresError(stores));
         }
