@@ -8,9 +8,11 @@ class SelectCoffeeStoreBeforeRunError extends React.Component {
 
   displayRedirect() {
     return (
-      <div>
-        <span>To make a run, you will need to select a coffee store first.</span>
-        <button type="submit" onClick={() => this.props.routeActions.push('/')}>Click to start a run</button>
+      <div className="coffeerun-redirect">
+        <img src="../../assets/coffeerun.png" />
+        <h2>Sorry to spill the beans</h2>
+        <span>To make a run, you need to select a coffee store first.</span>
+        <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Store</button>
       </div>
     )
   }
