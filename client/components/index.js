@@ -1,5 +1,5 @@
 export Landing from './landingView/Landing'
-export CustomCoffeeShopSearch from './landingView/CustomCoffeeShopSearch'
+export jumbotronSearch from './landingView/jumbotronSearch'
 export Header from './appView/Header'
 export Footer from './appView/Footer'
 export Shop from './searchResultsView/Shop'

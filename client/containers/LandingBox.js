@@ -1,6 +1,6 @@
 import React from 'react'
 import Landing from '../components/landingView/Landing.js'
-import CustomCoffeeShopSearch from '../components/landingView/CustomCoffeeShopSearch.js'
+import JumbotronSearch from '../components/landingView/jumbotronSearch.js'
 import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
@@ -15,7 +15,7 @@ class LandingBox extends React.Component {
     return (
       <div className="jumbotron">
         <div className="container landing">
-          <CustomCoffeeShopSearch />
+          <JumbotronSearch />
         </div>
       </div>
    )
