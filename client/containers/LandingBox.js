@@ -1,5 +1,6 @@
 import React from 'react'
 import Landing from '../components/landingView/Landing.js'
+import CustomCoffeeShopSearch from '../components/landingView/CustomCoffeeShopSearch.js'
 import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
@@ -12,8 +13,11 @@ class LandingBox extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Landing { ...this.props } />
+      <div className="jumbotron">
+        <div className="container landing">
+          <CustomCoffeeShopSearch />
+          <Landing { ...this.props } />
+        </div>
       </div>
    )
   }

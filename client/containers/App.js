@@ -12,7 +12,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <div style={{ marginTop: '1.5em' }}>{this.props.children}</div>
+        <div>{this.props.children}</div>
         <Footer />
      </div>
    )

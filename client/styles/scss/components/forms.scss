@@ -24,10 +24,8 @@
     display: block;
   } 
   input {
-    color:$form-input-color;
     display: block;
     height:$form-el-height;
-    border:1px solid $form-input-color;
   }
   button {
     background-color: $primary-color;
@@ -41,6 +39,11 @@
     text-align: center;
     margin-top:10px;
   }
+}
+
+form input {
+  color:$form-input-color;
+  border:1px solid $form-input-color;
 }
 
 .required label::before {

@@ -9,8 +9,10 @@
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "google-map-react": "^0.10.3",
     "history": "^1.14.0",
+    "img-loader": "^1.2.2",
     "moment": "^2.11.2",
     "mongoose": "^4.3.7",
     "morgan": "^1.6.1",
@@ -23,7 +25,8 @@
     "redux": "^3.0.4",
     "redux-thunk": "^1.0.3",
     "request": "^2.67.0",
-    "style-loader": "^0.13.0"
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7"
   },
   "devDependencies": {
     "babel-core": "^6.1.21",

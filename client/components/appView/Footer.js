@@ -8,8 +8,8 @@ class Footer extends React.Component {
   render() {
     return ( 
       <footer>
-        <div className="row">
-          <div className="col-sm-12">
+        <div>
+          <div>
             <ul>
               <li>
               <a href="https://github.com/hipcup/hipcup-app" target="_blank">© Hipcup 2015<i className="icon fa fa-github"></i></a>
