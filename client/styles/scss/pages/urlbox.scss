@@ -1,0 +1,25 @@
+
+.url-box {
+  max-width: 600px;
+  margin:60px auto;
+  border:1px solid $primary-color;
+  padding:30px;
+  text-align: center;
+
+  h2 {
+    display: block;
+  }
+
+  span {
+    display: block;
+    font-family:$accent-font;
+    margin:10px auto 20px auto;
+  }
+
+  a {
+    color:$primary-color;
+    @include font-size(2.5)
+    margin:20px;
+    word-wrap: break-word;
+  }
+}

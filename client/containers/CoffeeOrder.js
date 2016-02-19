@@ -14,9 +14,7 @@ class CoffeeOrder extends React.Component {
 
   render() {
     return (
-      <div>
-        <CoffeeOrderForm { ...this.props }/>
-      </div>
+      <CoffeeOrderForm { ...this.props }/>
     )
   }
 }

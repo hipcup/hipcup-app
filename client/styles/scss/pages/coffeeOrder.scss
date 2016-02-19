@@ -1,0 +1,39 @@
+
+.coffee-run-info {
+  margin-top:170px;
+  margin-bottom:50px;
+  max-width:600px;
+  padding:20px 40px;
+  text-align: center;
+  border:1px solid $primary-color;
+
+  h1 {
+    @include font-size(3);
+  }
+}
+
+.selectedStore {
+  color:$primary-color;
+}
+
+
+.coffeerun-redirect {
+  margin:120px auto 0 auto;
+  text-align: center;
+  img {
+    display:block;
+    margin:0 auto;
+    width:300px;
+    height:auto;
+
+  }
+  span {
+    display: block;
+    font-family: $primary-font;
+    margin-top:20px;
+  }
+
+  button {
+    margin-top:15px;
+  }
+}

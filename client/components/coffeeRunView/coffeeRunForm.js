@@ -78,42 +78,44 @@ class CoffeeRunForm extends React.Component {
 
   displayCoffeeForm() {
       return (
-        <form>
-          <div> Make a coffee run to { this.props.selectedStore }</div>
-          <span onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
-          <div>
-            <label>Name:</label>
-            <input type="text" name="runnerName" ref="runnerName" onChange={this.setRunnerName} require />
-            <span className="required">required</span>
-            {this.displayAlphaError()}
-          </div>
-          <div>
-            <label>Leaving In:</label>
-            <input type="text" name="timeQuantity" ref="timeAmount" onChange={this.setTimeAmount} require />
-            <select name="TimeUnit" ref="timeUntilDuration" onChange={this.setTimeUnit}>
-              <option select value="minutes">minutes</option>
-              <option value="hours">hours</option>
-            </select>         
-            <span className="required">required</span>
-            {this.displayRangeError()}
-          </div>
-          <div>
-            <label>Max Coffee Orders:</label>
-            <input type="text" name="maxOrders" ref="maxOrders" onChange={this.setMaxOrders} require/>
-            <span className="required">required</span>
-            { this.displayNumericError()}
-          </div>
-          <div>
-            <label>Slack Channel:</label>
-            <select name="slackChannels" ref="slackChannel">
-              <option select value="defaultChannel">Default Channel</option>
-              <option value="defaultChannel2">Default Channel2</option>
-            </select>
-          </div>
-          <button type="submit" onClick={this.handleClick}>Create Run</button>
-          { this.state.runStatus }
-          { this.displayServerErrorMsg() }
-        </form>
+        <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-5 col-lg-6">
+          <form className="form-vertical">
+            <div className="form-title"> Make a coffee run to { this.props.selectedStore }</div>
+            <span className="form-require">Required<span className="require-asterisk">*</span></span>
+            <span className="select-different-shop" onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
+            <div className="input-group required col-xs-12 col-sm-11">
+              <label>Name:</label>
+              <input type="text" className="form-control" ref="runnerName" onChange={this.setRunnerName} require />
+              <span className="form-error">{this.displayAlphaError()}</span>
+            </div>
+            <div className="input-group col-xs-6 col-sm-5 col-md-6 col-lg-6">
+              <label>Leaving In:</label>
+              <input type="text" className="form-control" ref="timeAmount" onChange={this.setTimeAmount} require />
+            </div>
+            <div className="input-groupcol-xs-6 col-sm-5 col-md-6 col-lg-6">
+              <select className="form-control" ref="timeUntilDuration" onChange={this.setTimeUnit}>
+                <option select value="minutes">minutes</option>
+                <option value="hours">hours</option>
+              </select>         
+            </div>
+            <span className="form-error col-xs-11 col-sm-11 col-md-11 col-lg-11">{this.displayRangeError()}</span>
+            <div className="input-group required col-xs-12 col-sm-11">
+              <label>Max Coffee Orders:</label>
+              <input type="text" className="form-control" ref="maxOrders" onChange={this.setMaxOrders} require/>
+              <span className="form-error">{ this.displayNumericError()}</span>
+            </div>
+            <div className="input-group required col-xs-12 col-sm-11">
+              <label>Slack Channel:</label>
+              <select className="form-control" name="slackChannels" ref="slackChannel">
+                <option select value="defaultChannel">Default Channel</option>
+                <option value="defaultChannel2">Default Channel2</option>
+              </select>
+            </div>
+            <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Create Run</button>
+            <span className="form-error">{ this.state.runStatus }</span>
+            <span className="form-error">{ this.displayServerErrorMsg() }</span>
+          </form>
+        </div>
       )
   }
 
