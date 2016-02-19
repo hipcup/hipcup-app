@@ -19,10 +19,10 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick}>Find nearby coffee shops</button>
-     </div>
-   )
+      <div className="button header-btn">
+        <a onClick={this.handleClick}>Make a Run Near Me</a>
+      </div>
+    )
   }
 }
 

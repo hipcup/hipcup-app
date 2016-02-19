@@ -1,17 +1,38 @@
 
-.coffeeRunForm input {
-  height:15px;
-  width:200px;
-}
+.coffeeRunForm {
+  input {
+    height:$form-el-height;
+    width:200px;
+  }
 
-.coffeeRunForm div {
-  margin:10px;
-}
+  .form-title {
+    display: inline-block;
+  }
 
-.coffeeRunForm label {
-  margin-right:10px;
-}
+  .form-title span {
+    float:none;
+  }
 
-.selectedStore {
-  color:orange;
+  .form-require {
+    float:right;
+  }
+
+  .order-form .form-title {
+    margin:2px auto;
+  }
+
+  label {
+    margin-right:10px;
+  }
+
+  .require-asterisk {
+    float:right;
+  }
+
+  .select-different-shop {
+    display: block;
+    @include font-size(1)
+    cursor:pointer;
+
+  }
 }

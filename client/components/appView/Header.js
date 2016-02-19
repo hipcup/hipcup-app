@@ -7,9 +7,7 @@ class Header extends React.Component {
 
   render() {
     return ( 
-      <div className="logo-box">
-        <img src="../assets/Hipcup_logo.png" className="logo" alt="Hipcup Logo"/>
-      </div>
+      <img src="../assets/hipcuplogo.png" className="logo" alt="Hipcup Logo"/>
    )
   }
 }

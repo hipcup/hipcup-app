@@ -35,7 +35,7 @@ class CoffeeRunInfo extends React.Component {
         var seconds = Math.floor( (duration/1000) % 60 );
         var minutes = Math.floor( (duration/1000/60) % 60 );
         var hours = Math.floor( (duration/(1000*60*60)) % 24 );
-        var time = 'Hours:'+hours+' Minutes: '+minutes+' Seconds: '+seconds;
+        var time = 'Hours: ' + hours + ' Minutes: '+ minutes +' Seconds: '+ seconds;
       
         this.setTimeRemaining(time, duration);
       }, 1000);
@@ -44,10 +44,8 @@ class CoffeeRunInfo extends React.Component {
 
   setTimeRemaining(newTime, duration) {
     if(duration <= 0){
-      console.log('inside!');
       this.setState({timeRemaining: 'Now'});
     } else {
-      console.log('ELSE!');
       this.setState({timerRunning: true});
       this.setState({timeRemaining: newTime});
     }
@@ -88,11 +86,13 @@ class CoffeeRunInfo extends React.Component {
       return null
     } else if (coffeeRunID) {
       return (
-        <div>
-          <div>
-            <h1>{this.props.runnerName} is making a run to {this.props.coffeeShop}</h1>
-            <h2>{this.props.address}</h2>
-            <h2>Coffee run expires at: {this.state.timeRemaining}</h2>
+        <div className="row">
+          <div className="coffee-run-info col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-md-push-1 col-lg-4 col-lg-push-1">
+            <h1>{this.props.runnerName} is making a run to</h1>
+            <h2>{this.props.coffeeShop}</h2>
+            <span>{this.props.address}</span>
+            <h4>Coffee run expires in</h4>
+            <span>{this.state.timeRemaining}</span>
           </div>
           { this.displayCoffeeOrderForm() }
         </div>

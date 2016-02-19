@@ -1,0 +1,29 @@
+html {
+  font-size: 62.5%;
+  font-family:$primary-font;
+}
+
+a {
+  text-decoration: none;
+  color:#000;
+  cursor: pointer;
+}
+
+span {
+  font-family: $primary-font;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $accent-font;
+}
+
+h1 {
+  @include font-size(4.5);
+}
+
+/* overrides default bootstrap on-focus border-color */
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: $primary-color;
+    box-shadow: 0 1px 1px rgba(173,79,114, 0.075) inset, 0 0 8px rgba(173,79,114,0.6);
+    outline: 0 none;
+}
