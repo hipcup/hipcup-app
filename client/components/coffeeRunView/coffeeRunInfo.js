@@ -1,5 +1,6 @@
 import React from 'react'
 import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
+import CoffeeRunResults from './coffeeRunResults.js'
 import moment from 'moment';
 
 class CoffeeRunInfo extends React.Component {
@@ -13,7 +14,8 @@ class CoffeeRunInfo extends React.Component {
     this.setTimeRemaining.bind(this);
     this.state = {
       timeRemaining: ' ',
-      timerRunning: false
+      timerRunning: false,
+      timerEnded: false
     };
   }
   
@@ -27,7 +29,8 @@ class CoffeeRunInfo extends React.Component {
   getTimerCountDown(timeOfRun) {
     // checks if timer has already started
     if(!this.state.timerRunning && this.state.timerRunning !== 0){
-      setInterval(() => {
+      var timer;
+      timer = setInterval(() => {
         var eventTime = moment(timeOfRun);
         var currentTime = new Date();
         var duration = moment.duration(eventTime.diff(currentTime)).asMilliseconds();
@@ -36,7 +39,11 @@ class CoffeeRunInfo extends React.Component {
         var minutes = Math.floor( (duration/1000/60) % 60 );
         var hours = Math.floor( (duration/(1000*60*60)) % 24 );
         var time = 'Hours: ' + hours + ' Minutes: '+ minutes +' Seconds: '+ seconds;
-      
+
+        if(duration <= 0){
+          clearInterval(timer);
+        }
+
         this.setTimeRemaining(time, duration);
       }, 1000);
     }
@@ -44,7 +51,8 @@ class CoffeeRunInfo extends React.Component {
 
   setTimeRemaining(newTime, duration) {
     if(duration <= 0){
-      this.setState({timeRemaining: 'Now'});
+      this.setState({timeRemaining: null});
+      this.setState({timerEnded: true});
     } else {
       this.setState({timerRunning: true});
       this.setState({timeRemaining: newTime});
@@ -76,7 +84,9 @@ class CoffeeRunInfo extends React.Component {
         <CoffeeOrderForm />
       )
     } else {
-      return null
+      return (
+        <CoffeeRunResults { ...this.props }/>
+      )
     }
   }
 
@@ -91,7 +101,7 @@ class CoffeeRunInfo extends React.Component {
             <h1>{this.props.runnerName} is making a run to</h1>
             <h2>{this.props.coffeeShop}</h2>
             <span>{this.props.address}</span>
-            <h4>Coffee run expires in</h4>
+            <h4>Coffee run expire{this.state.timerEnded ? <span>d!</span> : <span>s in</span>}</h4>
             <span>{this.state.timeRemaining}</span>
           </div>
           { this.displayCoffeeOrderForm() }
