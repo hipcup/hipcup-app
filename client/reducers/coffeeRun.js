@@ -5,7 +5,6 @@ import {
   ERROR_CREATING_COFFEE_RUN_FORM,
   COFFEE_RUN_SUCCESSFULLY_CREATED,
   CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED
-
 } from '../actions/coffeeRunActions'
 
 const initialState = {
