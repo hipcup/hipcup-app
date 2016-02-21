@@ -17,6 +17,9 @@ var googleApi = require('./googleApiStoreData.js');
   // fetch a coffee run 
     app.post('/fetchRun', coffeeRun.fetchRun);
 
+  // fetch a coffee run results 
+    app.post('/fetchResults', coffeeRun.fetchResults);
+
   // add a coffee order to a coffee run
     app.post('/placeOrder', coffeeOrder.placeOrder);
 
