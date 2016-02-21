@@ -1,6 +1,6 @@
 import React from 'react'
 import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
-import CoffeeRunResults from './coffeeRunResults.js'
+import CoffeeRunResults from '../../containers/CoffeeRunResults.js'
 import moment from 'moment';
 
 class CoffeeRunInfo extends React.Component {
@@ -85,7 +85,7 @@ class CoffeeRunInfo extends React.Component {
       )
     } else {
       return (
-        <CoffeeRunResults { ...this.props }/>
+        <CoffeeRunResults />
       )
     }
   }
