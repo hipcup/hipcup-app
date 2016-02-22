@@ -8,7 +8,6 @@ class Header extends React.Component {
 
   handleClick() {
     const { routeActions } = this.props;
-    console.log("on click");
     routeActions.push('/')
   }
 

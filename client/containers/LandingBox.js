@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
 
-import * as fetchStores from '../actions/storeActions'
+import * as storeActions from '../actions/storeActions'
 
 class LandingBox extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class LandingBox extends React.Component {
     return (
       <div className="jumbotron">
         <div className="container landing">
-          <JumbotronSearch />
+          <JumbotronSearch { ...this.props } />
         </div>
       </div>
    )
@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchStores: bindActionCreators(fetchStores, dispatch),
-    actionRoute: bindActionCreators(routeActions, dispatch)
+    storeActions: bindActionCreators(storeActions, dispatch),
+    routeActions: bindActionCreators(routeActions, dispatch)
   }
 }
 
