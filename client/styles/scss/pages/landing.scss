@@ -58,5 +58,44 @@
   }
 }
 
+.clearfix {
+  clear:both;
+}
 
+.landing-howto {
+  margin:200px auto 60px auto;
 
+  ul {
+    max-width:600px;
+    margin:0 auto;
+  }
+
+  li {
+    display: block;
+    margin:40px auto;
+    text-align: left;
+  }
+
+  span {
+    @include font-size(2);
+  }
+  img {
+    width:80px;
+    height:auto;
+    margin-right:30px;
+  }
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1; /* ie 6/7 */
+}

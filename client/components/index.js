@@ -1,5 +1,6 @@
 export makeRunButton from './appView/makeRunButton'
 export jumbotronSearch from './landingView/jumbotronSearch'
+export HowTo from './landingView/HowTo'
 export Header from './appView/Header'
 export Footer from './appView/Footer'
 export Shop from './searchResultsView/Shop'
