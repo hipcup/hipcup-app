@@ -5,7 +5,7 @@ var request = require('request');
 // models ======================================================================
 var coffeeRun = require('./controllers/coffeeRun.js');
 var coffeeOrder = require('./controllers/coffeeOrder.js');
-var googleApi = require('./googleApiStoreData.js');
+var fetchCoffeeShops = require('./fetchCoffeeShops.js');
 
 // routes ======================================================================
 
@@ -21,16 +21,33 @@ var googleApi = require('./googleApiStoreData.js');
     app.post('/placeOrder', coffeeOrder.placeOrder);
 
   // Google APIs -------------------------------------------------------------
-  // Get user's geolocation 
-    app.post('/google', function(req, res, next){
-      googleApi.apiGeolocationData().then(function(data) {
-        return googleApi.apiPlacesData(data)
+
+    // Fetch nearby coffee stores by coffee store name and address
+    app.post('/fetchcoffeeshopnearaddress', function(req, res, next){
+      fetchCoffeeShops.apiGeocodedAddress(req.body).then(function(data) {
+        return fetchCoffeeShops.apiSpecificStoreData(data)
       }).then(function(data) {
-        return googleApi.formatCoffeeShopsData(data);
+        return fetchCoffeeShops.formatCoffeeShopsData(data);
       }).then(function(data) {
-        return googleApi.apiDistanceData(data);
+        return fetchCoffeeShops.apiDistanceData(data);
       }).then(function(data) {
-        return googleApi.formatDistanceData(data);
+        return fetchCoffeeShops.formatDistanceData(data);
+      }).then(function(data) {
+          console.log("FINAL DATA:", data)
+        res.send(data);
+      })
+    });
+
+  // Fetch nearby coffee stores by user's geolocation
+    app.post('/fetchnearbycoffeestores', function(req, res, next){
+      fetchCoffeeShops.apiGeolocationData().then(function(data) {
+        return fetchCoffeeShops.apiPlacesData(data)
+      }).then(function(data) {
+        return fetchCoffeeShops.formatCoffeeShopsData(data);
+      }).then(function(data) {
+        return fetchCoffeeShops.apiDistanceData(data);
+      }).then(function(data) {
+        return fetchCoffeeShops.formatDistanceData(data);
       }).then(function(data) {
         res.send(data);
       })

@@ -1,11 +1,12 @@
 import React from 'react'
-import Landing from '../components/landingView/Landing.js'
-import CustomCoffeeShopSearch from '../components/landingView/CustomCoffeeShopSearch.js'
+import JumbotronSearch from '../components/landingView/jumbotronSearch.js'
+import HowTo from '../components/appView/howTo.js'
+
 import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
 
-import * as fetchStores from '../actions/storeActions'
+import * as storeActions from '../actions/storeActions'
 
 class LandingBox extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class LandingBox extends React.Component {
     return (
       <div className="jumbotron">
         <div className="container landing">
-          <CustomCoffeeShopSearch />
+          <JumbotronSearch { ...this.props } />
+          <HowTo />
         </div>
       </div>
    )
@@ -30,8 +32,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchStores: bindActionCreators(fetchStores, dispatch),
-    actionRoute: bindActionCreators(routeActions, dispatch)
+    storeActions: bindActionCreators(storeActions, dispatch),
+    routeActions: bindActionCreators(routeActions, dispatch)
   }
 }
 

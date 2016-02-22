@@ -5,6 +5,28 @@ var helper = require('./helperfunctions').serverHelperFunctions;
 var google_api_key = require('../server/keys/config.js').google_api_key;
 
 
+// Fetch coffee shop by name and address 
+exports.apiGeocodedAddress = function(data){
+  var location = data.location.split(' ').join('+');
+  var deferred = Q.defer();
+
+  request.post({url:'https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key='+google_api_key}, function(err, res, body){
+    if(err){
+      console.log("error:", err);
+      deferred.reject("error within google geolocation POST request");
+    }
+    if(!err && res.statusCode === 200){
+      deferred.resolve(JSON.parse(body))
+    }
+    else {
+      deferred.reject("alt error");
+    }
+  });
+
+  return deferred.promise;
+};
+
+// Fetch user's geolocation
 exports.apiGeolocationData = function(){
   var deferred = Q.defer();
 
@@ -25,6 +47,32 @@ exports.apiGeolocationData = function(){
 };
 
 // Fetch stores based on user's lat and long 
+exports.apiSpecificStoreData = function(data){
+  console.log("data inside apiSpecificStoreData", data);
+  var lat = data.results[0].geometry.location.lat;
+  var lng = data.results[0].geometry.location.lng;
+
+  var deferred = Q.defer();
+
+  request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee&location='+lat+','+lng+'&radius=5000&key='+google_api_key, function(err, res, body){
+     if(err){
+       console.log("error:", err);
+       deferred.reject("error within googleplaces GET request");
+     }
+     if(!err && res.statusCode === 200){
+      console.log("apiSpecificStoreData", body)
+       deferred.resolve({stores: JSON.parse(body), lat: lat, lng: lng})
+     }
+     else {
+       deferred.reject("alt error");
+     }
+   });
+
+   return deferred.promise;
+};
+
+
+// Fetch stores based on user's lat and long 
 exports.apiPlacesData = function(data){
   var lat = data.location.lat;
   var lng = data.location.lng;
@@ -37,7 +85,7 @@ exports.apiPlacesData = function(data){
        deferred.reject("error within googleplaces GET request");
      }
      if(!err && res.statusCode === 200){
-       deferred.resolve({stores: JSON.parse(body), lat: lat, lng: lng})
+      deferred.resolve({stores: JSON.parse(body), lat: lat, lng: lng})
      }
      else {
        deferred.reject("alt error");
@@ -109,7 +157,6 @@ exports.apiDistanceData = function(data) {
       deferred.reject("alt error");
     }
    });
-
 
   return deferred.promise;
 };
