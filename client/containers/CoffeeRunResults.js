@@ -24,7 +24,8 @@ const mapStateToProps = (state) => {
   return {
     orders:           state.coffeeResultsReducer.orders,
     numOrdersPlaced:  state.coffeeResultsReducer.numOrdersPlaced,
-    pathname:             state.routing.location.pathname,
+    pathname:         state.routing.location.pathname,
+    isFetchingCoffeeResults: state.coffeeResultsReducer.isFetchingCoffeeResults
   }
 }
 
