@@ -51,7 +51,7 @@ class ShopsList extends React.Component {
 
   render() { 
     return (
-      <div className="shopListContainer">
+      <div className="shopList">
         <div>
           <button onClick={this.handleClick}>make a coffee run to {this.props.selectStore}</button>
           <div> { this.displayStores() } </div>

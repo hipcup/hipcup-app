@@ -1,101 +1,65 @@
 
-.jumbotron {
-  position:absolute;
-  top:0;
-  width:100%;
-  height:60%;
-  min-height:500px;
-  z-index:-1; /* allows header logo to go on top */
-  background-image: url('./../../assets/jumbotron-bg.png');
-  background-size: cover;
-}
-
-/* creates an overlay on the jumbotron */
-.landing {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-}
-
-.jumbotron-content {
-  display: inline-block;
-  margin:160px auto 15px auto;
-  z-index:1;
-
-  form {
-    margin:0 auto;
-    color: $neutral-color;
-
-    input {
-      background-color:rgba(255,255,255,0.5);
-      border-color:$primary-color;
-      color:#000;
-      font-weight:bold;
-      width:43%;
-      height:50px;
-    }
-
-    .input-group-addon {
-      border-color:$primary-color;
-    }
-
-    .glyphicon {
-      color:$primary-color;
-    }
-
-    ::-webkit-input-placeholder {
-     font-size: 14px;
-     color: $primary-color;
-    }
-
-    span {
-      background-color: transparent;
-    }
-  }
-}
-
-.clearfix {
-  clear:both;
-}
-
 .landing-howto {
-  margin:200px auto 60px auto;
-
-  ul {
-    max-width:600px;
-    margin:0 auto;
-  }
+  margin:225px auto 60px auto;
+  position:relative;
 
   li {
+    display: inline-block;
+    margin-top:20px;
+    margin-bottom:20px;
+    text-align: center;
+    float:none;
+  }
+
+  h1 {
     display: block;
-    margin:40px auto;
-    text-align: left;
+    color:#000;
+  }
+
+  img {
+    display: block;
+    width:80px;
+    height:auto;
+    margin:0 auto;
   }
 
   span {
-    @include font-size(2);
-  }
-  img {
-    width:80px;
-    height:auto;
-    margin-right:30px;
+    color:#000;
+    width:80%;
   }
 }
 
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
+.landing-sections section {
+  background-size:cover;
+  min-height:500px;
 }
 
-.clearfix:after {
-  clear: both;
+.inner {
+  width:25%;
+  min-width:250px;
+  margin:0 10px 10px 30px;
+  padding:20px;
+  color:$primary-color;
+  background-color:rgba(255, 255, 255, 0.7);
 }
 
-.clearfix {
-  zoom: 1; /* ie 6/7 */
+.section-worldwide-outer {
+  margin-bottom:-10px;
+  background-image:url("../../assets/landing/landing-section-2.jpg");
+}
+
+.section-slack-outer {
+  background-image:url("../../assets/landing/landing-section-1.jpg");
+
+  .inner {
+    float: right;
+  }
+}
+
+.section-notification-outer {
+  background-image:url("../../assets/landing/landing-section-3.jpg");
+
+  .inner {
+    float:left;
+  }
 }

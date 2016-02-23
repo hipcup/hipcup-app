@@ -1,6 +1,6 @@
 import React from 'react'
 
-let imgSrc = './../assets/person.png'
+let imgSrc = './../assets/map/map-runner.png'
 
 class Usermarker extends React.Component {
   render() {
