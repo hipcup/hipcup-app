@@ -10,9 +10,9 @@
   }
 
   .form-title {
-    display: inline-block;
-  
-    span {
+      
+    h4 > span {
+      font-family:$accent-font;
       float:none;
     }
   }
@@ -31,8 +31,28 @@
 
   .select-different-shop {
     display: block;
+    text-align:left;
+    clear:both;
+    margin-bottom:10px;
     @include font-size(1)
     cursor:pointer;
 
   }
+
+  .timeOfRun {
+    padding-left: 0;
+
+    .timeAmount {
+      display: inline-block;
+      width:65%;
+      margin-right:20px;
+    }
+
+    .duration {
+      display: inline-block;
+      width:25%;
+      border-radius:$form-border-radius;
+    }
+  }
+  
 }

@@ -116,7 +116,7 @@ class CoffeeOrderForm extends React.Component {
               <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
             </div>
             <span className="order-status">{ this.state.orderStatus }</span>
-            <span className="form-error">{ this.displayServerErrorMsg() }</span>
+            <span className="order-status">{ this.displayServerErrorMsg() }</span>
           </form>
         </article>
       </div>
