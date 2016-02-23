@@ -63,7 +63,7 @@ export default function storeReducer(state = initialState, action) {
         selectedStoreAddress: action.selectedStoreAddress,
         key: action.key
       })
-      case UPDATE_FETCH_STORES_HAS_BEEN_CALLED: 
+    case UPDATE_FETCH_STORES_HAS_BEEN_CALLED: 
       return Object.assign({}, state, {
         fetchStoresHasBeenCalled: action.status
       })

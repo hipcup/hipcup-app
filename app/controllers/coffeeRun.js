@@ -56,8 +56,26 @@ exports.fetchRun = function(req,res) {
   });
 }
 
+exports.fetchResults = function(req, res) {
+  CoffeeRun.findOne({"coffeeRunID": req.body.coffeeRunID}, function(err, coffeeRun) {
+    console.log('coffeeRun inside fetchResults', coffeeRun);
+    if (err) {
+      helper.sendErrorResponse(res, err);
+    } else if (!coffeeRun) {
+      helper.sendErrorResponse(res, 'coffee run does not exist');
+    } else {
+        res.json({
+          coffeerun: {
+            orders:           coffeeRun.orders,
+            numOrdersPlaced:  coffeeRun.numOrdersPlaced,
+          },
+          success: true,
+          message: 'Coffee Results was fetched successfully'
+      });
+    }
+  })
+}
 
 function formatTimeUntilRun(amount, unit) {
   return moment().add(amount, unit); 
 }
-

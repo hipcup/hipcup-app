@@ -1,4 +1,3 @@
-
 exports.serverHelperFunctions = {
   sendErrorResponse: function(res, errorMessage) {
     res.send({
@@ -19,4 +18,3 @@ exports.serverHelperFunctions = {
     return upperCaseName.join(' ');
   } 
 }
-
