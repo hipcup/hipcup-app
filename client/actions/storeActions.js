@@ -5,7 +5,7 @@ export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN
 
 export const fetchStores = () => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/google', {
+    return fetch('http://127.0.0.1:3468/fetchnearbycoffeestores', {
         method: 'POST',
         mode: 'cors',
         cache: false,
@@ -19,7 +19,7 @@ export const fetchStores = () => {
       try {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
-          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["formatted_address"],0));
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"], 0));
         } else {
           dispatch(fetchStoresError(stores));
         }
@@ -30,6 +30,40 @@ export const fetchStores = () => {
     })
     .catch(err => console.error('Error in Fetch Stores:', err));
   }
+}
+
+export const fetchCoffeeShopByName = (location) => {
+  return dispatch => {
+    return fetch('http://127.0.0.1:3468/fetchcoffeeshopnearaddress', {
+        method: 'POST',
+        mode: 'cors',
+        cache: false,
+        body: JSON.stringify({
+          location: location
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        } 
+    }).then(stores => {
+      return stores.json();
+    }).then(stores => {
+      try {
+        if(stores.stores){
+          console.log("stores:", stores);
+          dispatch(fetchStoresSuccess(stores));
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"],0));
+        } else {
+          dispatch(fetchStoresError(stores));
+        }
+      } catch(e){
+        console.log("catch error", e)
+        dispatch(fetchStoresError(stores));
+      }
+    })
+    .catch(err => console.error('Error in Fetch Stores:', err));
+  }
+
 }
 
 export const updateFetchStoresHasBeenCalled = () => {

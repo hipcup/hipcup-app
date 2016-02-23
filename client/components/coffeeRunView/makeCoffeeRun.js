@@ -14,7 +14,7 @@ class makeCoffeeRun extends React.Component {
     // if there is no selectedStore
     if(this.props.selectedStore === "") {
       return (
-        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} />
+        <SelectCoffeeStoreBeforeRunError routeActions={this.props.routeActions} pathname={this.props.pathname} />
       )
       // if a store has been selected, but the coffee run could not be saved  
     } else if (this.props.selectedStore && !this.props.coffeeRunSuccessfullyCreated) {

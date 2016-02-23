@@ -7,20 +7,24 @@ class SelectCoffeeStoreBeforeRunError extends React.Component {
   }
 
   displayRedirect() {
-    return (
-      <div className="coffeerun-redirect">
-        <img src="../../assets/coffeerun.png" />
-        <h2>Sorry to spill the beans</h2>
+    if (this.props.pathname === '/makerun') {
+      return (
         <span>To make a run, you need to select a coffee shop first.</span>
-        <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Shop</button>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <span>No coffee run by that ID can be found. Please re-check your code or start a new coffee run.</span>
+      )
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className="coffeerun-redirect">
+        <img src="../../assets/coffeerun.png" />
+        <h2>Sorry to spill the beans</h2>
         { this.displayRedirect() }
+        <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Shop</button>
       </div>
     )
   }
