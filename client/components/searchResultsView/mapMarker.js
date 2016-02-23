@@ -1,7 +1,7 @@
 import React from 'react'
 
-let imgSelected = './../assets/Chemex-green.png'
-let imgNotSelected = './../assets/Chemex.png'
+let imgSelected = './../assets/map/map-coffeeshop-selected.png'
+let imgNotSelected = './../assets/map/map-coffeeshop.png'
 
 class Mapmarker extends React.Component {
   constructor() {

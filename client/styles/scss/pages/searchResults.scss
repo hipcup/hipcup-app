@@ -4,10 +4,11 @@
   width:100%;
 }
 
-.mapContainer, .shopListContainer {
+.map, .shopList {
   display: inline-block;
   position:relative;
   vertical-align: top;
   width:50%;
-  height:inherit;
+  height:500px;
+  overflow:scroll;
 }
