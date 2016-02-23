@@ -13,23 +13,23 @@ class HowTo extends React.Component {
           <div className="row">
             <ul>
               <li className="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-              <img src="../../assets/search.png"/>
+              <img src="../../assets/landing/search.png"/>
               <h3 className="instruction">1. Find A Nearby Coffee Shop</h3>
               <span>Search coffee shops near you or by specific address. Any coffee shop. Worldwide.</span>
 
               </li>
               <li className="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img src="../../assets/create.png"/>
+                <img src="../../assets/landing/create.png"/>
                 <h3 className="instruction">2. Select Details about Run</h3>
                 <span>Select coffee order and notification preferences. Send link to as many people as you would like!</span>
               </li>
               <li className="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img src="../../assets/plus.png"/>
+                <img src="../../assets/landing/plus.png"/>
                 <h3 className="instruction">3. Send Out an Order Link</h3>
                 <span>Send a link to friends or co-workers that allows them to place orders to your run.</span>
               </li>
               <li className="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                <img src="../../assets/runner.png"/>
+                <img src="../../assets/landing/runner.png"/>
                 <h3 className="instruction">4. Make a Run, Pick Up Orders</h3>
                 <span>All the coffee orders sent right to your phone. Notify everyone with the click of a button</span>
               </li>

@@ -20,7 +20,7 @@ class MapBox extends React.Component {
     }
 
     return (
-      <div className="mapContainer">
+      <div className="map">
         <Map { ...this.props } markers={markers}/>
       </div>
     )
