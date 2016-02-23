@@ -47,7 +47,7 @@ class JumbotronSearch extends React.Component {
                 <span className="input-group-addon" id="basic-addon1"><i className="glyphicon glyphicon-search"></i></span>
                 <input type="text" ref="coffeeShopLocation" className="form-control" placeholder="Find Coffee Shops Near Address ... " />
               </div>
-              <a className="stores-near-user" onClick={this.searchNearUser}>Or find coffee stores near me</a>
+              <a className="stores-near-user" onClick={this.searchNearUser}>Or find nearby coffee shops</a>
           </form>
         </div>
       </div>
