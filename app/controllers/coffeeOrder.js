@@ -24,7 +24,7 @@ exports.placeOrder = function(req, res) {
       return;
     } 
 
-  // send error if time before run has been exceeded
+    // send error if time before run has been exceeded
     if(coffeeRun.coffeeRunExpired) {
         helper.sendErrorResponse(res,"Sorry, this coffee run has expired. Try creating a new run!");
         return;

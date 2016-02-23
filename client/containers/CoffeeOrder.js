@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux'
 
 import * as coffeeOrderActions from '../actions/coffeeOrderActions'
 
-
 class CoffeeOrder extends React.Component {
   constructor(){
     super();
@@ -37,4 +36,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoffeeOrder); 
-

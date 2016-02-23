@@ -1,4 +1,3 @@
-
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 export const UPDATE_SELECT_STORE = 'UPDATE_SELECT_STORE'
@@ -20,7 +19,7 @@ export const fetchStores = () => {
       try {
         if(stores.stores){
           dispatch(fetchStoresSuccess(stores));
-          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"], 0));
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["formatted_address"],0));
         } else {
           dispatch(fetchStoresError(stores));
         }
@@ -53,7 +52,7 @@ export const fetchCoffeeShopByName = (location) => {
         if(stores.stores){
           console.log("stores:", stores);
           dispatch(fetchStoresSuccess(stores));
-          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["address"],0));
+          dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["formatted_address"],0));
         } else {
           dispatch(fetchStoresError(stores));
         }
