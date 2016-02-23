@@ -20,7 +20,7 @@ class App extends React.Component {
         <Header { ...this.props } />
         <MakeRunButton { ...this.props } />
         <div>{this.props.children}</div>
-        <Footer />
+
      </div>
    )
   }

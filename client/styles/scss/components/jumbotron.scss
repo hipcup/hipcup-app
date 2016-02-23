@@ -4,7 +4,7 @@
   top:0;
   width:100%;
   height:60%;
-  min-height:500px;
+  height:550px;
   z-index:-1; /* allows header logo to go on top */
   background-image: url('./../../assets/jumbotron-bg.png');
   background-size: cover;
@@ -23,7 +23,7 @@
 
 .jumbotron-content {
   display: inline-block;
-  margin:160px auto 15px auto;
+  margin:160px auto 50px auto;
   z-index:1;
 
   form {
@@ -56,4 +56,13 @@
      color: $primary-color;
     }
   }
+}
+
+.stores-near-user {
+  display: block;
+  margin:5px;
+  @include font-size(1.2);
+  text-decoration: underline;
+  cursor:pointer;
+  letter-spacing: 1.5px;
 }

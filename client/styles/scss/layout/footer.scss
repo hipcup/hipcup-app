@@ -1,10 +1,10 @@
 
 footer {
-  position:fixed;
   display: block;
+  // position:fixed;
+  // bottom:0;
   width:100%;
-  bottom:0;
-  margin-top:20px;
+  margin:20px auto 10px auto;
   text-align:center;
 
   li {
