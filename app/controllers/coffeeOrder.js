@@ -7,7 +7,7 @@ exports.placeOrder = function(req, res) {
 
   var coffeeOrder = new CoffeeOrder ({
     coffeeRunID:     req.body.coffeeRunID,
-    caffeinatorName: req.body.caffeinatorName,
+    caffeinatorName: helper.formatNames(req.body.caffeinatorName),
     drinkOrder:      req.body.drinkOrder,
     drinkSize:       req.body.drinkSize,
     modifications:   req.body.modifications
