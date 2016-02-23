@@ -115,7 +115,7 @@ class CoffeeOrderForm extends React.Component {
               <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Place Order</button>
               <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
             </div>
-            <span>{ this.state.orderStatus }</span>
+            <span className="order-status">{ this.state.orderStatus }</span>
             <span className="form-error">{ this.displayServerErrorMsg() }</span>
           </form>
         </article>
