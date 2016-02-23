@@ -43,3 +43,11 @@
   text-align:center;
   color:$primary-color;
 }
+
+
+/* removes margin that vertically centers coffeeruninfobox */
+@media (max-width: 980px) {
+  .coffee-run-info {
+    margin:20px auto 30px auto;
+  }
+}
