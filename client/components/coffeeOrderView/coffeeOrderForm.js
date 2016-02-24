@@ -112,7 +112,7 @@ class CoffeeOrderForm extends React.Component {
               <input type="text" className="form-control" name="modifications" ref="modifications" placeholder="Customize It" aria-describedby="basic-addon1"  />
             </div>
             <div className="input-group col-xs-12 col-sm-11">
-              <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Place Order</button>
+              <button type="submit" className="btn btn-default button col-xs-12 col-sm-12 col-md-12 col-lg-12" onClick={this.handleClick}>Place Order</button>
               <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
             </div>
             <span className="order-status">{ this.state.orderStatus }</span>

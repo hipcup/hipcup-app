@@ -81,7 +81,7 @@ class CoffeeRunForm extends React.Component {
         <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-5 col-lg-6">
           <form className="form-vertical">
             <div className="form-title"> 
-              <h4>Coffee run to { this.props.selectedStore }</h4>
+              <h4>Coffee run to{ this.props.selectedStore }</h4>
               <span className="form-require">Required<span className="require-asterisk">*</span></span>
             </div>
             <span className="select-different-shop" onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
@@ -111,7 +111,7 @@ class CoffeeRunForm extends React.Component {
                 <option value="defaultChannel2">Default Channel2</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-default button col-xs-12 col-sm-12 col-md-12 col-lg-12" onClick={this.handleClick}>Create Run</button>
+            <button type="submit" className="btn btn-default button col-xs-11 col-sm-11 col-md-11 col-lg-11" onClick={this.handleClick}>Create Run</button>
             <span className="order-status">{ this.state.runStatus }</span>
             <span className="order-status">{ this.displayServerErrorMsg() }</span>
           </form>

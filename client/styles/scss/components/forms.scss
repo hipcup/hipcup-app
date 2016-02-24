@@ -40,7 +40,9 @@
     -webkit-appearance: none;
     height:$form-el-height;
   }
-  button {
+  button, button:hover, button:active {
+    background-color: transparent;
+    border:1px solid $primary-color;
     margin:20px auto;
     color: $primary-color;
     height:$form-el-height;
