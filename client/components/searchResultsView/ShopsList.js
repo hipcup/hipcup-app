@@ -1,5 +1,7 @@
 import React from 'react'
+
 import Shop from './shop'
+import Spinner from './../spinner.js'
 
 class ShopsList extends React.Component {
   constructor(props) {
@@ -21,10 +23,7 @@ class ShopsList extends React.Component {
   displayLoadingSpinner(){
     if(!this.props.fetched){
       return(
-        <div className='spinner'>
-          <h1>Loading</h1>
-          <image src='./../assets/spinner.gif' />
-        </div>
+        <Spinner />
       )
     } else {
       return null;

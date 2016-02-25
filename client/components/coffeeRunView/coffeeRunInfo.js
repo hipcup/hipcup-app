@@ -1,9 +1,11 @@
 import React from 'react'
+import moment from 'moment';
+import HelperFunctions from '../../HelperFunctions.js'
+
 import CoffeeOrderForm from '../../containers/coffeeOrder.js'
 import CoffeeRunResults from '../../containers/coffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
-import HelperFunctions from '../../HelperFunctions.js'
-import moment from 'moment';
+import Spinner from '../spinner.js'
 
 class CoffeeRunInfo extends React.Component {
   constructor(){
@@ -35,7 +37,7 @@ class CoffeeRunInfo extends React.Component {
       timer = setInterval(() => {
         let duration = HelperFunctions.getDuration(timeOfRun)
         let time = HelperFunctions.getCountdown(duration);
-        
+
         if(duration <= 0){
           clearInterval(timer);
         }
@@ -62,10 +64,7 @@ class CoffeeRunInfo extends React.Component {
   displayLoadingSpinner(){
     if(this.props.isFetchingCoffeeRun) {
       return(
-        <div className='spinner'>
-          <h1>Loading</h1>
-          <image src='./../assets/spinner.gif' />
-        </div>
+        <Spinner />
       )
     } else {
       return null;
