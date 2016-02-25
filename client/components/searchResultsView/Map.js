@@ -25,7 +25,7 @@ class Map extends React.Component  {
     }
 
     return (
-      <div style={{width:'100%', height:'600px'}}>
+      <div style={{width:'100%', height:'700px'}}>
         {map}
       </div>
     )

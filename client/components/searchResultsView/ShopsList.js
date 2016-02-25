@@ -52,11 +52,12 @@ class ShopsList extends React.Component {
   render() { 
     return (
       <div className="shopList">
-        <div>
-          <button onClick={this.handleClick}>make a coffee run to {this.props.selectStore}</button>
-          <div> { this.displayStores() } </div>
+        <div className="results"> 
+          <h1>Coffee Shops</h1>
+          { this.displayStores() } 
           { this.displayLoadingSpinner() }
         </div>
+        <button onClick={this.handleClick} className="btn btn-submit button col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">make a coffee run to {this.props.selectStore}</button>
       </div>
     )
   }
