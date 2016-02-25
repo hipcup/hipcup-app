@@ -58,7 +58,6 @@ class CountdownTimer extends React.Component {
       return (
         <div>
           <h4>Sorry, this run has already taken place!</h4>
-          <span>{ this.state.timeExpiration }</span>
         </div>
       )
     }
