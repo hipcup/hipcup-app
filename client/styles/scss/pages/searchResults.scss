@@ -36,11 +36,21 @@
   .results {
     width:100%;
     height:455px;
-    min-width:600px;
+    min-width:400px;
     text-align:left;
     overflow-y: scroll;
     overflow:scroll;
 
+    .spinner {
+      display: block;
+      text-align:center;
+      margin:90px auto;
+
+      h1 {
+        margin:0 auto;
+        text-align: center;
+      }
+    }
   }
 
   .button, .button:focus, .button:active {
@@ -73,11 +83,6 @@
   }
 }
 
-.spinner {
-  display: block;
-  text-align:center;
-  margin:90px auto;
-}
 
 @media (max-width: 800px) {
   .shopList {

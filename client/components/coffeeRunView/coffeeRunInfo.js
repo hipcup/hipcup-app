@@ -49,11 +49,17 @@ class CoffeeRunInfo extends React.Component {
 
   setTimeRemaining(newTime, duration) {
     if(duration <= 0){
-      this.setState({timeRemaining: null});
-      this.setState({timerEnded: true});
+      this.setState({
+        timeRemaining: null,
+        timerEnded: true
+      });
+      // this.setState({timerEnded: true});
     } else {
-      this.setState({timerRunning: true});
-      this.setState({timeRemaining: newTime});
+      this.setState({
+        timerRunning: true,
+        timeRemaining: newTime
+      });
+      // this.setState({timeRemaining: newTime});
     }
   }
 

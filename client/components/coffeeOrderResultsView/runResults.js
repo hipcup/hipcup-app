@@ -9,7 +9,6 @@ class RunResults extends React.Component {
   }
 
   componentWillMount() {
-    console.log('componentWillMount inside RunResults');
     const { fetchCoffeeResults } = this.props.fetchCoffeeResults;
     // the coffeeRunID is the last 9 characters of the url
     var coffeeRunID = this.props.pathname.slice(-9);
@@ -46,7 +45,7 @@ class RunResults extends React.Component {
       return displayCoffeeOrders;
     } else {
       return (
-        <span>No coffee orders where placed</span>
+        <span>Sorry, there are no coffee orders to display.</span>
       )
     }
   }
