@@ -1,9 +1,10 @@
 import React from 'react'
 
 class SelectCoffeeStoreBeforeRunError extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.displayRedirect = this.displayRedirect.bind(this);
+    this.displayCoffeeRunError = this.displayCoffeeRunError.bind(this);
   }
 
   displayRedirect() {
@@ -18,13 +19,21 @@ class SelectCoffeeStoreBeforeRunError extends React.Component {
     }
   }
 
-  render() {
+  displayCoffeeRunError() {
     return (
       <div className="coffeerun-redirect">
         <img src="../../assets/coffeerun.png" />
         <h2>Sorry to spill the beans</h2>
         { this.displayRedirect() }
         <button type="submit" className="btn btn-default button" onClick={() => this.props.routeActions.push('/')}>Select a Shop</button>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+       { this.displayCoffeeRunError() }
       </div>
     )
   }

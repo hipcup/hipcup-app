@@ -5,8 +5,8 @@ import helperFunc from '../../HelperFunctions'
 
 
 class CoffeeRunForm extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.handleClick = this.handleClick.bind(this);
     this.createCoffeeRun = this.createCoffeeRun.bind(this);
     this.displayCoffeeForm = this.displayCoffeeForm.bind(this);
@@ -154,7 +154,7 @@ class CoffeeRunForm extends React.Component {
   render() {
     return (
       <div className="coffeeRunForm">
-       {this.displayCoffeeForm()}
+       { this.displayCoffeeForm() }
       </div>
     )
   }

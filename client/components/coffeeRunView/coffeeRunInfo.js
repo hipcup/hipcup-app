@@ -9,8 +9,8 @@ import CountdownTimer from './countdownTimer'
 import Spinner from '../spinner.js'
 
 class CoffeeRunInfo extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.displayCoffeeInfo.bind(this);
     this.displayLoadingSpinner.bind(this);
     this.displayCoffeeOrderForm.bind(this);

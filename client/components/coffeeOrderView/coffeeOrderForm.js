@@ -5,6 +5,7 @@ class CoffeeOrderForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.displayCoffeeOrderForm = this.displayCoffeeOrderForm.bind(this);
     this.createCoffeeOrder = this.createCoffeeOrder.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayAlphaNumericError = this.displayAlphaNumericError.bind(this);
@@ -80,7 +81,7 @@ class CoffeeOrderForm extends React.Component {
     }  
   }
 
-  render() {
+  displayCoffeeOrderForm() {
     return (
       <div className="coffeeOrderForm order-form col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
         <article>
@@ -119,6 +120,14 @@ class CoffeeOrderForm extends React.Component {
             <span className="order-status">{ this.displayServerErrorMsg() }</span>
           </form>
         </article>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        { this.displayCoffeeOrderForm() }
       </div>
     )
   }

@@ -4,8 +4,8 @@ import Mapmarker from './mapMarker.js'
 import Usermarker from './userMarker.js'
 
 class MapBox extends React.Component {
-  constructor(){
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
