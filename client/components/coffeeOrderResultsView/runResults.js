@@ -1,4 +1,5 @@
 import React from 'react'
+import Spinner from './../Spinner.js'
 
 class RunResults extends React.Component {
   constructor(){
@@ -18,10 +19,7 @@ class RunResults extends React.Component {
   displayLoadingSpinner(){
     if(this.props.isFetchingCoffeeResults) {
       return(
-        <div className='spinner'>
-          <h1>Loading</h1>
-          <image src='../../assets/spinner.gif' />
-        </div>
+        <Spinner />
       )
     } else {
       return null;
