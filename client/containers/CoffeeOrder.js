@@ -1,5 +1,5 @@
 import React from 'react'
-import CoffeeOrderForm from '../components/coffeeOrderView/CoffeeOrderForm'
+import CoffeeOrderForm from '../components/coffeeOrderView/coffeeOrderForm'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'

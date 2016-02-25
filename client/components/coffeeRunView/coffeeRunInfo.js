@@ -1,6 +1,6 @@
 import React from 'react'
-import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
-import CoffeeRunResults from '../../containers/CoffeeRunResults.js'
+import CoffeeOrderForm from '../../containers/coffeeOrder.js'
+import CoffeeRunResults from '../../containers/coffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
 
 import moment from 'moment';

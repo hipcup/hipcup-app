@@ -54,7 +54,6 @@ class RunResults extends React.Component {
   }
 
   render() {
-    console.log('PROPS!', this.props);
     return (
       <div className="coffeeOrderForm order-form col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
        <article>

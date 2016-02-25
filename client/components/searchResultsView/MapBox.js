@@ -1,5 +1,5 @@
 import React from 'react'
-import Map from './Map.js'
+import Map from './map.js'
 import Mapmarker from './mapMarker.js'
 import Usermarker from './userMarker.js'
 
