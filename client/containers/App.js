@@ -12,15 +12,24 @@ import Footer from '../components/appView/footer.js'
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.displayApp = this.displayApp.bind(this);
   }
 
-  render() {
+  displayApp() {
     return (
       <div>
         <Header { ...this.props } />
         <MakeRunButton { ...this.props } />
         <div>{this.props.children}</div>
      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        { this.displayApp() }
+      </div>
    )
   }
 }

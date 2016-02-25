@@ -12,15 +12,23 @@ import * as storeActions from '../actions/storeActions'
 class LandingBox extends React.Component {
   constructor(props) {
     super(props);
+    this.displayLanding = this.displayLanding.bind(this);
   }
+
+  displayLanding() {
+    return (
+      <div className="container landing">
+        <JumbotronSearch { ...this.props } />
+        <HowTo />
+        <Footer /> 
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="jumbotron">
-        <div className="container landing">
-          <JumbotronSearch { ...this.props } />
-          <HowTo />
-          <Footer /> 
-        </div>
+       { this.displayLanding() }
       </div>
    )
   }

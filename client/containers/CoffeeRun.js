@@ -9,8 +9,8 @@ import { bindActionCreators } from 'redux'
 import * as coffeeRunActions from '../actions/coffeeRunActions'
 
 class CoffeeRun extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.renderCoffeeView.bind(this);
 
   }
