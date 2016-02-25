@@ -5,6 +5,7 @@ import HelperFunctions from '../../HelperFunctions.js'
 import CoffeeOrderForm from '../../containers/coffeeOrder.js'
 import CoffeeRunResults from '../../containers/coffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
+import CountdownTimer from './countdownTimer'
 import Spinner from '../spinner.js'
 
 class CoffeeRunInfo extends React.Component {
@@ -13,14 +14,6 @@ class CoffeeRunInfo extends React.Component {
     this.displayCoffeeInfo.bind(this);
     this.displayLoadingSpinner.bind(this);
     this.displayCoffeeOrderForm.bind(this);
-    this.getTimerCountDown.bind(this);
-    this.getTimeRem.bind(this);
-    this.setTimeRemaining.bind(this);
-    this.state = {
-      timeRemaining: ' ',
-      timerRunning: false,
-      timerEnded: false
-    };
   }
   
   componentWillMount() {
@@ -30,43 +23,6 @@ class CoffeeRunInfo extends React.Component {
     fetchCoffeeRun(coffeeRunID);
   }
 
-  getTimerCountDown(timeOfRun) {
-    // checks if timer has already started
-    if(!this.state.timerRunning && this.state.timerRunning !== 0){
-     let timer;
-      timer = setInterval(() => {
-        let duration = HelperFunctions.getDuration(timeOfRun)
-        let time = HelperFunctions.getCountdown(duration);
-
-        if(duration <= 0){
-          clearInterval(timer);
-        }
-
-        this.setTimeRemaining(time, duration);
-      }, 1000);
-    }
-  }
-
-  setTimeRemaining(newTime, duration) {
-    if(duration <= 0){
-      this.setState({
-        timeRemaining: null,
-        timerEnded: true
-      });
-      // this.setState({timerEnded: true});
-    } else {
-      this.setState({
-        timerRunning: true,
-        timeRemaining: newTime
-      });
-      // this.setState({timeRemaining: newTime});
-    }
-  }
-
-  getTimeRem() {
-    return this.state.timeRemaining;
-  }
-
   displayLoadingSpinner(){
     if(this.props.isFetchingCoffeeRun) {
       return(
@@ -74,20 +30,6 @@ class CoffeeRunInfo extends React.Component {
       )
     } else {
       return null;
-    }
-  }
-
-  displayCoffeeOrderForm() {
-    // if the time of coffee run has not expired
-    if(moment(this.props.timeOfRun) > moment()) {
-      this.getTimerCountDown(this.props.timeOfRun);
-      return (
-        <CoffeeOrderForm />
-      )
-    } else {
-      return (
-        <CoffeeRunResults />
-      )
     }
   }
 
@@ -102,15 +44,27 @@ class CoffeeRunInfo extends React.Component {
             <h1>{this.props.runnerName} is making a run to</h1>
             <h2>{this.props.coffeeShop}</h2>
             <span>{this.props.address}</span>
-            <h4>Coffee run expire{this.state.timerEnded ? <span>d!</span> : <span>s in</span>}</h4>
-            <span>{this.state.timeRemaining}</span>
+            <CountdownTimer {...this.props} />          
           </div>
-          { this.displayCoffeeOrderForm() }
+            { this.displayCoffeeOrderForm() }
         </div>
       )
     } else {
       return (
         <SelectCoffeeStoreBeforeRunError {...this.props} />
+      )
+    }
+  }
+
+  displayCoffeeOrderForm() {
+    // if the time of coffee run has not expired
+    if(moment(this.props.timeOfRun) > moment()) {
+      return (
+        <CoffeeOrderForm />
+      )
+    } else {
+      return (
+        <CoffeeRunResults />
       )
     }
   }

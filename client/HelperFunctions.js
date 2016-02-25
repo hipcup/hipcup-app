@@ -8,14 +8,14 @@ const HelperFunctions = {
   },
   getDuration: function(timeOfRun) {
     let eventTime = moment(timeOfRun);
-    let currentTime = new Date();
+    let currentTime = new moment();
     
-    return moment.duration(eventTime.diff(currentTime)).asMilliseconds();
+    return moment.duration(eventTime.diff(currentTime));
   },
-  getCountdown: function(duration) {
-    let seconds = Math.floor( (duration/1000) % 60 );
-    let minutes = Math.floor( (duration/1000/60) % 60 );
-    let hours =   Math.floor( (duration/(1000*60*60)) % 24 );
+  getCountdown: function(time) {
+    let seconds = time.get('second');
+    let minutes = time.get('minute');
+    let hours =   time.get('hour');    
 
     return 'Hours: ' + hours + ' Minutes: '+ minutes +' Seconds: ' + seconds;
   }

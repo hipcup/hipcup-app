@@ -1,5 +1,5 @@
 import React from 'react'
-import Spinner from './../Spinner.js'
+import Spinner from './../spinner.js'
 
 class RunResults extends React.Component {
   constructor(){
