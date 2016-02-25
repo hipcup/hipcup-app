@@ -2,7 +2,7 @@ import React from 'react'
 import CoffeeOrderForm from '../../containers/coffeeOrder.js'
 import CoffeeRunResults from '../../containers/coffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
-
+import HelperFunctions from '../../HelperFunctions.js'
 import moment from 'moment';
 
 class CoffeeRunInfo extends React.Component {
@@ -24,24 +24,18 @@ class CoffeeRunInfo extends React.Component {
   componentWillMount() {
     const { fetchCoffeeRun } = this.props.coffeeRunActions;
     // the coffeeRunID is the last 9 characters of the url
-    var coffeeRunID = this.props.pathname.slice(-9);
+    let coffeeRunID = this.props.pathname.slice(-9);
     fetchCoffeeRun(coffeeRunID);
   }
 
   getTimerCountDown(timeOfRun) {
     // checks if timer has already started
     if(!this.state.timerRunning && this.state.timerRunning !== 0){
-      var timer;
+     let timer;
       timer = setInterval(() => {
-        var eventTime = moment(timeOfRun);
-        var currentTime = new Date();
-        var duration = moment.duration(eventTime.diff(currentTime)).asMilliseconds();
+        let duration = HelperFunctions.getDuration(timeOfRun)
+        let time = HelperFunctions.getCountdown(duration);
         
-        var seconds = Math.floor( (duration/1000) % 60 );
-        var minutes = Math.floor( (duration/1000/60) % 60 );
-        var hours = Math.floor( (duration/(1000*60*60)) % 24 );
-        var time = 'Hours: ' + hours + ' Minutes: '+ minutes +' Seconds: '+ seconds;
-
         if(duration <= 0){
           clearInterval(timer);
         }
