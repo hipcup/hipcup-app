@@ -78,7 +78,7 @@ class CoffeeRunForm extends React.Component {
 
   displayCoffeeForm() {
       return (
-        <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-5 col-lg-6">
+        <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-push-1 col-sm-push-1 col-md-push-3 col-lg-push-3">
           <form className="form-vertical">
             <div className="form-title"> 
               <h4>Coffee run to{ this.props.selectedStore }</h4>

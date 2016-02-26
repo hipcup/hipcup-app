@@ -1,6 +1,7 @@
 
 .coffeeRunForm {
   input {
+    border-radius: $form-border-radius;
     height:$form-el-height;
     width:200px;
   }
@@ -54,5 +55,10 @@
       border-radius:$form-border-radius;
     }
   }
-  
+}
+
+@media (max-width:475px) {
+  .coffeeRunForm .select-different-shop {
+    display: inline-block;
+  }
 }
