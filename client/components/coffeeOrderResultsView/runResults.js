@@ -32,33 +32,36 @@ class RunResults extends React.Component {
     } else if (coffeeOrders.length > 0) {
       var displayCoffeeOrders = coffeeOrders.map(function(coffeeOrder, index){
         return (
-          <div className="row" key={index}>
-            <div className="col-xs-12 col-sm-11">
-              <h3>Name: {coffeeOrder.caffeinatorName}</h3>
-              <h4>Drink: {coffeeOrder.drinkOrder}</h4>
-              <h4>Size: {coffeeOrder.drinkSize}</h4>
-              <p>Modifications: {coffeeOrder.modifications}</p>
+          <li className="order" key={index}>
+            <div className="order-img">
+              <img src="../../assets/search/search-selected-runner.png" />
             </div>
-          </div>
+            <div className="order-content">
+              <h5>{coffeeOrder.caffeinatorName}</h5>
+              <div>Order:{coffeeOrder.drinkOrder} </div>
+              <div>Size: {coffeeOrder.drinkSize} </div>
+              { coffeeOrder.modifications ? <p>Modifications: {coffeeOrder.modifications}</p> : null } 
+            </div>
+          </li>
         )
       });
       return displayCoffeeOrders;
     } else {
       return (
-        <span>Sorry, there are no coffee orders to display.</span>
+        <div>Sorry, there are no coffee orders to display.</div>
       )
     }
   }
 
   render() {
     return (
-      <div className="coffeeOrderForm order-form col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
-       <article>
-          <div className="form-title">
-            <h4>Coffee Orders</h4>
-          </div>
-          { this.displayCoffeeOrderResults() }
-        </article>
+      <div className="runResults col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
+        <div className="results">
+          <h1>Coffee Orders</h1>
+          <ul>
+            { this.displayCoffeeOrderResults() }
+          </ul>
+        </div>
       </div>
     )
   }

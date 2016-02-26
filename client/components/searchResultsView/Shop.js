@@ -5,7 +5,7 @@ class Shop extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.displaySelectedStoreImg = this.displaySelectedStoreImg.bind(this);
-
+    this.displayShop = this.displayShop.bind(this);
   }
 
   handleClick(e) {
@@ -27,10 +27,10 @@ class Shop extends React.Component {
     }
   }
 
-  render() {
+  displayShop() {
     return (
-      <div onClick={this.handleClick} className={ this.props.selectStoreKey === this.props.storeId ? 'selectedStore' : ''}>
-       <div className="shop">
+      <div onClick={this.handleClick} className={this.props.selectStoreKey === this.props.storeId ? 'selectedStore' : ''}>
+        <div className="shop">
           <div className="shop-icon"><img src={this.displaySelectedStoreImg()} /> </div>
           <ul>
             <li><h5 className="storeName">{this.props.name}</h5></li>
@@ -38,6 +38,14 @@ class Shop extends React.Component {
           </ul>
         </div>
       </div>
+    )
+  }
+
+  render() {
+    return (
+     <div>
+       { this.displayShop() }
+     </div>
     )
   }
 }

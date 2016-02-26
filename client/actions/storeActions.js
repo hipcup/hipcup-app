@@ -50,7 +50,6 @@ export const fetchCoffeeShopByName = (location) => {
     }).then(stores => {
       try {
         if(stores.stores){
-          console.log("stores:", stores);
           dispatch(fetchStoresSuccess(stores));
           dispatch(updateSelectStore(stores.stores[0]["name"],stores.stores[0]["formatted_address"],0));
         } else {

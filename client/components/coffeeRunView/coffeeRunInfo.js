@@ -39,7 +39,7 @@ class CoffeeRunInfo extends React.Component {
       return null
     } else if (coffeeRunID) {
       return (
-        <div className="row">
+        <div>
           <div className="coffee-run-info col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-2 col-md-5 col-md-push-1 col-lg-4 col-lg-push-1">
             <h1>{this.props.runnerName} is making a run to</h1>
             <h2>{this.props.coffeeShop}</h2>

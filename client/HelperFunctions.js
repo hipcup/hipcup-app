@@ -17,7 +17,7 @@ const HelperFunctions = {
     let minutes = time.get('minute');
     let hours =   time.get('hour');    
 
-    return 'Hours: ' + hours + ' Minutes: '+ minutes +' Seconds: ' + seconds;
+    return hours + ' Hours ' + minutes + ' Minutes ' + seconds + ' Seconds ';
   }
 }
 
