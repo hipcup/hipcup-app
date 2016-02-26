@@ -5,7 +5,6 @@ class RunResults extends React.Component {
   constructor(){
     super();
     this.displayCoffeeOrderResults = this.displayCoffeeOrderResults.bind(this);
-    this.displayLoadingSpinner = this.displayLoadingSpinner.bind(this);
   }
 
   componentWillMount() {
@@ -13,16 +12,6 @@ class RunResults extends React.Component {
     // the coffeeRunID is the last 9 characters of the url
     var coffeeRunID = this.props.pathname.slice(-9);
     fetchCoffeeResults(coffeeRunID);
-  }
-
-  displayLoadingSpinner(){
-    if(this.props.isFetchingCoffeeResults) {
-      return(
-        <Spinner />
-      )
-    } else {
-      return null;
-    }
   }
 
   displayCoffeeOrderResults() {

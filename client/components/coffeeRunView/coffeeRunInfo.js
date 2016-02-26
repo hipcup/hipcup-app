@@ -6,13 +6,11 @@ import CoffeeOrderForm from '../../containers/coffeeOrder.js'
 import CoffeeRunResults from '../../containers/coffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
 import CountdownTimer from './countdownTimer'
-import Spinner from '../spinner.js'
 
 class CoffeeRunInfo extends React.Component {
   constructor(props){
     super(props);
     this.displayCoffeeInfo.bind(this);
-    this.displayLoadingSpinner.bind(this);
     this.displayCoffeeOrderForm.bind(this);
   }
   
@@ -21,16 +19,6 @@ class CoffeeRunInfo extends React.Component {
     // the coffeeRunID is the last 9 characters of the url
     let coffeeRunID = this.props.pathname.slice(-9);
     fetchCoffeeRun(coffeeRunID);
-  }
-
-  displayLoadingSpinner(){
-    if(this.props.isFetchingCoffeeRun) {
-      return(
-        <Spinner />
-      )
-    } else {
-      return null;
-    }
   }
 
   displayCoffeeInfo() {
@@ -73,7 +61,6 @@ class CoffeeRunInfo extends React.Component {
     return (
       <div>
         { this.displayCoffeeInfo() }
-        { this.displayLoadingSpinner() } 
       </div>
     )
   }
