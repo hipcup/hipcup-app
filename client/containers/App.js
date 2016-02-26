@@ -5,23 +5,31 @@ import { routeActions } from 'react-router-redux';
 
 import * as fetchStores from '../actions/storeActions'
 
-import Header from '../components/appView/Header.js'
+import Header from '../components/appView/header.js'
 import MakeRunButton from '../components/appView/makeRunButton.js'
-import Footer from '../components/appView/Footer.js'
+import Footer from '../components/appView/footer.js'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.displayApp = this.displayApp.bind(this);
   }
 
-  render() {
+  displayApp() {
     return (
       <div>
         <Header { ...this.props } />
         <MakeRunButton { ...this.props } />
         <div>{this.props.children}</div>
-
      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        { this.displayApp() }
+      </div>
    )
   }
 }

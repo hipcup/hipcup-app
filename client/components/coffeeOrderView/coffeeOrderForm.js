@@ -5,6 +5,7 @@ class CoffeeOrderForm extends React.Component {
   constructor(){
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.displayCoffeeOrderForm = this.displayCoffeeOrderForm.bind(this);
     this.createCoffeeOrder = this.createCoffeeOrder.bind(this);
     this.displayAlphaError = this.displayAlphaError.bind(this);
     this.displayAlphaNumericError = this.displayAlphaNumericError.bind(this);
@@ -80,7 +81,7 @@ class CoffeeOrderForm extends React.Component {
     }  
   }
 
-  render() {
+  displayCoffeeOrderForm() {
     return (
       <div className="coffeeOrderForm order-form col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-5 col-lg-6 col-lg-push-2">
         <article>
@@ -112,13 +113,21 @@ class CoffeeOrderForm extends React.Component {
               <input type="text" className="form-control" name="modifications" ref="modifications" placeholder="Customize It" aria-describedby="basic-addon1"  />
             </div>
             <div className="input-group col-xs-12 col-sm-11">
-              <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Place Order</button>
+              <button type="submit" className="btn btn-default button col-xs-12 col-sm-12 col-md-12 col-lg-12" onClick={this.handleClick}>Place Order</button>
               <span className="required-msg">Please fill out all (<span className="require-asterisk">*</span>) required fields</span>
             </div>
-            <span>{ this.state.orderStatus }</span>
-            <span className="form-error">{ this.displayServerErrorMsg() }</span>
+            <span className="order-status">{ this.state.orderStatus }</span>
+            <span className="order-status">{ this.displayServerErrorMsg() }</span>
           </form>
         </article>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div>
+        { this.displayCoffeeOrderForm() }
       </div>
     )
   }

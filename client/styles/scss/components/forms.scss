@@ -17,10 +17,12 @@
 
   .form-title h4 {
     display: inline-block;
+    float:left;
+
   }
 
   .form-title span {
-    float:left;
+    float:right;
     padding:3px;
   }
 
@@ -30,11 +32,19 @@
   input {
     display: block;
     height:$form-el-height;
+    border-radius: $form-border-radius;
   }
-  button {
-    margin-top:20px;
+
+  select {
+    border-radius:$form-border-radius;
+    -webkit-appearance: none;
+    height:$form-el-height;
+  }
+  button, button:hover, button:active {
+    background-color: transparent;
+    border:1px solid $primary-color;
+    margin:20px auto;
     color: $primary-color;
-    width:100%;
     height:$form-el-height;
   }
   .required-msg {
@@ -47,6 +57,9 @@
     display: inline-block;
     margin-bottom:10px;
     color:$primary-color;
+  }
+  .form-group {
+    margin-bottom: 0;
   }
 }
 
@@ -67,3 +80,4 @@ form input {
   font-size: 16px;
   color: $primary-color;
 }
+

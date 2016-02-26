@@ -1,5 +1,5 @@
 import React from 'react'
-import CoffeeOrderForm from '../components/coffeeOrderView/CoffeeOrderForm'
+import CoffeeOrderForm from '../components/coffeeOrderView/coffeeOrderForm'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -7,8 +7,8 @@ import { bindActionCreators } from 'redux'
 import * as coffeeOrderActions from '../actions/coffeeOrderActions'
 
 class CoffeeOrder extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   render() {

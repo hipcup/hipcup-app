@@ -29,7 +29,6 @@ export const coffeeRunAction = (formInfo) => {
   }).then(response => {
     return response.json();
   }).then(response => {
-    console.log(response);
     try {
       if(response.success){
         dispatch(updateCoffeeRun(formInfo));
@@ -66,7 +65,6 @@ export const fetchCoffeeRun = (coffeeRunID) => {
   }).then(response => {
     try {
       if(response.success){
-        console.log('response.success');
         dispatch(updateFetchedCoffeeRun(response.coffeerun));
       } else {
         dispatch(updateCoffeeRunError());

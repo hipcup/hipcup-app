@@ -1,6 +1,6 @@
 import React from 'react'
 import MakeCoffeeRun from '../components/coffeeRunView/makeCoffeeRun'
-import CoffeeRunInfo from '../components/coffeeRunView/CoffeeRunInfo'
+import CoffeeRunInfo from '../components/coffeeRunView/coffeeRunInfo'
 
 import { routeActions } from 'react-router-redux';
 import { connect } from 'react-redux'
@@ -9,8 +9,8 @@ import { bindActionCreators } from 'redux'
 import * as coffeeRunActions from '../actions/coffeeRunActions'
 
 class CoffeeRun extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.renderCoffeeView.bind(this);
 
   }

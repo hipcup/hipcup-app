@@ -8,7 +8,7 @@ exports.createRun = function(req, res) {
 
   var coffeeRun = new CoffeeRun({
     coffeeRunID: req.body.coffeeRunID,
-    runnerName:  req.body.runnerName,
+    runnerName:  helper.formatNames(req.body.runnerName),
     address:     req.body.address,
     timeStamp:   req.body.timeStamp, 
     coffeeShop:  req.body.coffeeShop,

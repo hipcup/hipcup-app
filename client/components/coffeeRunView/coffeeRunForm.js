@@ -5,8 +5,8 @@ import helperFunc from '../../HelperFunctions'
 
 
 class CoffeeRunForm extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.handleClick = this.handleClick.bind(this);
     this.createCoffeeRun = this.createCoffeeRun.bind(this);
     this.displayCoffeeForm = this.displayCoffeeForm.bind(this);
@@ -78,42 +78,42 @@ class CoffeeRunForm extends React.Component {
 
   displayCoffeeForm() {
       return (
-        <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-5 col-lg-6">
+        <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-push-1 col-sm-push-1 col-md-push-3 col-lg-push-3">
           <form className="form-vertical">
-            <div className="form-title"> Make a coffee run to { this.props.selectedStore }</div>
-            <span className="form-require">Required<span className="require-asterisk">*</span></span>
+            <div className="form-title"> 
+              <h4>Coffee run to{ this.props.selectedStore }</h4>
+              <span className="form-require">Required<span className="require-asterisk">*</span></span>
+            </div>
             <span className="select-different-shop" onClick={() => this.props.routeActions.goBack()}>Click to select a different coffee shop.</span>
             <div className="input-group required col-xs-12 col-sm-11">
-              <label>Name:</label>
-              <input type="text" className="form-control" ref="runnerName" onChange={this.setRunnerName} require />
+              <label>NAME</label>
+              <input type="text" className="form-control" ref="runnerName" onChange={this.setRunnerName} />
               <span className="form-error">{this.displayAlphaError()}</span>
             </div>
-            <div className="input-group col-xs-6 col-sm-5 col-md-6 col-lg-6">
-              <label>Leaving In:</label>
-              <input type="text" className="form-control" ref="timeAmount" onChange={this.setTimeAmount} require />
-            </div>
-            <div className="input-groupcol-xs-6 col-sm-5 col-md-6 col-lg-6">
-              <select className="form-control" ref="timeUntilDuration" onChange={this.setTimeUnit}>
+            <div className="form-group timeOfRun required col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <label>LEAVING IN</label>
+              <input type="text" className="form-control timeAmount" ref="timeAmount" onChange={this.setTimeAmount} />
+              <select className="form-control duration" ref="timeUntilDuration" onChange={this.setTimeUnit}>
                 <option select value="minutes">minutes</option>
                 <option value="hours">hours</option>
               </select>         
             </div>
             <span className="form-error col-xs-11 col-sm-11 col-md-11 col-lg-11">{this.displayRangeError()}</span>
             <div className="input-group required col-xs-12 col-sm-11">
-              <label>Max Coffee Orders:</label>
-              <input type="text" className="form-control" ref="maxOrders" onChange={this.setMaxOrders} require/>
+              <label>MAX COFFEE ORDERS:</label>
+              <input type="text" className="form-control maxOrders" ref="maxOrders" onChange={this.setMaxOrders} />
               <span className="form-error">{ this.displayNumericError()}</span>
             </div>
             <div className="input-group required col-xs-12 col-sm-11">
-              <label>Slack Channel:</label>
+              <label>SLACK CHANNEL</label>
               <select className="form-control" name="slackChannels" ref="slackChannel">
                 <option select value="defaultChannel">Default Channel</option>
                 <option value="defaultChannel2">Default Channel2</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-default button" onClick={this.handleClick}>Create Run</button>
-            <span className="form-error">{ this.state.runStatus }</span>
-            <span className="form-error">{ this.displayServerErrorMsg() }</span>
+            <button type="submit" className="btn btn-default button col-xs-11 col-sm-11 col-md-11 col-lg-11" onClick={this.handleClick}>Create Run</button>
+            <span className="order-status">{ this.state.runStatus }</span>
+            <span className="order-status">{ this.displayServerErrorMsg() }</span>
           </form>
         </div>
       )
@@ -154,7 +154,7 @@ class CoffeeRunForm extends React.Component {
   render() {
     return (
       <div className="coffeeRunForm">
-       {this.displayCoffeeForm()}
+       { this.displayCoffeeForm() }
       </div>
     )
   }

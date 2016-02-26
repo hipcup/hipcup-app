@@ -9,8 +9,8 @@ import { bindActionCreators } from 'redux'
 import * as coffeeOrderActions from '../actions/coffeeOrderActions'
 
 class CoffeeRunResults extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   render() {

@@ -100,7 +100,7 @@ exports.formatCoffeeShopsData = function(data) {
   var deferred = Q.defer();
   var storeData = data.stores.results.map(function(store) {
     var storeInfo = {};
-    storeInfo.name = helper.formatStoreNames(store.name);
+    storeInfo.name = helper.formatNames(store.name);
     storeInfo.place_id = store.place_id; 
 
 

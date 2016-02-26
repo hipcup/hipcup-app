@@ -1,13 +1,21 @@
 import React from 'react'
 
-let imgSrc = './../assets/map/map-runner.png'
-
 class Usermarker extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.displayUserMarker = this.displayUserMarker.bind(this);
+  }
+  
+  displayUserMarker() {
+    return (
+      <img src="./../assets/map/map-runner.png"/>
+    )
+  }
 
+  render() {
     return (
       <div>
-        <img src={imgSrc} />
+        { this.displayUserMarker() }
       </div>
     )
   }

@@ -11,10 +11,10 @@ exports.serverHelperFunctions = {
       success: true
     });
   },
-  formatStoreNames: function(storeName) {
-    var upperCaseName = storeName.split(' ').map(function(word) {
+  formatNames: function(name) {
+    var upperCaseName = name.split(' ').map(function(word) {
       return word.slice(0,1).toUpperCase() + word.slice(1);
     });
     return upperCaseName.join(' ');
-  } 
+  }
 }

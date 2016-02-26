@@ -1,27 +1,45 @@
 import React from 'react'
-import Map from './Map.js'
+import Map from './map.js'
 import Mapmarker from './mapMarker.js'
 import Usermarker from './userMarker.js'
 
 class MapBox extends React.Component {
-  constructor(){
-    super();
+  constructor(props) {
+    super(props);
+    this.displayMapMarkers = this.displayMapMarkers.bind(this);
+  }
+
+  displayMapMarkers() {
+    if(this.props.fetched) {
+      let markers = this.props.stores.map((shop, index) => {
+        return (
+          <Mapmarker 
+           lat={shop.lat} 
+           lng={shop.lng} 
+           key={index} 
+           selectStoreKey={this.props.selectStoreKey} 
+           time={shop.time} 
+           distance={shop.distance} />
+        )
+      });
+      markers.push((<Usermarker lat={this.props.userCoords.lat} lng={this.props.userCoords.lng} key={markers.length} />))
+      return markers
+    } else {
+      return (
+        <Mapmarker 
+          lat={this.props.defaultCenter.lat} 
+          lng={this.props.defaultCenter.lng}>
+        </Mapmarker>
+      )
+    }
   }
 
   render() {
-    var THIS = this;
-    let markers = <Mapmarker lat={this.props.defaultCenter.lat} lng={this.props.defaultCenter.lng}></Mapmarker>;
-
-    if(this.props.fetched) {
-      markers = this.props.stores.map((store, ind) => {
-        return (<Mapmarker lat={store.lat} lng={store.lng} key={ind} selectStoreKey={THIS.props.selectStoreKey} time={store.time} distance={store.distance} />)
-      })
-      markers.push((<Usermarker lat={this.props.userCoords.lat} lng={this.props.userCoords.lng} key={markers.length} />));
-    }
+    let mapMarkers = this.displayMapMarkers();
 
     return (
       <div className="map">
-        <Map { ...this.props } markers={markers}/>
+        <Map { ...this.props } markers={ mapMarkers }/>
       </div>
     )
   }
