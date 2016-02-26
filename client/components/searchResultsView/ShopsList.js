@@ -32,15 +32,16 @@ class ShopsList extends React.Component {
 
   displayStores() {
     if(this.props.fetched) {
-      return ( this.props.stores.map((store, ind) => {
+      return ( this.props.stores.map((store, index) => {
         return (<Shop name={store.name}
                       address={store.formatted_address} 
+                      walkingTime={store.time}
                       isOpen={store.open_now}  
                       updateSelectStore={this.props.updateSelectStore} 
                       selectStore={this.props.selectStore} 
                       selectStoreKey={this.props.selectStoreKey} 
-                      storeId={ind}
-                      key={ind}/>)
+                      storeId={index}
+                      key={index}/>)
         })
       )
     } else {

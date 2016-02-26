@@ -35,6 +35,7 @@ class Shop extends React.Component {
           <ul>
             <li><h5 className="storeName">{this.props.name}</h5></li>
             <li>{this.props.address}</li>
+            <li className="walking">Walking: {this.props.walkingTime}</li>
           </ul>
         </div>
       </div>
