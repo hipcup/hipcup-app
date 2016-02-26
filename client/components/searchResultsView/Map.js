@@ -14,7 +14,7 @@ class Map extends React.Component  {
         <GoogleMap 
           defaultCenter={this.props.center} 
           center={{lat:this.props.userCoords.lat, lng: this.props.userCoords.lng}}
-          defaultZoom={13}>
+          defaultZoom={12}>
           {this.props.markers}
         </GoogleMap>
       )
