@@ -17,9 +17,10 @@ class SearchResults extends React.Component {
 
   displaySearchResults() {
     if(!this.props.fetchStoresHasBeenCalled) {
-      return (
-        this.props.routeActions.push('/')
-      )
+      const { fetchStores, updateFetchStoresHasBeenCalled } = this.props.updateSelectStore;
+
+      fetchStores();
+      updateFetchStoresHasBeenCalled();
     } else {
       return(
         <div className="searchResults">
@@ -48,7 +49,8 @@ const mapStateToProps = (state) => {
     stores: state.storeReducer.stores,
     selectStore: state.storeReducer.selectedStore,
     selectStoreKey: state.storeReducer.key,
-    fetchStoresHasBeenCalled: state.storeReducer.fetchStoresHasBeenCalled
+    fetchStoresHasBeenCalled: state.storeReducer.fetchStoresHasBeenCalled,
+    fetchStores: state.storeReducer.fetchStores
   }
 }
 
