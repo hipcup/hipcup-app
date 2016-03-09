@@ -1,5 +1,5 @@
 import React from 'react'
-import RunResults from '../components/coffeeOrderResultsView/RunResults'
+import RunResults from '../components/coffeeOrderResultsView/runResults.js'
 
 import * as fetchCoffeeResults from '../actions/coffeeResultsActions'
 
