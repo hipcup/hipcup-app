@@ -9,7 +9,7 @@ class CoffeeRunUrlBox extends React.Component {
   
   generateCoffeeUrl() {
     var uniqueID = this.props.coffeeRunID
-    return 'http://localhost:3468/' + uniqueID
+    return 'http://localhost:8080/' + uniqueID
   }
 
   displayCoffeeRunUrlBox() {

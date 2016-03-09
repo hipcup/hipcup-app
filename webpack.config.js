@@ -5,7 +5,7 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.join(__dirname, './client/dist'),
-    publicPath: 'http://localhost:3468/dist/',
+    publicPath: 'http://localhost:8080/dist/',
     filename: 'bundle.js'
   },
   module: {
