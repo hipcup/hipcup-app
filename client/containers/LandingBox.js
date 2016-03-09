@@ -1,6 +1,6 @@
 import React from 'react'
 import JumbotronSearch from '../components/landingView/jumbotronSearch.js'
-import HowTo from '../components/appView/HowTo.js'
+import HowTo from '../components/appView/Howto.js'
 import Footer from '../components/appView/Footer.js'
 
 import { bindActionCreators } from 'redux'
