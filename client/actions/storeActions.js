@@ -5,7 +5,7 @@ export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN
 
 export const fetchStores = () => {
   return dispatch => {
-    return fetch('http://54.191.38.120:8080/fetchnearbycoffeestores', {
+    return fetch('http://54.191.38.120/fetchnearbycoffeestores', {
         method: 'POST',
         mode: 'cors',
         cache: false,

@@ -6,7 +6,7 @@ export const UPDATE_FETCH_COFFEE_RESULTS_STATUS = 'UPDATE_FETCH_COFFEE_RESULTS_S
 export const fetchCoffeeResults = (coffeeRunID) => {
   return dispatch => {
     dispatch(updateFetchCoffeeResultsStatus());
-    return fetch('http://54.191.38.120:8080/fetchResults', {
+    return fetch('http://54.191.38.120/fetchResults', {
       method: 'POST',
       mode: 'cors',
       cache: false,
