@@ -7,7 +7,7 @@ export const CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED = 'CLEAR_COFFEE_RUN_SUCCESSFU
 
 export const coffeeRunAction = (formInfo) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:8080/createRun', {
+    return fetch('http://54.191.38.120:8080/createRun', {
       method: 'POST',
       mode: 'cors',
       cache: false,
@@ -49,7 +49,7 @@ export const coffeeRunAction = (formInfo) => {
 export const fetchCoffeeRun = (coffeeRunID) => {
   return dispatch => {
     dispatch(updateFetchCoffeeRunStatus());
-    return fetch('http://127.0.0.1:8080/fetchRun', {
+    return fetch('http://54.191.38.120:8080/fetchRun', {
       method: 'POST',
       mode: 'cors',
       cache: false,
