@@ -11,13 +11,14 @@ class JumbotronSearch extends React.Component {
   componentDidMount(){
     const input = this.refs.coffeeShopLocation;
     const autocomplete = new google.maps.places.Autocomplete(input);
+
   }
 
   searchNearUser(e) {
     e.preventDefault();
     const { storeActions, routeActions } = this.props;
 
-    storeActions.fetchStores();
+    storeActions.fetchUserLocation();
     storeActions.updateFetchStoresHasBeenCalled();
     routeActions.push('/results');
   }
@@ -26,10 +27,11 @@ class JumbotronSearch extends React.Component {
     e.preventDefault();
     const location = this.refs.coffeeShopLocation.value;
     const { storeActions, routeActions } = this.props;
- 
+
     if(location === ''){
       return null;
     } else {
+      // fetches stores by name/address after getting user's geolocation
       storeActions.fetchCoffeeShopByName(location);
       storeActions.updateFetchStoresHasBeenCalled();
       routeActions.push('/results');
