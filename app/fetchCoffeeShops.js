@@ -27,33 +27,31 @@ exports.apiGeocodedAddress = function(data){
   return deferred.promise;
 };
 
-// Fetch user's geolocation
-exports.apiGeolocationData = function(){
-  var deferred = Q.defer();
+// Fetch user's geolocation server-side
+// exports.apiGeolocationData = function(){
+//   var deferred = Q.defer();
 
-  request.post({url:'https://www.googleapis.com/geolocation/v1/geolocate?key='+google_api_key}, function(err, res, body){
-    if(err){
-      console.log("error:", err);
-      deferred.reject("error within google geolocation POST request");
-    }
-    if(!err && res.statusCode === 200){
-      deferred.resolve(JSON.parse(body))
-    }
-    else {
-      deferred.reject("alt error");
-    }
-  });
+//   request.post({url:'https://www.googleapis.com/geolocation/v1/geolocate?key='+google_api_key}, function(err, res, body){
+//     if(err){
+//       console.log("error:", err);
+//       deferred.reject("error within google geolocation POST request");
+//     }
+//     if(!err && res.statusCode === 200){
+//       deferred.resolve(JSON.parse(body))
+//     }
+//     else {
+//       deferred.reject("alt error");
+//     }
+//   });
 
-  return deferred.promise;
-};
+//   return deferred.promise;
+// };
 
-// Fetch stores based on user's lat and long 
+// Fetch stores near location
 exports.apiSpecificStoreData = function(data){
-  console.log("data inside apiSpecificStoreData", data);
+  var deferred = Q.defer();
   var lat = data.results[0].geometry.location.lat;
   var lng = data.results[0].geometry.location.lng;
-
-  var deferred = Q.defer();
 
   request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee&location='+lat+','+lng+'&radius=5000&key='+google_api_key, function(err, res, body){
      if(err){
@@ -61,7 +59,6 @@ exports.apiSpecificStoreData = function(data){
        deferred.reject("error within googleplaces GET request");
      }
      if(!err && res.statusCode === 200){
-      console.log("apiSpecificStoreData", body)
        deferred.resolve({stores: JSON.parse(body), lat: lat, lng: lng})
      }
      else {
@@ -74,10 +71,7 @@ exports.apiSpecificStoreData = function(data){
 
 
 // Fetch stores based on user's lat and long 
-exports.apiPlacesData = function(data){
-  var lat = data.location.lat;
-  var lng = data.location.lng;
-
+exports.apiPlacesData = function(lat, lng){
   var deferred = Q.defer();
 
   request('https://maps.googleapis.com/maps/api/place/textsearch/json?query=coffee&location='+lat+','+lng+'&radius=5000&key='+google_api_key, function(err, res, body){
