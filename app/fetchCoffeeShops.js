@@ -7,6 +7,7 @@ var google_api_key = require('../server/keys/config.js').google_api_key;
 
 // Fetch coffee shop by name and address 
 exports.apiGeocodedAddress = function(data){
+  console.log('Data', data);
   var location = data.location.split(' ').join('+');
   var deferred = Q.defer();
 
