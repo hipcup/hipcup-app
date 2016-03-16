@@ -9,10 +9,10 @@ class MakeRunButton extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const { fetchStores, updateFetchStoresHasBeenCalled } = this.props.fetchStores;
+    const { fetchUserLocation, updateFetchStoresHasBeenCalled } = this.props.fetchStores;
     const { routeActions } = this.props;
 
-    fetchStores();
+    fetchUserLocation();
     updateFetchStoresHasBeenCalled();
     routeActions.push('/results');
   }
