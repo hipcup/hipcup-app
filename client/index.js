@@ -53,7 +53,6 @@ ReactDOM.render(
           <Route path=":uniquecoffeerunid" component={CoffeeRun}/>
         </Route>
       </Router>
-      <DevTools />
     </div>
   </Provider>,
   document.getElementById('root')

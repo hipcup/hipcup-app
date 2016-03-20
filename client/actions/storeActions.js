@@ -138,4 +138,3 @@ export const updateSelectStore = (storeName, address, key) => {
     key: key
   }
 }
-
