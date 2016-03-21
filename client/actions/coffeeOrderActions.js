@@ -3,7 +3,7 @@ export const ERROR_PLACING_COFFEE_ORDER = 'ERROR_PLACING_COFFEE_ORDER'
 
 export const coffeeOrderAction = (formInfo) => {
   return dispatch => {
-    return fetch('http://54.191.38.120/placeOrder', {
+    return fetch('http://52.26.251.52/placeOrder', {
       method: 'POST',
       mode: 'cors',
       cache: false,
