@@ -27,7 +27,7 @@ export const fetchUserLocation = () => {
 
 export const fetchStores = (coords) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/fetchnearbycoffeestores', {
+    return fetch('http://54.191.38.120/fetchnearbycoffeestores', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
@@ -60,7 +60,7 @@ export const fetchStores = (coords) => {
 
 export const fetchCoffeeShopByName = (location) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/fetchcoffeeshopnearaddress', {
+    return fetch('http://54.191.38.120/fetchcoffeeshopnearaddress', {
         method: 'POST',
         mode: 'cors',
         cache: false,
@@ -138,4 +138,3 @@ export const updateSelectStore = (storeName, address, key) => {
     key: key
   }
 }
-

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Shop from './shop'
+import Shop from './Shop.js'
 import Spinner from './../spinner.js'
 
 class ShopsList extends React.Component {
