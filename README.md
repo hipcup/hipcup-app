@@ -1,5 +1,5 @@
 ## Hipcup 
-###Hipcup is a web application that allows users to create and place orders for coffee runs. 
+####Hipcup is a web application that allows users to create and place orders for coffee runs. 
 
 ### Features 
 * Search for coffee stores nearby or by name and/or address
@@ -8,19 +8,19 @@
 * Ability to notify users when coffee run is complete 
 
 ### Tech Stack
-React 
-Redux 
-React-Router-Redux
-SaSS 
-Node 
-Express
-MongoDB
-Mongoose 
-Babel 
-Webpack
-Q
-Google-Map-React 
-Moment.js
+* React 
+* Redux 
+* React-Router-Redux
+* SaSS 
+* Node 
+* Express
+* MongoDB
+* Mongoose 
+* Babel 
+* Webpack
+* Q
+* Google-Map-React 
+* Moment.js
 
 ### Apis 
 * [Google Maps APIs](https://developers.google.com/maps/?hl=en/)
@@ -36,11 +36,12 @@ APIs:
 * 1. Register for a Google API Key 
 * 2. Enable the APIs listed above 
 * 3. Insert API key into server/keys/config.js 
-Note: the config.js file is included in .gitignore and will not be uploaded to Github
+
+_Note: the config.js file is included in .gitignore and will not be uploaded to Github_
 
 Database: 
 * 1. Set up a local mongodb database following the instructions [here](https://docs.mongodb.org/manual/installation/)
-* When application is initialized mongoose will automatically create a 'hipcup' table in your local mongodb database. To interact with the database on your local machine, run 'mongo' and 'use hipcup' commands in terminal to access the hipcup table. 
+* When application is initialized Mongoose will automatically create a 'hipcup' table in your local mongodb database. To interact with the database on your local machine, run 'mongo' and 'use hipcup' commands in terminal to access the hipcup table. 
 
 Application: 
 * 1. Install dependencies with `npm install` in root directory (make sure it creates a local node_modules)
