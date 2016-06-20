@@ -7,12 +7,12 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var Q = require('q');
 var mongoose = require('mongoose');
-var database = require('./config/database');
-var google_api_key = require('./server/keys/config.js').google_api_key;
+var google_api_key = process.env.GOOGLE_API_KEY || require('./server/keys/config.js').google_api_key;
+var db_uri = process.env.MONGOLAB_URI || require('./config/database');
 var port = process.env.PORT || 3468;
 
  // configuration ===============================================================
-mongoose.connect(database.DATABASE_URI);
+mongoose.connect(db_uri);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
