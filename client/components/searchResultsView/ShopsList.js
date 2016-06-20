@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Shop from './shop'
+import Shop from './Shop'
 import Spinner from './../spinner.js'
 
 class ShopsList extends React.Component {
@@ -34,12 +34,12 @@ class ShopsList extends React.Component {
     if(this.props.fetched) {
       return ( this.props.stores.map((store, index) => {
         return (<Shop name={store.name}
-                      address={store.formatted_address} 
+                      address={store.formatted_address}
                       walkingTime={store.time}
-                      isOpen={store.open_now}  
-                      updateSelectStore={this.props.updateSelectStore} 
-                      selectStore={this.props.selectStore} 
-                      selectStoreKey={this.props.selectStoreKey} 
+                      isOpen={store.open_now}
+                      updateSelectStore={this.props.updateSelectStore}
+                      selectStore={this.props.selectStore}
+                      selectStoreKey={this.props.selectStoreKey}
                       storeId={index}
                       key={index}/>)
         })
@@ -49,12 +49,12 @@ class ShopsList extends React.Component {
     }
   }
 
-  render() { 
+  render() {
     return (
       <div className="shopList">
-        <div className="results"> 
+        <div className="results">
           <h1>Coffee Shops</h1>
-          { this.displayStores() } 
+          { this.displayStores() }
           { this.displayLoadingSpinner() }
         </div>
         <button onClick={this.handleClick} className="btn btn-submit button col-xs-10 col-xs-push-1 col-sm-10 col-sm-push-1 col-md-10 col-md-push-1 col-lg-10 col-lg-push-1">make a coffee run to {this.props.selectStore}</button>

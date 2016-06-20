@@ -2,8 +2,8 @@ import React from 'react'
 import moment from 'moment';
 import HelperFunctions from '../../HelperFunctions.js'
 
-import CoffeeOrderForm from '../../containers/coffeeOrder.js'
-import CoffeeRunResults from '../../containers/coffeeRunResults.js'
+import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
+import CoffeeRunResults from '../../containers/CoffeeRunResults.js'
 import SelectCoffeeStoreBeforeRunError from './selectCoffeeStoreBeforeRunError'
 import CountdownTimer from './countdownTimer'
 
@@ -13,7 +13,7 @@ class CoffeeRunInfo extends React.Component {
     this.displayCoffeeInfo.bind(this);
     this.displayCoffeeOrderForm.bind(this);
   }
-  
+
   componentWillMount() {
     const { fetchCoffeeRun } = this.props.coffeeRunActions;
     // the coffeeRunID is the last 9 characters of the url
@@ -32,7 +32,7 @@ class CoffeeRunInfo extends React.Component {
             <h1>{this.props.runnerName} is making a run to</h1>
             <h2>{this.props.coffeeShop}</h2>
             <span>{this.props.address}</span>
-            <CountdownTimer {...this.props} />          
+            <CountdownTimer {...this.props} />
           </div>
             { this.displayCoffeeOrderForm() }
         </div>
@@ -67,4 +67,3 @@ class CoffeeRunInfo extends React.Component {
 }
 
 export default CoffeeRunInfo
- 
