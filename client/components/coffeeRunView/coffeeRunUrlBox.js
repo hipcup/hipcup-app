@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../../config/config.js'
 
 class CoffeeRunUrlBox extends React.Component {
   constructor(){
@@ -6,15 +7,15 @@ class CoffeeRunUrlBox extends React.Component {
     this.displayCoffeeRunUrlBox.bind(this);
     this.generateCoffeeUrl.bind(this);
   }
-  
+
   generateCoffeeUrl() {
-    var uniqueID = this.props.coffeeRunID
-    return 'http://localhost:3468/' + uniqueID
+    let uniqueID = this.props.coffeeRunID;
+    return config.ip + '/' + uniqueID;
   }
 
   displayCoffeeRunUrlBox() {
     if(this.props.coffeeRunID) {
-      var uniqueID = this.generateCoffeeUrl()
+      let uniqueID = this.generateCoffeeUrl()
       return (
         <div className="url-box">
           <h2>Coffee Run Successfully Created</h2>
@@ -37,4 +38,3 @@ class CoffeeRunUrlBox extends React.Component {
 }
 
 export default CoffeeRunUrlBox
- 

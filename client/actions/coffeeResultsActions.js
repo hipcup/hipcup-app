@@ -1,13 +1,13 @@
 export const UPDATE_COFFEE_RESULTS_FROM_FETCHED = 'UPDATE_COFFEE_RESULTS_FROM_FETCHED'
 export const ERROR_CREATING_COFFEE_RESULTS_FORM = 'ERROR_CREATING_COFFEE_RESULTS_FORM'
 export const UPDATE_FETCH_COFFEE_RESULTS_STATUS = 'UPDATE_FETCH_COFFEE_RESULTS_STATUS'
+
 import config from '../config/config.js'
-const uri = process.env.IP || config.local_ip;
 
 export const fetchCoffeeResults = (coffeeRunID) => {
   return dispatch => {
     dispatch(updateFetchCoffeeResultsStatus());
-    return fetch(uri + '/fetchResults', {
+    return fetch(config.ip + '/fetchResults', {
       method: 'POST',
       mode: 'cors',
       cache: false,

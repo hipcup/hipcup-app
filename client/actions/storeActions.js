@@ -5,7 +5,6 @@ export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN
 export const UPDATE_USER_GEOLOCATION = 'UPDATE_USER_GEOLOCATION'
 
 import config from '../config/config.js'
-const uri = process.env.IP || config.local_ip;
 
 export const fetchUserLocation = () => {
   return dispatch => {
@@ -30,7 +29,7 @@ export const fetchUserLocation = () => {
 
 export const fetchStores = (coords) => {
   return dispatch => {
-    return fetch(uri + '/fetchnearbycoffeestores', {
+    return fetch(config.ip + '/fetchnearbycoffeestores', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
@@ -63,7 +62,7 @@ export const fetchStores = (coords) => {
 
 export const fetchCoffeeShopByName = (location) => {
   return dispatch => {
-    return fetch(uri + '/fetchcoffeeshopnearaddress', {
+    return fetch(config.ip + '/fetchcoffeeshopnearaddress', {
         method: 'POST',
         mode: 'cors',
         cache: false,

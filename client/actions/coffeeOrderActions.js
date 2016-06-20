@@ -1,14 +1,11 @@
 export const UPDATE_COFFEE_ORDER_FORM = 'UPDATE_COFFEE_ORDER_FORM'
 export const ERROR_PLACING_COFFEE_ORDER = 'ERROR_PLACING_COFFEE_ORDER'
 import config from '../config/config.js'
-const uri = process.env.IP || config.local_ip; 
+const uri = process.env.IP || config.local_ip;
 
-console.log('uri:', uri);
 export const coffeeOrderAction = (formInfo) => {
   return dispatch => {
-    // const endpoint = uri + '/placeorder';
-    // console.log('endpoint:', endpoint);
-    return fetch(uri + '/placeorder', {
+    return fetch(config.ip + '/placeorder', {
       method: 'POST',
       mode: 'cors',
       cache: false,
