@@ -4,10 +4,12 @@ export const UPDATE_FETCH_COFFEE_RUN_STATUS = 'UPDATE_FETCH_COFFEE_RUN_STATUS'
 export const ERROR_CREATING_COFFEE_RUN_FORM = 'ERROR_CREATING_COFFEE_RUN_FORM'
 export const COFFEE_RUN_SUCCESSFULLY_CREATED = 'COFFEE_RUN_SUCCESSFULLY_CREATED'
 export const CLEAR_COFFEE_RUN_SUCCESSFULLY_UPDATED = 'CLEAR_COFFEE_RUN_SUCCESSFULY_UPDATED'
+import config from '../config/config.js'
+const uri = process.env.IP || config.local_ip;
 
 export const coffeeRunAction = (formInfo) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/createRun', {
+    return fetch(uri + '/createRun', {
       method: 'POST',
       mode: 'cors',
       cache: false,
@@ -43,13 +45,13 @@ export const coffeeRunAction = (formInfo) => {
     }
   })
     .catch(err => console.error('Error creating coffee run:', err));
-  }  
+  }
 }
 
 export const fetchCoffeeRun = (coffeeRunID) => {
   return dispatch => {
     dispatch(updateFetchCoffeeRunStatus());
-    return fetch('http://127.0.0.1:3468/fetchRun', {
+    return fetch(uri + '/fetchRun', {
       method: 'POST',
       mode: 'cors',
       cache: false,
@@ -75,7 +77,7 @@ export const fetchCoffeeRun = (coffeeRunID) => {
     }
   })
     .catch(err => console.error('Error fetching coffee run:', err));
-  }  
+  }
 }
 
 const updateCoffeeRun = (formInfo) => {
@@ -119,7 +121,7 @@ const updateFetchCoffeeRunStatus = () => {
   return {
     type: UPDATE_FETCH_COFFEE_RUN_STATUS,
     isFetchingCoffeeRun: true
-  }  
+  }
 }
 
 const updateFetchedCoffeeRun = (coffeeRun) => {
@@ -128,7 +130,7 @@ const updateFetchedCoffeeRun = (coffeeRun) => {
     isFetchingCoffeeRun: false,
     coffeeRunID: coffeeRun.coffeeRunID,
     runnerName:  coffeeRun.runnerName,
-    timeStamp:   coffeeRun.timeStamp, 
+    timeStamp:   coffeeRun.timeStamp,
     coffeeShop:  coffeeRun.coffeeShop,
     address:     coffeeRun.address,
     maxOrders:   coffeeRun.maxOrders,
