@@ -2,10 +2,10 @@ var Q = require('q');
 var request = require('request');
 var helper = require('./helperfunctions').serverHelperFunctions;
 
-var google_api_key = require('../server/keys/config.js').google_api_key;
+var google_api_key = process.env.GOOGLE_API_KEY || require('../server/keys/config.js').google_api_key;
 
 
-// Fetch coffee shop by name and address 
+// Fetch coffee shop by name and address
 exports.apiGeocodedAddress = function(data){
   var location = data.location.split(' ').join('+');
   var deferred = Q.defer();
@@ -69,7 +69,7 @@ exports.apiSpecificStoreData = function(data){
 };
 
 
-// Fetch stores based on user's lat and long 
+// Fetch stores based on user's lat and long
 exports.apiPlacesData = function(lat, lng){
   var deferred = Q.defer();
 
@@ -95,7 +95,7 @@ exports.formatCoffeeShopsData = function(data) {
   var storeData = data.stores.results.map(function(store) {
     var storeInfo = {};
     storeInfo.name = helper.formatNames(store.name);
-    storeInfo.place_id = store.place_id; 
+    storeInfo.place_id = store.place_id;
 
 
     if(store.formatted_address) {
@@ -108,9 +108,9 @@ exports.formatCoffeeShopsData = function(data) {
     }
 
     if(store.opening_hours) {
-      storeInfo.open_now = store.opening_hours.open_now; 
-    } 
-    return storeInfo; 
+      storeInfo.open_now = store.opening_hours.open_now;
+    }
+    return storeInfo;
   });
 
 
@@ -121,7 +121,7 @@ exports.formatCoffeeShopsData = function(data) {
   }
 
   return deferred.promise;
-}  
+}
 
 exports.apiDistanceData = function(data) {
   var lat = data.lat;
@@ -134,7 +134,7 @@ exports.apiDistanceData = function(data) {
     var lat = store.lat;
     var lng = store.lng;
     var currStr = lat+','+lng+'|';
-    return newStr+currStr; 
+    return newStr+currStr;
   }, '');
 
   var cordStr = cordStr.slice(0, -1);
