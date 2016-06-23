@@ -9,7 +9,7 @@ var Q = require('q');
 var mongoose = require('mongoose');
 var google_api_key = process.env.GOOGLE_API_KEY || require('./server/keys/config.js').google_api_key;
 var db_uri = process.env.MONGOLAB_URI || require('./config/database');
-var port = process.env.PORT || 3468;
+var port = process.env.PORT || 5000;
 
  // configuration ===============================================================
 mongoose.connect(db_uri);
