@@ -5,9 +5,9 @@ import { routeActions } from 'react-router-redux';
 
 import * as fetchStores from '../actions/storeActions'
 
-import Header from '../components/appView/header.js'
+import Header from '../components/appView/Header.js'
 import MakeRunButton from '../components/appView/makeRunButton.js'
-import Footer from '../components/appView/footer.js'
+import Footer from '../components/appView/Footer.js'
 
 class App extends React.Component {
   constructor(props) {

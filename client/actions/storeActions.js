@@ -1,18 +1,20 @@
 export const FETCH_STORES_SUCCESS = 'FETCH_STORES_SUCCESS'
 export const FETCH_STORES_ERROR = 'FETCH_STORES_ERROR'
 export const UPDATE_SELECT_STORE = 'UPDATE_SELECT_STORE'
-export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN_CALLED' 
+export const UPDATE_FETCH_STORES_HAS_BEEN_CALLED = 'UPDATE_FETCH_STORES_HAS_BEEN_CALLED'
 export const UPDATE_USER_GEOLOCATION = 'UPDATE_USER_GEOLOCATION'
+
+import config from '../config/config.js'
 
 export const fetchUserLocation = () => {
   return dispatch => {
     navigator.geolocation.getCurrentPosition(
-    // success 
+    // success
     function(pos) {
      dispatch(fetchUserGeolocation(pos.coords));
      dispatch(fetchStores(pos.coords));
     },
-    // err 
+    // err
     function(err) {
       console.error('ERROR(' + err.code + '): ' + err.message);
     },
@@ -27,7 +29,7 @@ export const fetchUserLocation = () => {
 
 export const fetchStores = (coords) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/fetchnearbycoffeestores', {
+    return fetch(config.ip + '/fetchnearbycoffeestores', {
         method: 'POST',
         mode: 'cors',
         body: JSON.stringify({
@@ -38,7 +40,7 @@ export const fetchStores = (coords) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        } 
+        }
     }).then(stores => {
       return stores.json();
     }).then(stores => {
@@ -60,7 +62,7 @@ export const fetchStores = (coords) => {
 
 export const fetchCoffeeShopByName = (location) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/fetchcoffeeshopnearaddress', {
+    return fetch(config.ip + '/fetchcoffeeshopnearaddress', {
         method: 'POST',
         mode: 'cors',
         cache: false,
@@ -70,7 +72,7 @@ export const fetchCoffeeShopByName = (location) => {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
-        } 
+        }
     }).then(stores => {
       return stores.json();
     }).then(stores => {
@@ -138,4 +140,3 @@ export const updateSelectStore = (storeName, address, key) => {
     key: key
   }
 }
-

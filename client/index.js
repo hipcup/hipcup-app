@@ -1,4 +1,4 @@
-/* Dev Tools */ 
+/* Dev Tools */
 import { createDevTools } from 'redux-devtools'
 import LogMonitor from 'redux-devtools-log-monitor'
 import DockMonitor from 'redux-devtools-dock-monitor'
@@ -12,11 +12,11 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import thunk from 'redux-thunk'
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { syncHistory, routeReducer } from 'react-router-redux'
-/* reducers */  
+/* reducers */
 import * as reducers from './reducers'
 /* components and containers */
 import { App, SearchResults, CoffeeRun, CoffeeOrder, LandingBox } from './containers'
-/* styles */ 
+/* styles */
 import './styles/scss/main.scss';
 
 const history = createBrowserHistory()
@@ -53,7 +53,6 @@ ReactDOM.render(
           <Route path=":uniquecoffeerunid" component={CoffeeRun}/>
         </Route>
       </Router>
-      <DevTools />
     </div>
   </Provider>,
   document.getElementById('root')

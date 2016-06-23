@@ -1,5 +1,5 @@
 import React from 'react'
-import RunResults from '../components/coffeeOrderResultsView/RunResults'
+import RunResults from '../components/coffeeOrderResultsView/RunResults.js'
 
 import * as fetchCoffeeResults from '../actions/coffeeResultsActions'
 
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoffeeRunResults); 
+export default connect(mapStateToProps, mapDispatchToProps)(CoffeeRunResults);

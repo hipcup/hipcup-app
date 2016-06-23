@@ -1,5 +1,5 @@
 import React from 'react'
-import Map from './map.js'
+import Map from './Map.js'
 import Mapmarker from './mapMarker.js'
 import Usermarker from './userMarker.js'
 
@@ -13,12 +13,12 @@ class MapBox extends React.Component {
     if(this.props.fetched) {
       let markers = this.props.stores.map((shop, index) => {
         return (
-          <Mapmarker 
-           lat={shop.lat} 
-           lng={shop.lng} 
-           key={index} 
-           selectStoreKey={this.props.selectStoreKey} 
-           time={shop.time} 
+          <Mapmarker
+           lat={shop.lat}
+           lng={shop.lng}
+           key={index}
+           selectStoreKey={this.props.selectStoreKey}
+           time={shop.time}
            distance={shop.distance} />
         )
       });
@@ -26,8 +26,8 @@ class MapBox extends React.Component {
       return markers
     } else {
       return (
-        <Mapmarker 
-          lat={this.props.defaultCenter.lat} 
+        <Mapmarker
+          lat={this.props.defaultCenter.lat}
           lng={this.props.defaultCenter.lng}>
         </Mapmarker>
       )

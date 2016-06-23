@@ -1,9 +1,11 @@
 export const UPDATE_COFFEE_ORDER_FORM = 'UPDATE_COFFEE_ORDER_FORM'
 export const ERROR_PLACING_COFFEE_ORDER = 'ERROR_PLACING_COFFEE_ORDER'
+import config from '../config/config.js'
+const uri = process.env.IP || config.local_ip;
 
 export const coffeeOrderAction = (formInfo) => {
   return dispatch => {
-    return fetch('http://127.0.0.1:3468/placeOrder', {
+    return fetch(config.ip + '/placeorder', {
       method: 'POST',
       mode: 'cors',
       cache: false,
@@ -11,7 +13,7 @@ export const coffeeOrderAction = (formInfo) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body:  JSON.stringify({
+      body: JSON.stringify({
         coffeeRunID:     formInfo.coffeeRunID,
         caffeinatorName: formInfo.caffeinatorName,
         drinkOrder:      formInfo.drinkOrder,
@@ -34,7 +36,7 @@ export const coffeeOrderAction = (formInfo) => {
     }
   })
     .catch(err => console.error('Error placing coffee order:', err));
-  }  
+  }
 }
 
 const placeCoffeeOrder = (formInfo) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import JumbotronSearch from '../components/landingView/jumbotronSearch.js'
-import HowTo from '../components/appView/howTo.js'
-import Footer from '../components/appView/footer.js'
+import HowTo from '../components/appView/HowTo.js'
+import Footer from '../components/appView/Footer.js'
 
 import { bindActionCreators } from 'redux'
 import { routeActions } from 'react-router-redux';
@@ -20,7 +20,7 @@ class LandingBox extends React.Component {
       <div className="container landing">
         <JumbotronSearch { ...this.props } />
         <HowTo />
-        <Footer /> 
+        <Footer />
       </div>
     )
   }
