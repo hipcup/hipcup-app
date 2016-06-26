@@ -1,7 +1,7 @@
 import React from 'react'
 import q from 'q'
-import isValid from '../../validationHelperFunctions'
-import helperFunc from '../../HelperFunctions'
+import isValid from '../../helpers/validationHelpers'
+import helperFunc from '../../helpers/countdownHelpers'
 
 
 class CoffeeRunForm extends React.Component {
@@ -80,7 +80,7 @@ class CoffeeRunForm extends React.Component {
       return (
         <div className="coffeeRunForm order-form col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-push-1 col-sm-push-1 col-md-push-3 col-lg-push-3">
           <form className="form-vertical">
-            <div className="form-title"> 
+            <div className="form-title">
               <h4>Coffee run to{ this.props.selectedStore }</h4>
               <span className="form-require">Required<span className="require-asterisk">*</span></span>
             </div>
@@ -96,7 +96,7 @@ class CoffeeRunForm extends React.Component {
               <select className="form-control duration" ref="timeUntilDuration" onChange={this.setTimeUnit}>
                 <option select value="minutes">minutes</option>
                 <option value="hours">hours</option>
-              </select>         
+              </select>
             </div>
             <span className="form-error col-xs-11 col-sm-11 col-md-11 col-lg-11">{this.displayRangeError()}</span>
             <div className="input-group required col-xs-12 col-sm-11">
@@ -126,7 +126,7 @@ class CoffeeRunForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    // check for and display any form errors 
+    // check for and display any form errors
     this.displayFormError();
   }
 
@@ -144,11 +144,11 @@ class CoffeeRunForm extends React.Component {
         timeAmount:   this.refs.timeAmount.value,
         timeUnit:     this.state.timeUnit
       });
-            
+
       this.refs.runnerName.value = '',
       this.refs.maxOrders.value = '',
       this.refs.timeAmount.value = ''
-    } 
+    }
   }
 
   render() {
@@ -161,4 +161,3 @@ class CoffeeRunForm extends React.Component {
 }
 
 export default CoffeeRunForm
- 

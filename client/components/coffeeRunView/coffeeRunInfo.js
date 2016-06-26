@@ -1,6 +1,5 @@
 import React from 'react'
 import moment from 'moment';
-import HelperFunctions from '../../HelperFunctions.js'
 
 import CoffeeOrderForm from '../../containers/CoffeeOrder.js'
 import CoffeeRunResults from '../../containers/CoffeeRunResults.js'

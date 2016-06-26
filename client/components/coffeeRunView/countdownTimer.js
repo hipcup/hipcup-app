@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment';
-import HelperFunctions from '../../HelperFunctions.js'
+import CountdownHelpers from '../../helpers/countdownHelpers.js'
 
 class CountdownTimer extends React.Component {
   constructor(){
@@ -23,11 +23,11 @@ class CountdownTimer extends React.Component {
   componentWillUnmount() {
     this.clearCountdown(this.state.timerId);
   }
-  
+
   setCountdown(timeOfRun) {
     return setInterval(() => {
-      let duration = HelperFunctions.getDuration(timeOfRun)
-      let time = HelperFunctions.getCountdown(duration);
+      let duration = CountdownHelpers.getDuration(timeOfRun)
+      let time = CountdownHelpers.getCountdown(duration);
 
       this.updateCountdown(time, duration);
     }, 1000);
@@ -73,4 +73,3 @@ class CountdownTimer extends React.Component {
 }
 
 export default CountdownTimer
- 

@@ -3,9 +3,9 @@ var Q = require('q');
 var request = require('request');
 
 // models ======================================================================
-var coffeeRun = require('./controllers/coffeeRun.js');
-var coffeeOrder = require('./controllers/coffeeOrder.js');
-var fetchCoffeeShops = require('./fetchCoffeeShops.js');
+var coffeeRun = require('./../controllers/coffeeRun.js');
+var coffeeOrder = require('./../controllers/coffeeOrder.js');
+var fetchCoffeeShops = require('./../fetchCoffeeShops.js');
 
 // routes ======================================================================
 
@@ -14,10 +14,10 @@ var fetchCoffeeShops = require('./fetchCoffeeShops.js');
   // add a coffee run
     app.post('/createRun', coffeeRun.createRun);
 
-  // fetch a coffee run 
+  // fetch a coffee run
     app.post('/fetchRun', coffeeRun.fetchRun);
 
-  // fetch a coffee run results 
+  // fetch a coffee run results
     app.post('/fetchResults', coffeeRun.fetchResults);
 
   // add a coffee order to a coffee run
@@ -54,12 +54,12 @@ var fetchCoffeeShops = require('./fetchCoffeeShops.js');
 
  // application -------------------------------------------------------------
     app.get('/', function(req, res, next) {
-      res.sendFile(path.join(__dirname, 'index.html')); 
+      res.sendFile(path.join(__dirname, 'index.html'));
     });
-    
+
     // send back the index.html page for all route requests
-    // react-router will handle routing client-side 
+    // react-router will handle routing client-side
     app.get('*', function (req, res){
-      res.sendFile(path.resolve(__dirname, '../client', 'index.html'))
+      res.sendFile(path.resolve(__dirname, '../../client', 'index.html'))
     })
-}; 
+};

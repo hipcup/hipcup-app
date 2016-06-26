@@ -1,22 +1,22 @@
 
-const validationHelperFunctions = {
+const validationHelpers = {
   isAlpha: function(input) {
     if( /[^a-zA-Z\s\s.,"']/.test(input)) {
        return false;
     }
-    return true;     
+    return true;
   },
   isNumeric: function(input) {
     if( /[^0-9]/.test(input)) {
        return false;
     }
-    return true;     
+    return true;
   },
   isAlphaNumeric: function(input) {
     if( /[^a-zA-Z0-9\s_.,!"'/]/.test(input)) {
        return false;
     }
-    return true;     
+    return true;
   },
   isInRange: function(input) {
     if(typeof input !== "number") {
@@ -24,14 +24,14 @@ const validationHelperFunctions = {
     }
 
     if (!isNumeric(input)) {
-      return false; 
+      return false;
     }
-    
+
     if(input < 0 || input >= 1440) {
        return false;
     }
-    return true;     
+    return true;
   }
 }
 
-export default validationHelperFunctions;
+export default validationHelpers;
