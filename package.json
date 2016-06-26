@@ -52,6 +52,6 @@
     "node": "4.4.4"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   }
 }

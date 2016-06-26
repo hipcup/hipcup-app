@@ -1,5 +1,5 @@
 node_modules
-server/keys/config.js
-config/database.js
+server/config/keys.js
+database/config/database.js
 npm-debug.log
 .DS_Store
