@@ -2,7 +2,7 @@ var Q = require('q');
 var request = require('request');
 var helper = require('./helperfunctions').serverHelperFunctions;
 
-var google_api_key = process.env.GOOGLE_API_KEY || require('../server/keys/config.js').google_api_key;
+var google_api_key = process.env.GOOGLE_API_KEY || require('../server/config/keys.js').GOOGLE_API_KEY;
 
 
 // Fetch coffee shop by name and address
