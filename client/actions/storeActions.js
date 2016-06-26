@@ -117,7 +117,6 @@ const fetchStoresError = (error) => {
 }
 
 const fetchUserGeolocation = (coords) => {
-  console.log(coords);
   return {
     type: UPDATE_USER_GEOLOCATION,
     lat: coords.latitude,

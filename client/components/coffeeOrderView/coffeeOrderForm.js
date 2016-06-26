@@ -1,5 +1,5 @@
 import React from 'react'
-import isValid from '../../validationHelperFunctions'
+import isValid from '../../helpers/validationHelpers'
 
 class CoffeeOrderForm extends React.Component {
   constructor(){
@@ -59,7 +59,7 @@ class CoffeeOrderForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    // check for and display any form errors 
+    // check for and display any form errors
     this.displayFormError()
   }
 
@@ -77,8 +77,8 @@ class CoffeeOrderForm extends React.Component {
 
       this.refs.caffeinatorName.value = '',
       this.refs.drinkOrder.value = ''
-      this.refs.modifications.value = ''    
-    }  
+      this.refs.modifications.value = ''
+    }
   }
 
   displayCoffeeOrderForm() {
@@ -106,7 +106,7 @@ class CoffeeOrderForm extends React.Component {
                 <option select value="Small">Small</option>
                 <option select value="Medium">Medium</option>
                 <option select value="Large">Large</option>
-              </select>         
+              </select>
             </div>
             <div className="input-group col-xs-12 col-sm-11">
               <label>MODIFICATIONS</label>
