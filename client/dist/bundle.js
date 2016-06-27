@@ -51430,29 +51430,6 @@
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'input-group required col-xs-12 col-sm-11' },
-	            _react2.default.createElement(
-	              'label',
-	              null,
-	              'SLACK CHANNEL'
-	            ),
-	            _react2.default.createElement(
-	              'select',
-	              { className: 'form-control', name: 'slackChannels', ref: 'slackChannel' },
-	              _react2.default.createElement(
-	                'option',
-	                { select: true, value: 'defaultChannel' },
-	                'Default Channel'
-	              ),
-	              _react2.default.createElement(
-	                'option',
-	                { value: 'defaultChannel2' },
-	                'Default Channel2'
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
 	            'button',
 	            { type: 'submit', className: 'btn btn-default button col-xs-11 col-sm-11 col-md-11 col-lg-11', onClick: this.handleClick },
 	            'Create Run'
@@ -51470,6 +51447,16 @@
 	        )
 	      );
 	    }
+
+	    // slack channel option
+	    // <div className="input-group required col-xs-12 col-sm-11">
+	    //   <label>SLACK CHANNEL</label>
+	    //   <select className="form-control" name="slackChannels" ref="slackChannel">
+	    //     <option select value="defaultChannel">Default Channel</option>
+	    //     <option value="defaultChannel2">Default Channel2</option>
+	    //   </select>
+	    // </div>
+
 	  }, {
 	    key: 'displayServerErrorMsg',
 	    value: function displayServerErrorMsg() {
