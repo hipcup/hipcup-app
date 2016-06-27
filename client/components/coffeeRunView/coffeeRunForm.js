@@ -104,13 +104,6 @@ class CoffeeRunForm extends React.Component {
               <input type="text" className="form-control maxOrders" ref="maxOrders" onChange={this.setMaxOrders} />
               <span className="form-error">{ this.displayNumericError()}</span>
             </div>
-            <div className="input-group required col-xs-12 col-sm-11">
-              <label>SLACK CHANNEL</label>
-              <select className="form-control" name="slackChannels" ref="slackChannel">
-                <option select value="defaultChannel">Default Channel</option>
-                <option value="defaultChannel2">Default Channel2</option>
-              </select>
-            </div>
             <button type="submit" className="btn btn-default button col-xs-11 col-sm-11 col-md-11 col-lg-11" onClick={this.handleClick}>Create Run</button>
             <span className="order-status">{ this.state.runStatus }</span>
             <span className="order-status">{ this.displayServerErrorMsg() }</span>
@@ -118,6 +111,15 @@ class CoffeeRunForm extends React.Component {
         </div>
       )
   }
+
+// slack channel option
+  // <div className="input-group required col-xs-12 col-sm-11">
+  //   <label>SLACK CHANNEL</label>
+  //   <select className="form-control" name="slackChannels" ref="slackChannel">
+  //     <option select value="defaultChannel">Default Channel</option>
+  //     <option value="defaultChannel2">Default Channel2</option>
+  //   </select>
+  // </div>
 
   displayServerErrorMsg(){
     return this.props.coffeeRunErrorMsg ? <span>Coffee Run could not be created. Please re-submit and try again.</span> : null;
