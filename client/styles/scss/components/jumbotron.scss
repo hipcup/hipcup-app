@@ -6,7 +6,7 @@
   height:60%;
   height:550px;
   z-index:-1; /* allows header logo to go on top */
-  background-image: url('http://hipcup-app.herokuapp.com/assets/landing/jumbotron-bg.png');
+  background-image: url("#{$asset-path}/assets/landing/jumbotron-bg.png");
   background-size: cover;
 }
 
